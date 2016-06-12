@@ -1,6 +1,37 @@
 <form action="/login" method="post">
+
+    {{#username}}
     <div>
-        <input type="text" name="userName"/>
+        <button type="submit">Favorite Playlists</button>
+    </div>
+
+    <div>
+        <button type="submit">Recipe Book</button>
+    </div>
+
+    <div>
+        <button type="submit">Make a new recipe</button>
+    </div>
+
+    <div>
+        <input type="text" name="logout"/>
+        <button type="submit">Logout</button>
+    </div>
+    {{/username}}
+
+    {{^username}}
+    <div>
+        <input type="text" placeholder="username" name="username"/>
+        <input type="password" placeholder="password" name="password"/>
         <button type="submit">Login</button>
     </div>
+    {{/username}}
+
+    {{^username}}
+        <div>
+            <input type="text" name="newAccount"/>
+            <button type="submit">Create New Account</button>
+        </div>
+    {{/username}}
+
 </form>

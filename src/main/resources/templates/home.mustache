@@ -14,16 +14,24 @@
     </div>
 
     <div>
-        <input type="text" name="userName"/>
+        <input type="text" name="logout"/>
         <button type="submit">Logout</button>
     </div>
     {{/username}}
 
     {{^username}}
     <div>
-        <input type="text" name="username"/>
+        <input type="text" placeholder="username" name="username"/>
+        <input type="password" placeholder="password" name="password"/>
         <button type="submit">Login</button>
     </div>
+    {{/username}}
+
+    {{^username}}
+        <div>
+            <input type="text" name="newAccount"/>
+            <button type="submit">Create New Account</button>
+        </div>
     {{/username}}
 
 </form>
