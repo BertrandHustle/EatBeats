@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EatBeats.iml" filepath="$PROJECT_DIR$/.idea/modules/EatBeats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EatBeats_main.iml" filepath="$PROJECT_DIR$/.idea/modules/EatBeats_main.iml" group="EatBeats" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/EatBeats_test.iml" filepath="$PROJECT_DIR$/.idea/modules/EatBeats_test.iml" group="EatBeats" />
+    </modules>
+  </component>
+</project>
