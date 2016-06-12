@@ -3,6 +3,8 @@ package com.example;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 /**
  * Class for recipes, these will have playlists associated with them as well as properties (e.g. season and type)
@@ -24,5 +26,10 @@ public class Recipe {
     private String category;
     //geographical region the recipe is from (e.g. French, Korean, etc.)
     private String region;
+
+    //links many to one mapped on User
+    @ManyToOne
+    @NotNull
+    User user;
 
 }

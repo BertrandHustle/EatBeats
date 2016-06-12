@@ -1,6 +1,29 @@
 <form action="/login" method="post">
+
+    {{#username}}
+    <div>
+        <button type="submit">Favorite Playlists</button>
+    </div>
+
+    <div>
+        <button type="submit">Recipe Book</button>
+    </div>
+
+    <div>
+        <button type="submit">Make a new recipe</button>
+    </div>
+
     <div>
         <input type="text" name="userName"/>
+        <button type="submit">Logout</button>
+    </div>
+    {{/username}}
+
+    {{^username}}
+    <div>
+        <input type="text" name="username"/>
         <button type="submit">Login</button>
     </div>
+    {{/username}}
+
 </form>
