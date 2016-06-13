@@ -28,6 +28,9 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	UserRepo userRepo;
 
+	@Autowired
+	RecipeRepo recipeRepo;
+
 	@Before
 	public void before() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -63,6 +66,34 @@ public class EatBeatsApplicationTests {
 		assertThat(fetchUser.getUsername(), is("test"));
 		assertThat(PasswordHasher.verifyPassword(testPass, fetchUser.getPassword()), is(true));
 
+	}
+
+	/**
+	 * Given a recipe
+	 * When recipe is submitted
+	 * Then recipe appears in database
+	 */
+
+	@Test
+	public void whenRecipeAddedThenRecipeStoredInDatabase() throws Exception {
+
+		//arrange
+		Recipe recipe = new Recipe("season", "name", "category", "region", "description");
+
+		//act
+		mockMvc.perform(
+				MockMvcRequestBuilders.post("/create-recipe")
+						.param("season", "season")
+						.param("name", "name")
+						.param("category", "category")
+						.param("region", "region")
+						.param("description", "description")
+		);
+
+		Recipe fetchRecipe = recipeRepo.findFirstByName("name");
+
+		//assert
+		assertThat(fetchRecipe.getName(), is("name"));
 	}
 
 }

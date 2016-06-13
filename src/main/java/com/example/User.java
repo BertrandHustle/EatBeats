@@ -18,7 +18,6 @@ public class User {
     private int id;
 
     private String username;
-    //todo: make sure passwords are hashed
     private String password;
 
 

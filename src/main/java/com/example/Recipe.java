@@ -18,7 +18,7 @@ public class Recipe {
     @GeneratedValue
     private int id;
 
-    //todo: add description field
+
 
     //season the recipe is meant to be eaten during (e.g. fall, winter)
     private String season;
@@ -28,10 +28,62 @@ public class Recipe {
     private String category;
     //geographical region the recipe is from (e.g. French, Korean, etc.)
     private String region;
+    //description of the recipe
+    private String description;
 
     //links many to one mapped on User
     @ManyToOne
     @NotNull
     User user;
 
+    public Recipe() {
+    }
+
+    public Recipe(String season, String name, String category, String region, String description) {
+        this.season = season;
+        this.name = name;
+        this.category = category;
+        this.region = region;
+        this.description = description;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }

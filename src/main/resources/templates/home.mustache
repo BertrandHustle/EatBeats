@@ -1,6 +1,5 @@
-<form action="/login" method="post">
 
-    HOME
+ HOME
 
     {{#username}}
     <div>
@@ -16,7 +15,7 @@
     </div>
 
     <div>
-        <form>
+        <form action="/logout" method="get">
             <input type="text" name="logout"/>
             <button type="submit">Logout</button>
         </form>
@@ -25,7 +24,7 @@
 
     {{^username}}
     <div>
-        <form>
+        <form action="/login" method="post">
             <input type="text" placeholder="username" name="username"/>
             <input type="password" placeholder="password" name="password"/>
             <button type="submit">Login</button>
@@ -40,5 +39,3 @@
             </form>
         </div>
     {{/username}}
-
-</form>

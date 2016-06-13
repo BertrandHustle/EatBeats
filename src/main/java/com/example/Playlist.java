@@ -26,4 +26,6 @@ public class Playlist {
     //link to spotify playlist (is there a better way to do this?)
     private String spotifyLink;
 
+    //todo: add recipe link/field to say which recipe it belongs to?
+
 }
