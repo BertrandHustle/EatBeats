@@ -1,5 +1,7 @@
 <form action="/login" method="post">
 
+    HOME
+
     {{#username}}
     <div>
         <button type="submit">Favorite Playlists</button>
@@ -14,23 +16,28 @@
     </div>
 
     <div>
-        <input type="text" name="logout"/>
-        <button type="submit">Logout</button>
+        <form>
+            <input type="text" name="logout"/>
+            <button type="submit">Logout</button>
+        </form>
     </div>
     {{/username}}
 
     {{^username}}
     <div>
-        <input type="text" placeholder="username" name="username"/>
-        <input type="password" placeholder="password" name="password"/>
-        <button type="submit">Login</button>
+        <form>
+            <input type="text" placeholder="username" name="username"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button type="submit">Login</button>
+        </form>
     </div>
     {{/username}}
 
     {{^username}}
         <div>
-            <input type="text" name="newAccount"/>
-            <button type="submit">Create New Account</button>
+            <form>
+                <a href="/create-account">Create Account</a>
+            </form>
         </div>
     {{/username}}
 

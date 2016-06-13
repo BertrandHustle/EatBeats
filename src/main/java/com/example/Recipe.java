@@ -18,6 +18,8 @@ public class Recipe {
     @GeneratedValue
     private int id;
 
+    //todo: add description field
+
     //season the recipe is meant to be eaten during (e.g. fall, winter)
     private String season;
     //name of the recipe

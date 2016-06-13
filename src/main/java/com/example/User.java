@@ -21,4 +21,10 @@ public class User {
     //todo: make sure passwords are hashed
     private String password;
 
+
+    public User(String username, String password) throws PasswordHasher.CannotPerformOperationException {
+        this.username = username;
+        //auto-hashes passwords when User is constructed
+        this.password = PasswordHasher.createHash(password);
+    }
 }

@@ -17,10 +17,32 @@ public class EatBeatsController {
     @Autowired
     RecipeRepo recipeRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
+    @Autowired
+    PlaylistRepo playlistRepo;
+
+    //root
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String root(HttpSession session){
-        return "home";
+    public String root(HttpSession session, String username){
+
+        if (username == null){
+            return "create-account";
+        } else {
+            return "home";
+        }
     }
 
+    //route for creating account and saving to database
+    @RequestMapping(path = "/create-account", method = RequestMethod.POST)
+    public String postCreateAccount(HttpSession session, String username, String password) throws PasswordHasher.CannotPerformOperationException {
+
+        User user = new User(username, password);
+
+        userRepo.save(user);
+        return "redirect/";
+
+    }
 
 }
