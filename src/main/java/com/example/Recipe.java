@@ -14,6 +14,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Recipe {
 
+    //todo: make to string method (or construct descriptions w/mustache)
+
     @Id
     @GeneratedValue
     private int id;
@@ -91,5 +93,18 @@ public class Recipe {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "season='" + season + '\'' +
+                ", name='" + name + '\'' +
+                ", category='" + category + '\'' +
+                ", region='" + region + '\'' +
+                ", description='" + description + '\'' +
+                ", user=" + user +
+                ", id=" + id +
+                '}';
     }
 }

@@ -8,8 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 //todo: put copyright text here
+//todo: make generate-playlist route
+
 /**
  * Controller class for EatBeats
  */
@@ -60,12 +63,30 @@ public class EatBeatsController {
         //todo: make more explicit or encapsulate in User method
         User user = userRepo.findFirstByUsername(session.getAttribute("username").toString());
 
+        //retrieves recipe details from select/text forms in html
+
+        //todo: fix so all these values aren't null
         //creates new recipe from user input, saves to db
         Recipe recipe = new Recipe(season, name, category, region, description);
         recipe.setUser(user);
         recipeRepo.save(recipe);
 
         return "redirect:/";
+    }
+
+    //displays recipes w/generate playlist buttons
+    @RequestMapping(path = "/my-recipes", method = RequestMethod.GET)
+    public String myRecipes(HttpSession session, Model model){
+
+        //gets current user from session
+        User user = userRepo.findFirstByUsername(session.getAttribute("username").toString());
+        //gets all of user's recipes
+        List<Recipe> recipes = recipeRepo.findByUser(user);
+
+        //add recipes to model and return page
+        model.addAttribute("recipes", recipes);
+        return "/my-recipes";
+
     }
 
     //login route

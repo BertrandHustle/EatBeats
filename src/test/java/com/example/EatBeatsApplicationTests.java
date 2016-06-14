@@ -13,6 +13,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.util.ArrayList;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -115,6 +117,38 @@ public class EatBeatsApplicationTests {
 		assertThat(fetchRecipe.getCategory(), is(recipe.getCategory()));
 		assertThat(fetchRecipe.getSeason(), is(recipe.getSeason()));
 		assertThat(fetchRecipe.getRegion(), is(recipe.getRegion()));
+	}
+
+	/**
+	 * Given a user profile
+	 * When user goes to "my recipes" page
+	 * Then recipes are retrieved from database and displayed
+	 */
+
+	@Test
+	public void whenMyRecipesPageAccessedThenAllUserRecipesRetrievedAndDisplayed() throws PasswordHasher.CannotPerformOperationException {
+
+		//arrange
+		User testUser = new User("username", "pass");
+		userRepo.save(testUser);
+
+		Recipe testRecipe = new Recipe("season", "name", "category", "region", "description");
+		Recipe testRecipe2 = new Recipe("season2", "name2", "category2", "region2", "description2");
+		Recipe testRecipe3 = new Recipe("season3", "name3", "category3", "region3", "description3");
+		ArrayList<Recipe> testRecipesArray = new ArrayList<>();
+		testRecipesArray.add(testRecipe);
+		testRecipesArray.add(testRecipe2);
+		testRecipesArray.add(testRecipe3);
+
+		recipeRepo.save(testRecipe);
+		recipeRepo.save(testRecipe2);
+		recipeRepo.save(testRecipe3);
+
+		//act
+		Iterable<Recipe> testRecipeList = recipeRepo.findAll();
+
+		//assert
+		assertThat(testRecipeList, is(testRecipesArray));
 	}
 
 }

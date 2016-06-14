@@ -3,16 +3,20 @@
 
     {{#username}}
     <div>
-        <button type="submit">Favorite Playlists</button>
+        <form action="favorite-playlists" method="get">
+            <button type="submit" name="favorite-playlists">Favorite Playlists</button>
+        </form>
     </div>
 
     <div>
-        <button type="submit">Recipe Book</button>
+        <form action="my-recipes" method="get">
+            <button type="submit" name="my-recipes">My Recipes</button>
+        </form>
     </div>
 
     <div>
         <form action="/create-recipe" method="get">
-            <button type="submit" name="create-recipe">Make a new recipe</button>
+            <button type="submit" name="create-recipe">Make a New Recipe</button>
         </form>
     </div>
 

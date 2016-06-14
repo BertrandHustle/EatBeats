@@ -1,6 +1,6 @@
 Create a recipe:
 
-
+<form action="/create-recipe" method="post">
 <div>
     Name
     <input type="text" placeholder="name" name="name"/>
@@ -8,7 +8,7 @@ Create a recipe:
 
 <div>
     Season
-    <select>
+    <select id="season" name="season">
         <option value="Spring">Spring</option>
         <option value="Summer">Summer</option>
         <option value="Fall">Fall</option>
@@ -18,7 +18,7 @@ Create a recipe:
 
 <div>
     Category
-    <select>
+    <select id="category" name="category">
         <option value="Breakfast">Breakfast</option>
         <option value="Brunch">Brunch</option>
         <option value="Lunch">Lunch</option>
@@ -29,7 +29,7 @@ Create a recipe:
 
 <div>
     Region
-    <select>
+    <select id="region" name="region">
         <option value="French">French</option>
         <!-- placeholder: to be extended to multiple regions in Asia -->
         <option value="Asian">Asian</option>
@@ -40,10 +40,12 @@ Create a recipe:
 </div>
 
 <div>
-    Description
-    <textarea rows="5" cols="10"></textarea>
+        Description
+        <textarea rows="5" cols="10"></textarea>
 </div>
 
 <div>
-    <button type="submit">Submit Recipe</button>
+
+        <button type="submit" >Submit Recipe</button>
 </div>
+</form>
