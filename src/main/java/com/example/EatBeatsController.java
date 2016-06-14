@@ -9,6 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 
+//todo: put copyright text here
 /**
  * Controller class for EatBeats
  */
@@ -42,6 +43,29 @@ public class EatBeatsController {
         }
 
         return "home";
+    }
+
+    //routes to create-recipe page
+    @RequestMapping(path = "/create-recipe", method = RequestMethod.GET)
+    public String getCreateRecipe(HttpSession session, Model model){
+        return "create-recipe";
+    }
+
+    //creates recipe and stores in database
+    @RequestMapping(path = "/create-recipe", method = RequestMethod.POST)
+    public String postCreateRecipe(HttpSession session, String season, String name,
+                                   String category, String region, String description){
+
+        //retrieves current user
+        //todo: make more explicit or encapsulate in User method
+        User user = userRepo.findFirstByUsername(session.getAttribute("username").toString());
+
+        //creates new recipe from user input, saves to db
+        Recipe recipe = new Recipe(season, name, category, region, description);
+        recipe.setUser(user);
+        recipeRepo.save(recipe);
+
+        return "redirect:/";
     }
 
     //login route

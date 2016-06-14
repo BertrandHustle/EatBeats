@@ -18,8 +18,6 @@ public class Recipe {
     @GeneratedValue
     private int id;
 
-
-
     //season the recipe is meant to be eaten during (e.g. fall, winter)
     private String season;
     //name of the recipe
@@ -85,5 +83,13 @@ public class Recipe {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
