@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
@@ -97,7 +98,6 @@ public class EatBeatsApplicationTests {
 
 				MockMvcRequestBuilders.post("/create-recipe")
 
-						//.session(mockHttpSession)
 						.sessionAttr("username", "username")
 						.sessionAttr("password", "pass")
 						.param("season", "season")
@@ -126,29 +126,45 @@ public class EatBeatsApplicationTests {
 	 */
 
 	@Test
-	public void whenMyRecipesPageAccessedThenAllUserRecipesRetrievedAndDisplayed() throws PasswordHasher.CannotPerformOperationException {
+	public void whenMyRecipesPageAccessedThenAllUserRecipesRetrievedAndDisplayed() throws Exception {
 
 		//arrange
+		//creates new user, saves to db, sets session attributes
 		User testUser = new User("username", "pass");
 		userRepo.save(testUser);
+
+		//todo: move to before
+		mockHttpSession.setAttribute("username", testUser.getUsername());
+		mockHttpSession.setAttribute("password", testUser.getPassword());
 
 		Recipe testRecipe = new Recipe("season", "name", "category", "region", "description");
 		Recipe testRecipe2 = new Recipe("season2", "name2", "category2", "region2", "description2");
 		Recipe testRecipe3 = new Recipe("season3", "name3", "category3", "region3", "description3");
-		ArrayList<Recipe> testRecipesArray = new ArrayList<>();
-		testRecipesArray.add(testRecipe);
-		testRecipesArray.add(testRecipe2);
-		testRecipesArray.add(testRecipe3);
+
+		testRecipe.setUser(testUser);
+		testRecipe2.setUser(testUser);
+		testRecipe3.setUser(testUser);
 
 		recipeRepo.save(testRecipe);
 		recipeRepo.save(testRecipe2);
 		recipeRepo.save(testRecipe3);
 
 		//act
-		Iterable<Recipe> testRecipeList = recipeRepo.findAll();
+		mockMvc.perform(
+				MockMvcRequestBuilders.get("/my-recipes")
+						.sessionAttr("username", "username")
+						.sessionAttr("password", "pass")
+		);
+
+		//act
+
+		List<Recipe> testRecipeList = recipeRepo.findByUser(testUser);
 
 		//assert
-		assertThat(testRecipeList, is(testRecipesArray));
+		//todo: use .equals
+		assertThat(testRecipeList.get(0).equals(testRecipe), is(true));
+		assertThat(testRecipeList.get(0).equals(testRecipe2), is(true));
+		assertThat(testRecipeList.get(0).equals(testRecipe3), is(true));
 	}
 
 }
