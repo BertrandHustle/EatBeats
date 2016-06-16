@@ -1,5 +1,7 @@
 package com.example;
 
+import com.example.Recipe;
+import com.example.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;

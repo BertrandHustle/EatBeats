@@ -1,37 +1,47 @@
-<form action="/login" method="post">
+
+ HOME
 
     {{#username}}
     <div>
-        <button type="submit">Favorite Playlists</button>
+        <form action="favorite-playlists" method="get">
+            <button type="submit" name="favorite-playlists">Favorite Playlists</button>
+        </form>
     </div>
 
     <div>
-        <button type="submit">Recipe Book</button>
+        <form action="my-recipes" method="get">
+            <button type="submit" name="my-recipes">My Recipes</button>
+        </form>
     </div>
 
     <div>
-        <button type="submit">Make a new recipe</button>
+        <form action="/create-recipe" method="get">
+            <button type="submit" name="create-recipe">Make a New Recipe</button>
+        </form>
     </div>
 
     <div>
-        <input type="text" name="logout"/>
-        <button type="submit">Logout</button>
+        <form action="/logout" method="get">
+            <input type="text" name="logout"/>
+            <button type="submit">Logout</button>
+        </form>
     </div>
     {{/username}}
 
     {{^username}}
     <div>
-        <input type="text" placeholder="username" name="username"/>
-        <input type="password" placeholder="password" name="password"/>
-        <button type="submit">Login</button>
+        <form action="/login" method="post">
+            <input type="text" placeholder="username" name="username"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button type="submit">Login</button>
+        </form>
     </div>
     {{/username}}
 
     {{^username}}
         <div>
-            <input type="text" name="newAccount"/>
-            <button type="submit">Create New Account</button>
+            <form>
+                <a href="/create-account">Create Account</a>
+            </form>
         </div>
     {{/username}}
-
-</form>

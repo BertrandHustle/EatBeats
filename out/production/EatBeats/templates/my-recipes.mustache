@@ -1,0 +1,14 @@
+<!-- puts generate playlist button next to each recipe -->
+<!-- todo: have generate playlist redirect to Spotify playlist -->
+
+{{#recipes}}
+    {{.}}
+    <div>
+        <form action="/generate-playlist" method="get">
+            <button type="submit" name="generate-playlist">Generate Playlist</button>
+        </form>
+        <form action="/edit-recipe" method="get">
+            <button type="submit" name="edit-recipe">Edit Recipe</button>
+        </form>
+    </div>
+{{/recipes}}

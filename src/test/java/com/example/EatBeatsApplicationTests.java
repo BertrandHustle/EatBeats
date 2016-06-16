@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -37,6 +36,9 @@ public class EatBeatsApplicationTests {
 
 	@Autowired
 	RecipeRepo recipeRepo;
+
+	@Autowired
+	RecipeService recipeService;
 
 	@Before
 	public void before() {
@@ -165,6 +167,39 @@ public class EatBeatsApplicationTests {
 		assertThat(testRecipeList.get(0).equals(testRecipe), is(true));
 		assertThat(testRecipeList.get(0).equals(testRecipe2), is(true));
 		assertThat(testRecipeList.get(0).equals(testRecipe3), is(true));
+	}
+
+	/**
+	 * Given a new recipe
+	 * When recipe is added to db
+	 * Recipe can be retrieved from db
+	 */
+
+	@Test
+	public void whenRecipeAddedThenRecipeRetrievedFromDatabase() throws PasswordHasher.CannotPerformOperationException {
+
+		//arrange
+		User user = new User("name", "pass");
+		String season = "season";
+		String name = "name";
+		String category = "category";
+		String region = "region";
+		String description = "description";
+		Recipe testRecipe = new Recipe(season, name, category, region, description);
+		testRecipe.setUser(user);
+		userRepo.save(user);
+
+		//act
+		recipeService.saveRecipe(user, season, name, category, region, description);
+		Recipe fetchRecipe = recipeRepo.findFirstByName("name");
+
+		//assert
+		assertThat(fetchRecipe.getName(), is(testRecipe.getName()));
+		assertThat(fetchRecipe.getDescription(), is(testRecipe.getDescription()));
+		assertThat(fetchRecipe.getCategory(), is(testRecipe.getCategory()));
+		assertThat(fetchRecipe.getSeason(), is(testRecipe.getSeason()));
+		assertThat(fetchRecipe.getRegion(), is(testRecipe.getRegion()));
+
 	}
 
 }

@@ -2,18 +2,17 @@ package com.example;
 
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.methods.TrackRequest;
-import com.wrapper.spotify.methods.TrackSearchRequest;
+import com.wrapper.spotify.methods.AlbumSearchRequest;
+import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.Page;
-import com.wrapper.spotify.models.Track;
+import com.wrapper.spotify.models.SimpleAlbum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import com.wrapper.spotify.methods.ArtistRequest;
-
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -22,6 +21,7 @@ import java.util.List;
 //todo: put copyright text here
 //todo: make generate-playlist route
 //todo: make single recipe page (edit page)
+//todo: fix package structure
 
 /**
  * Controller class for EatBeats
@@ -73,33 +73,26 @@ public class EatBeatsController {
                                    String category, String region, String description){
 
         //retrieves current user
-        //todo: make more explicit or encapsulate in User method
-        User user = userRepo.findFirstByUsername(session.getAttribute("username").toString());
 
-        //retrieves recipe details from select/text forms in html
+        //todo: handle this with user service
+        String username = session.getAttribute("username").toString();
+        User user = userRepo.findFirstByUsername(username);
 
         //creates new recipe from user input, saves to db
-        Recipe recipe = new Recipe(season, name, category, region, description);
-        recipe.setUser(user);
-        recipeRepo.save(recipe);
+
+        recipeService.saveRecipe(user, season, name, category, region, description);
 
         //todo: was this redirecting correctly?
         return "redirect:/";
     }
 
-    //displays recipes w/generate playlist buttons
+    //displays recipes
     @RequestMapping(path = "/my-recipes", method = RequestMethod.GET)
     public String myRecipes(HttpSession session, Model model){
 
-        //todo: make this into a single method in recipe service
-        List <Recipe> recipes = recipeService.getUserRecipes(session);
-
-        /*
-        //gets current user from session
-        User user = userRepo.findFirstByUsername(session.getAttribute("username").toString());
-        //gets all of user's recipes
-        List<Recipe> recipes = recipeRepo.findByUser(user);
-        */
+        //gets username out of session and returns their recipes
+        String username = session.getAttribute("username").toString();
+        List <Recipe> recipes = recipeService.getUserRecipes(username);
 
         //add recipes to model and return page
         model.addAttribute("recipes", recipes);
@@ -107,20 +100,29 @@ public class EatBeatsController {
 
     }
 
+
     @RequestMapping(path = "/create-playlist", method = RequestMethod.GET)
     public String createRecipe(HttpSession session) throws IOException, WebApiException {
 
-        Api api = Api.DEFAULT_API;
+        final Api api = Api.DEFAULT_API;
 
-        final TrackSearchRequest searchRequest = api.searchTracks("Blue Moon").market("US").build();
-        final Page<Track> trackSearchResult = searchRequest.get();
+        //temp access token for playlists
+        final ClientCredentialsGrantRequest clientRequest = api.clientCredentialsGrant().grantType("client_credentials")
+                .basicAuthorizationHeader("5855c3febfa54cc4ab3558dca0a37def", "5a0942a8fe0d48bdb6ff5a984fbb5ca9").build();
 
+        String test = clientRequest.get().getAccessToken();
+        System.out.println(test);
 
-        TrackRequest request = api.getTrack("0aN8uGH1qlWgleoVw9gxu0").build();
-        Track track = request.get();
-        System.out.println(track.getName());
+        RestTemplate restTemplate = new RestTemplate();
+
+        final AlbumSearchRequest request = api.searchAlbums("Oscar Peterson Trio").offset(0).limit(3).build();
+
+        final Page<SimpleAlbum> albumSearchResult = request.get();
+
+        int x = 0;
 
         return "";
+
     }
 
     //login route
