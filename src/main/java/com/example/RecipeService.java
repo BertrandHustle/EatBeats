@@ -22,9 +22,9 @@ public class RecipeService {
     @Autowired
     RecipeRepo recipeRepo;
 
-    public List<Recipe> getUserRecipes (String username) {
+    public List<Recipe> getUserRecipes (String name) {
         //gets current user from session
-        User user = userRepo.findFirstByUsername(username);
+        User user = userRepo.findFirstByUsername(name);
         //gets all of user's recipes
         List<Recipe> recipes = recipeRepo.findByUser(user);
 

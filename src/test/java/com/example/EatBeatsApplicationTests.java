@@ -40,6 +40,9 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	RecipeService recipeService;
 
+	@Autowired
+	UserService userService;
+
 	@Before
 	public void before() {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -63,12 +66,7 @@ public class EatBeatsApplicationTests {
 		String testPass = "pass";
 
 		//act
-		mockMvc.perform(
-				MockMvcRequestBuilders.post("/create-account")
-				.param("username", "test")
-				.param("password", "pass")
-		);
-
+		userService.createAndStoreUser(testName, testPass);
 		User fetchUser = userRepo.findFirstByUsername(testName);
 
 		//assert
@@ -78,66 +76,18 @@ public class EatBeatsApplicationTests {
 	}
 
 	/**
-	 * Given a recipe
-	 * When recipe is submitted
-	 * Then recipe appears in database
-	 */
-
-	@Test
-	public void whenRecipeAddedThenRecipeStoredInDatabase() throws Exception {
-
-		//arrange
-		User testUser = new User("username", "pass");
-		userRepo.save(testUser);
-
-		Recipe recipe = new Recipe("season", "name", "category", "region", "description");
-
-		mockHttpSession.setAttribute("username", testUser.getUsername());
-		mockHttpSession.setAttribute("password", testUser.getPassword());
-
-		//act
-		mockMvc.perform(
-
-				MockMvcRequestBuilders.post("/create-recipe")
-
-						.sessionAttr("username", "username")
-						.sessionAttr("password", "pass")
-						.param("season", "season")
-						.param("name", "name")
-						.param("category", "category")
-						.param("region", "region")
-						.param("description", "description")
-
-		);
-
-		Recipe fetchRecipe = recipeRepo.findFirstByName("name");
-
-		//can't compare actual recipes because of object identity separation
-		//assert
-		assertThat(fetchRecipe.getName(), is(recipe.getName()));
-		assertThat(fetchRecipe.getDescription(), is(recipe.getDescription()));
-		assertThat(fetchRecipe.getCategory(), is(recipe.getCategory()));
-		assertThat(fetchRecipe.getSeason(), is(recipe.getSeason()));
-		assertThat(fetchRecipe.getRegion(), is(recipe.getRegion()));
-	}
-
-	/**
 	 * Given a user profile
 	 * When user goes to "my recipes" page
-	 * Then recipes are retrieved from database and displayed
+	 * Then all recipes belonging to that user are retrieved from database
 	 */
 
 	@Test
-	public void whenMyRecipesPageAccessedThenAllUserRecipesRetrievedAndDisplayed() throws Exception {
+	public void whenMyRecipesPageAccessedThenAllUserRecipesRetrievedFromDatabase() throws Exception {
 
 		//arrange
 		//creates new user, saves to db, sets session attributes
 		User testUser = new User("username", "pass");
 		userRepo.save(testUser);
-
-		//todo: move to before
-		mockHttpSession.setAttribute("username", testUser.getUsername());
-		mockHttpSession.setAttribute("password", testUser.getPassword());
 
 		Recipe testRecipe = new Recipe("season", "name", "category", "region", "description");
 		Recipe testRecipe2 = new Recipe("season2", "name2", "category2", "region2", "description2");
@@ -152,21 +102,12 @@ public class EatBeatsApplicationTests {
 		recipeRepo.save(testRecipe3);
 
 		//act
-		mockMvc.perform(
-				MockMvcRequestBuilders.get("/my-recipes")
-						.sessionAttr("username", "username")
-						.sessionAttr("password", "pass")
-		);
-
-		//act
-
 		List<Recipe> testRecipeList = recipeRepo.findByUser(testUser);
 
 		//assert
-		//todo: use .equals
-		assertThat(testRecipeList.get(0).equals(testRecipe), is(true));
-		assertThat(testRecipeList.get(0).equals(testRecipe2), is(true));
-		assertThat(testRecipeList.get(0).equals(testRecipe3), is(true));
+		assertThat(testRecipeList.get(0).getName().equals(testRecipe.getName()), is(true));
+		assertThat(testRecipeList.get(1).getDescription().equals(testRecipe2.getDescription()), is(true));
+		assertThat(testRecipeList.get(2).getSeason().equals(testRecipe3.getSeason()), is(true));
 	}
 
 	/**
