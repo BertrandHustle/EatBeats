@@ -1,5 +1,8 @@
 package com.example;
 
+import com.example.PasswordHasher;
+import com.example.User;
+import com.example.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

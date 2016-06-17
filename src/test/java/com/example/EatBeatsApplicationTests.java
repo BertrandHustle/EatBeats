@@ -1,5 +1,11 @@
 package com.example;
 
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.methods.RecommendationsRequest;
+import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
+import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Track;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +19,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -43,8 +51,11 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	UserService userService;
 
+	@Autowired
+	SpotifyService spotifyService;
+
 	@Before
-	public void before() {
+	public void before() throws IOException, WebApiException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 	}
 
@@ -142,5 +153,43 @@ public class EatBeatsApplicationTests {
 		assertThat(fetchRecipe.getRegion(), is(testRecipe.getRegion()));
 
 	}
+
+	/**
+	 * Given a track id seed
+	 * When id is used in recommendations request
+	 * Then returns JSON with at least one song
+	 */
+
+	@Test
+	public void whenGivenTrackIDSeedThenRecommendationsRequestReturned() throws IOException, WebApiException {
+
+		//arrange
+		String testId = "55PqUrPAZ67MYPvTptskA4";
+		ArrayList<String> testSeeds = new ArrayList<>();
+		testSeeds.add(testId);
+
+		//act
+		List<Track> testTracks = spotifyService.getListOfRecommendationsFromSeedTracks(testSeeds);
+
+
+		//assert
+
+		boolean test = false;
+		for (Track track : testTracks){
+			if ((track.getAlbum() != null) &&
+					(track.getName() != null) &&
+					(track.getArtists() != null) &&
+					(track.getDiscNumber() != 0) &&
+					(track.getPopularity() != 0)
+					){
+				test = true;
+			}
+		}
+
+		assertThat(test, is(true));
+
+	}
+
+	//todo: put test for building playlist with specific track ids here
 
 }

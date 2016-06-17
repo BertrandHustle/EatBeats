@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 //todo: put copyright text here
@@ -41,6 +42,9 @@ public class EatBeatsController {
 
     @Autowired
     RecipeService recipeService;
+
+    @Autowired
+    SpotifyService spotifyService;
 
     //root
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -102,37 +106,15 @@ public class EatBeatsController {
 
 
     //creates random Spotify playlist based on seed tracks
-
-    //implimentation done by Doug Hughes
-
     @RequestMapping(path = "/create-playlist", method = RequestMethod.GET)
-    public String createRecipe(HttpSession session) throws IOException, WebApiException {
+    public String createPlaylist(HttpSession session) throws IOException, WebApiException {
 
-        //builds api object from application id/secret
-        final Api api = Api.builder()
-                        .clientId("f5b8721c375a43eb801334c0d4329a0d")
-                        .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+                ArrayList<String> seeds = new ArrayList<>();
 
-        /* Create a request object. */
-                final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
+                seeds.add("55PqUrPAZ67MYPvTptskA4");
 
-        /* Use the request object to make the request, either asynchronously (getAsync) or synchronously (get) */
-                ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
+                List<Track> tracks = spotifyService.getListOfRecommendationsFromSeedTracks(seeds);
 
-        /* Set access token on the Api object so that it's used going forward */
-                api.setAccessToken(clientCredentials.getAccessToken());
-                final RecommendationsRequest recommendationsRequest = api.getRecommendations()
-                        .seedTrack("0CU30zif0WR5h1DI9oGtAF")
-                        .build();
-
-                //try/catch block for print test
-                try {
-                    List<Track> tracks = recommendationsRequest.get();
-                    System.out.println("I got " + tracks.size() + " results!");
-                } catch (Exception e) {
-                    System.out.println("Something went wrong!" + e.getMessage());
-                }
-                int x = 1;
                 return "";
             }
 

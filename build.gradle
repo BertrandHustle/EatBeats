@@ -35,6 +35,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-mustache')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile(group: 'se.michaelthelin.spotify', name: 'spotify-web-api-java', version: '1.5.0-doug')
+	compile(group: 'com.google.code.gson', name: 'gson', version: '2.7')
 	runtime('com.h2database:h2')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test') 
