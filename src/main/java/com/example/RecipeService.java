@@ -40,4 +40,17 @@ public class RecipeService {
 
     }
 
+    public void editRecipe (Recipe recipe, String season, String name, String category,
+                            String region, String description){
+
+        recipe.setCategory(category);
+        recipe.setRegion(region);
+        recipe.setSeason(season);
+        recipe.setName(name);
+        recipe.setDescription(description);
+
+        recipeRepo.save(recipe);
+
+    }
+
 }

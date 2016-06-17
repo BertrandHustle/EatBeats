@@ -56,8 +56,19 @@ public class EatBeatsApplicationTests {
 	SpotifyService spotifyService;
 
 	@Before
-	public void before() throws IOException, WebApiException {
+	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+
+		User testUser = new User("name", "pass");
+		String season = "season";
+		String name = "name";
+		String category = "category";
+		String region = "region";
+		String description = "description";
+		Recipe testRecipe = new Recipe(season, name, category, region, description);
+		testRecipe.setUser(testUser);
+		userRepo.save(testUser);
+		recipeRepo.save(testRecipe);
 	}
 
 	@Test
@@ -156,6 +167,63 @@ public class EatBeatsApplicationTests {
 	}
 
 	/**
+	 * Given a recipe
+	 * When recipe is retrieved from database and edited
+	 * Then recipe is stored in database with new values
+	 */
+
+	@Test
+	public void whenRecipeEditedThenNewValuesSavedInDatabase(){
+
+		//arrange
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+
+		String editedCategory = "editedCategory";
+		String editedName= "editedName";
+		String editedDescription = "editedDescription";
+		String editedRegion = "editedRegion";
+		String editedSeason = "editedSeason";
+
+		//act
+		//edited values
+		//todo: fix formatting!
+		recipeService.editRecipe(testRecipe, editedCategory, editedName, editedDescription, editedRegion, editedSeason);
+
+		recipeRepo.save(testRecipe);
+		Recipe editedRecipe = recipeRepo.findFirstByName(editedName);
+
+		//assert
+		assertThat(testRecipe.getName().equals(editedRecipe.getName()), is(true));
+		assertThat(testRecipe.getCategory().equals(editedRecipe.getCategory()), is(true));
+		assertThat(testRecipe.getRegion().equals(editedRecipe.getRegion()), is(true));
+		assertThat(testRecipe.getSeason().equals(editedRecipe.getSeason()), is(true));
+		assertThat(testRecipe.getDescription().equals(editedRecipe.getDescription()), is(true));
+
+
+	}
+
+	/**
+	 * Given a recipe
+	 * When recipe is deleted from database
+	 * Then recipe no longer appears in database
+	 */
+
+	@Test
+	public void whenRecipeDeletedThenRecipeNotInDatabase(){
+
+		//arrange
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		int testDeleteId = testRecipe.getId();
+
+		//act
+		recipeRepo.delete(testDeleteId);
+
+		//assert
+		assertThat((recipeRepo.findById(testDeleteId) == null), is(true));
+
+	}
+
+	/**
 	 * Given a track id seed
 	 * When id is used in recommendations request
 	 * Then returns Track List containing random tracks
@@ -213,12 +281,12 @@ public class EatBeatsApplicationTests {
 
 	/**
 	 * Given a list of tracks
-	 * When playlist iframe builder is given above list as argument
-	 * Then iframe builder returns correct html for displaying Spotify playlist
+	 * When list is passed in as argument
+	 * Then method returns a string of comma separated track ids
 	 */
 
 	@Test
-	public void whenGivenTrackListTheniFrameUrlForSpotifyPlaylistReturned() throws IOException, WebApiException {
+	public void whenGivenTrackListThenCommaSeparatedStringOfTrackIdsReturned() throws IOException, WebApiException {
 
 		//arrange
 		String testId = "55PqUrPAZ67MYPvTptskA4";
@@ -244,5 +312,7 @@ public class EatBeatsApplicationTests {
 		assertThat(testTrackIds.equals(joinedTracksIds), is (true));
 
 	}
+
+
 
 }

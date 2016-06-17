@@ -14,5 +14,5 @@ import java.util.List;
 public interface RecipeRepo extends CrudRepository <Recipe, Integer>{
     Recipe findFirstByName(String name);
     List<Recipe> findByUser (User user);
-
+    Recipe findById(int id);
 }
