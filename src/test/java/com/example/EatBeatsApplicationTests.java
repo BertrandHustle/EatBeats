@@ -1,5 +1,6 @@
 package com.example;
 
+import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.RecommendationsRequest;
@@ -157,11 +158,11 @@ public class EatBeatsApplicationTests {
 	/**
 	 * Given a track id seed
 	 * When id is used in recommendations request
-	 * Then returns JSON with at least one song
+	 * Then returns Track List containing random tracks
 	 */
 
 	@Test
-	public void whenGivenTrackIDSeedThenRecommendationsRequestReturned() throws IOException, WebApiException {
+	public void whenGivenTrackIDSeedThenRandomRecommendationsReturned() throws IOException, WebApiException {
 
 		//arrange
 		String testId = "55PqUrPAZ67MYPvTptskA4";
@@ -169,27 +170,79 @@ public class EatBeatsApplicationTests {
 		testSeeds.add(testId);
 
 		//act
+		//gets two different track lists to ensure each is random
 		List<Track> testTracks = spotifyService.getListOfRecommendationsFromSeedTracks(testSeeds);
+		List<Track> testTracks2 = spotifyService.getListOfRecommendationsFromSeedTracks(testSeeds);
 
-
-		//assert
-
-		boolean test = false;
+		boolean test1 = false;
 		for (Track track : testTracks){
-			if ((track.getAlbum() != null) &&
+			if (    (track.getAlbum() != null) &&
 					(track.getName() != null) &&
 					(track.getArtists() != null) &&
 					(track.getDiscNumber() != 0) &&
 					(track.getPopularity() != 0)
 					){
-				test = true;
+				test1 = true;
 			}
 		}
 
-		assertThat(test, is(true));
+		boolean test2 = false;
+		for (Track track : testTracks2){
+			if (    (track.getAlbum() != null) &&
+					(track.getName() != null) &&
+					(track.getArtists() != null) &&
+					(track.getDiscNumber() != 0) &&
+					(track.getPopularity() != 0)
+					){
+				test2 = true;
+			}
+		}
+
+		String testTrack1Id = testTracks.get(0).getId();
+		String testTrack2Id = testTracks2.get(0).getId();
+
+		//assert
+		//tests that each track list contains tracks
+		assertThat((test1 && test2), is(true));
+		//tests for randomness
+		assertThat((testTrack1Id.equals(testTrack2Id)), is(false));
 
 	}
 
 	//todo: put test for building playlist with specific track ids here
+
+	/**
+	 * Given a list of tracks
+	 * When playlist iframe builder is given above list as argument
+	 * Then iframe builder returns correct html for displaying Spotify playlist
+	 */
+
+	@Test
+	public void whenGivenTrackListTheniFrameUrlForSpotifyPlaylistReturned() throws IOException, WebApiException {
+
+		//arrange
+		String testId = "55PqUrPAZ67MYPvTptskA4";
+		ArrayList<String> testSeeds = new ArrayList<>();
+		testSeeds.add(testId);
+		List<Track> testTracks = spotifyService.getListOfRecommendationsFromSeedTracks(testSeeds);
+
+		ArrayList<String> tracksToJoin = new ArrayList<>();
+
+		//does this test have a point? It's just duplicating its own method
+		for (Track track : testTracks){
+			if (track.getId() != null){
+				tracksToJoin.add(track.getId());
+			}
+		}
+
+		//act
+		String testTrackIds = spotifyService.getCommaJoinedTrackIds(testTracks);
+		String joinedTracksIds = Joiner.on(",").join(tracksToJoin);
+
+
+		//assert
+		assertThat(testTrackIds.equals(joinedTracksIds), is (true));
+
+	}
 
 }

@@ -2,6 +2,7 @@ package com.example;
 
 import com.wrapper.spotify.models.*;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
  * Song class for ORM purposes, keeps track of Song's spotify ID and ranking
  * so playlists can be generated
  */
+
+//@Entity
 public class Song {
 
     //these properties come from the Spotify API
