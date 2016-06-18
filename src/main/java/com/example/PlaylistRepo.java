@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface PlaylistRepo extends CrudRepository<Playlist, Integer> {
-
+    Playlist findById(int id);
 }

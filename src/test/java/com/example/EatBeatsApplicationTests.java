@@ -56,6 +56,9 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	SpotifyService spotifyService;
 
+	@Autowired
+	PlaylistRepo playlistRepo;
+
 	@Before
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -338,5 +341,43 @@ public class EatBeatsApplicationTests {
 	}
 
 	//todo: add method for saving/retrieving playlists
+
+	/**
+	 * Given a list of songs
+	 * When playlist is constructed with said songs, saved to database, and retrieved from db
+	 * Then playlist contains all expected songs and all song ids match original list
+	 */
+
+	@Test
+	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongsAndIdsMatchOriginalList() throws IOException, WebApiException {
+
+		//arrange
+		Song testSong1 = new Song("Yellow", "Coldplay");
+		Song testSong2 = new Song("Space is the Place", "Sun Ra");
+		Song testSong3 = new Song("M.E.T.H.O.D Man", "Wu Tang Clan");
+
+		ArrayList<Song> songsToBeAdded = new ArrayList<>();
+		Playlist playlist = new Playlist(songsToBeAdded);
+
+		//act
+		playlistRepo.save(playlist);
+		playlistRepo.findById(playlist.getId());
+
+		//assert
+		boolean songIdsDontMatch = false;
+
+		//checks each song in original list of ids against each song in added playlist to see if all ids match
+		for (Song song : songsToBeAdded){
+			for (Song s : playlist.getSongs()){
+				if (!song.getSpotifyId().equals(s.getSpotifyId())){
+					songIdsDontMatch = true;
+				}
+			}
+		}
+
+		assertThat(songIdsDontMatch, is(false));
+	}
+
+	//todo: make and test spotify playlist link builder (this can be a string! See doug's notes)
 
 }

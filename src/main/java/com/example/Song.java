@@ -1,10 +1,13 @@
 package com.example;
 
+import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +16,11 @@ import java.util.List;
  * so playlists can be generated
  */
 
-//@Entity
+@Entity
 public class Song {
 
     //these properties come from the Spotify API
+    /*
     private SimpleAlbum album;
     private List<SimpleArtist> artists;
     private List<String> availableMarkets;
@@ -26,24 +30,44 @@ public class Song {
     private ExternalIds externalIds;
     private ExternalUrls externalUrls;
     private String href;
-    private String spotifyid;
-    private String name;
     private int popularity;
     private String previewUrl;
     private int trackNumber;
     private SpotifyEntityType type = SpotifyEntityType.TRACK;
     private String uri;
+    */
+
+    //added to make song searching by title easier
+    private String artist;
+    private String spotifyId;
+    private String name;
 
     //these properties are added for ORM purposes/playlist generation
 
     @Id
     @GeneratedValue
     private int id;
+
     //ranking of thumbs up vs thumbs down for track
     private int rank;
     //holds tags for track (e.g. season, category, etc.)
     private ArrayList<String> tags = new ArrayList<>();
+    //links to Playlist to which Song belongs
+    @ManyToOne
+    private Playlist playlist;
 
+    public Song(String artist, String name) throws IOException, WebApiException {
+        this.artist = artist;
+        this.name = name;
+
+        //automatically sets spotify id for song
+        SpotifyService spotifyService = new SpotifyService();
+        String trackId = spotifyService.searchByTrackName(name, artist);
+        this.spotifyId = trackId;
+
+    }
+
+    /*
     public SimpleAlbum getAlbum() {
         return album;
     }
@@ -124,14 +148,6 @@ public class Song {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public int getPopularity() {
         return popularity;
     }
@@ -171,5 +187,45 @@ public class Song {
     public void setUri(String uri) {
         this.uri = uri;
     }
+    */
 
+    public String getSpotifyId() {
+        return spotifyId;
+    }
+
+    public void setSpotifyId(String spotifyId) {
+        this.spotifyId = spotifyId;
+    }
+
+    public Playlist getPlaylist() {
+        return playlist;
+    }
+
+    public void setPlaylist(Playlist playlist) {
+        this.playlist = playlist;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    public ArrayList<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(ArrayList<String> tags) {
+        this.tags = tags;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
