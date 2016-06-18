@@ -352,12 +352,14 @@ public class EatBeatsApplicationTests {
 	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongsAndIdsMatchOriginalList() throws IOException, WebApiException {
 
 		//arrange
+		//todo: move this to @before method
 		Song testSong1 = new Song("Yellow", "Coldplay");
 		Song testSong2 = new Song("Space is the Place", "Sun Ra");
 		Song testSong3 = new Song("M.E.T.H.O.D Man", "Wu Tang Clan");
+		String testRecipe = "Coq Au Vin";
 
 		ArrayList<Song> songsToBeAdded = new ArrayList<>();
-		Playlist playlist = new Playlist(songsToBeAdded);
+		Playlist playlist = new Playlist(testRecipe, songsToBeAdded);
 
 		//act
 		playlistRepo.save(playlist);
@@ -379,5 +381,46 @@ public class EatBeatsApplicationTests {
 	}
 
 	//todo: make and test spotify playlist link builder (this can be a string! See doug's notes)
+
+	/**
+	 * Given a list of songs
+	 * When Playlist is constructed with list
+	 * Then Playlist contains correct spotify playlist link
+	 */
+
+	@Test
+	public void whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist() throws IOException, WebApiException {
+
+		//arrange
+		Song testSong1 = new Song("Yellow", "Coldplay");
+		Song testSong2 = new Song("Space is the Place", "Sun Ra");
+		Song testSong3 = new Song("M.E.T.H.O.D Man", "Wu Tang Clan");
+		String testRecipe = "Coq Au Vin";
+
+		//constructs playlist
+		ArrayList<Song> songsToBeAdded = new ArrayList<>();
+		ArrayList<String> testSongIds = new ArrayList<>();
+
+		//gets spotify id of each song and adds to arraylist
+		for (Song song : songsToBeAdded){
+			testSongIds.add(song.getSpotifyId());
+		}
+
+		String joinedIds = Joiner.on(",").join(testSongIds);
+
+		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+joinedIds;
+
+		//act
+		Playlist playlist = new Playlist(testRecipe, songsToBeAdded);
+		String testUrl = playlist.getSpotifyLink();
+
+		//assert
+		assertThat(testUrl.equals(expectedUrl), is(true));
+
+	}
+
+
+	//todo: make and test method for retrieving all of user's playlists
+	//todo: make and test method for making playlist based on 
 
 }

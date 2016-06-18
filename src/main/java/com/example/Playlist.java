@@ -1,5 +1,7 @@
 package com.example;
 
+import com.google.common.base.Joiner;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,22 +22,40 @@ public class Playlist {
     private String spotifyLink;
 
     //this is the recipe which the playlist belongs to
-    private String recipe;
+    private String recipeName;
 
     //this holds the Song objects which comprise the Playlist
     private ArrayList<Song> songs;
 
     //todo: add many-to-one link to user for saving favorite playlists
 
-
-    //todo: expand constructor to auto-create spotify link and require recipe
-
     //default constructor
     public Playlist() {
     }
 
-    public Playlist(ArrayList<Song> songs) {
+    public Playlist(String recipeName, ArrayList<Song> songs) {
+        this.recipeName = recipeName;
         this.songs = songs;
+        //todo: modify so USERNAME is replaced by the user who made the playlist
+
+        //auto-sets spotify playlist link based on songs passed in
+        String joinedIds = joinSongIds(songs);
+        this.spotifyLink = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+ joinedIds;
+    }
+
+    public String joinSongIds (ArrayList<Song> songs){
+
+        //holds song ids before joining
+        ArrayList<String> songIds = new ArrayList<>();
+
+        //gets spotify id of each song and adds to arraylist
+        for (Song song : songs){
+            songIds.add(song.getSpotifyId());
+        }
+
+        //joins song ids on comma
+        String joinedIds = Joiner.on(",").join(songIds);
+        return joinedIds;
     }
 
     public int getId() {
@@ -55,11 +75,11 @@ public class Playlist {
     }
 
     public String getRecipe() {
-        return recipe;
+        return recipeName;
     }
 
     public void setRecipe(String recipe) {
-        this.recipe = recipe;
+        this.recipeName = recipe;
     }
 
     public ArrayList<Song> getSongs() {
