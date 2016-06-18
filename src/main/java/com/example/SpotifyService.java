@@ -4,8 +4,10 @@ import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.RecommendationsRequest;
+import com.wrapper.spotify.methods.TrackSearchRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +60,27 @@ public class SpotifyService {
         //joins tracks on comma and returns joined string
         String joinedTracks = Joiner.on(",").join(trackIds);
         return joinedTracks;
+
+    }
+
+    //todo: make this return the track id of the search result (or "not found" if not found)
+    public Page<Track> searchByTrackName (String trackName, String artist) throws IOException, WebApiException {
+
+        final Api api = Api.builder()
+                .clientId("f5b8721c375a43eb801334c0d4329a0d")
+                .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+
+        final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
+        ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
+
+        api.setAccessToken(clientCredentials.getAccessToken());
+
+        //surrounds trackName with quotes so Spotify API can get an exact query match
+        final TrackSearchRequest trackSearchRequest = api.searchTracks("\"" + trackName + "\"").limit(3).query(trackName)
+                .build();
+
+        Page<Track> searchResults = trackSearchRequest.get();
+        return searchResults;
 
     }
 }

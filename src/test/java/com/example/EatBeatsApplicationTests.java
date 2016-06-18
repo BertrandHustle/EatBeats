@@ -6,6 +6,7 @@ import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.RecommendationsRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
 import org.junit.Before;
 import org.junit.Test;
@@ -313,6 +314,46 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a song title
+	 * When title is searched through spotify
+	 * Then top 3 search results are returned
+	 */
 
+	@Test
+	public void whenSongTitleSearchedThenTopThreeSearchResultsReturned() throws IOException, WebApiException {
+
+		//arrange
+		String testSongName = "space is the place";
+		String testArtist = "Sun Ra";
+		ArrayList<Track> searchResultTracks = new ArrayList<>();
+
+		//act
+		Page<Track> searchResults = spotifyService.searchByTrackName(testSongName, testArtist);
+		searchResultTracks.addAll(searchResults.getItems());
+
+		//assert
+		boolean containsSongName = false;
+		boolean containsArtist = false;
+
+		for (Track track : searchResultTracks){
+
+			//tests if the search results have at least one result with the correct Artist name
+			if (track.getArtists().get(0).getName().equals(testArtist)){
+				containsArtist = true;
+			}
+
+			//tests if the search results have at least one result with the correct track title
+			if (track.getName().equalsIgnoreCase(testSongName)){
+				containsSongName = true;
+			}
+		}
+
+		assertThat(containsArtist, is (true));
+		assertThat(containsSongName, is (true));
+
+	}
+
+	//todo: add method for saving/retrieving playlists
 
 }
