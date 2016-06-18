@@ -340,8 +340,6 @@ public class EatBeatsApplicationTests {
 
 	}
 
-	//todo: add method for saving/retrieving playlists
-
 	/**
 	 * Given a list of songs
 	 * When playlist is constructed with said songs, saved to database, and retrieved from db
@@ -392,13 +390,19 @@ public class EatBeatsApplicationTests {
 	public void whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist() throws IOException, WebApiException {
 
 		//arrange
-		Song testSong1 = new Song("Yellow", "Coldplay");
-		Song testSong2 = new Song("Space is the Place", "Sun Ra");
-		Song testSong3 = new Song("M.E.T.H.O.D Man", "Wu Tang Clan");
+		//remember: artist and title have to be in CORRECT ORDER when songs are created!
+		//todo: add a "fuzzy" search for song creation/track lookup
+		Song testSong1 = new Song("Coldplay", "Yellow");
+		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 		String testRecipe = "Coq Au Vin";
 
 		//constructs playlist
 		ArrayList<Song> songsToBeAdded = new ArrayList<>();
+		songsToBeAdded.add(testSong1);
+		songsToBeAdded.add(testSong2);
+		songsToBeAdded.add(testSong3);
+
 		ArrayList<String> testSongIds = new ArrayList<>();
 
 		//gets spotify id of each song and adds to arraylist
@@ -419,8 +423,31 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a song title and artist
+	 * When Song is created
+	 * Then Song contains correct spotify id
+	 */
+
+	@Test
+	public void whenSongCreatedThenSongHasCorrectSpotifyId() throws IOException, WebApiException {
+
+		//arrange
+		String testArtist = "Coldplay";
+		String testTitle = "Yellow";
+		String expectedId = "3AJwUDP919kvQ9QcozQPxg";
+
+		//act
+		Song testSong1 = new Song(testArtist, testTitle);
+
+		//assert
+		assertThat(expectedId.equals(testSong1.getSpotifyId()), is(true));
+
+	}
+
 
 	//todo: make and test method for retrieving all of user's playlists
-	//todo: make and test method for making playlist based on 
+	//todo: make and test method for making playlist based on song tags
+	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
 
 }
