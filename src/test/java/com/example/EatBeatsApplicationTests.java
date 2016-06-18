@@ -326,31 +326,14 @@ public class EatBeatsApplicationTests {
 		//arrange
 		String testSongName = "space is the place";
 		String testArtist = "Sun Ra";
+		String expectedId = "0JOKubEAJYJSh9DQ0hDDQq";
 		ArrayList<Track> searchResultTracks = new ArrayList<>();
 
 		//act
-		Page<Track> searchResults = spotifyService.searchByTrackName(testSongName, testArtist);
-		searchResultTracks.addAll(searchResults.getItems());
+		String searchResultId = spotifyService.searchByTrackName(testSongName, testArtist);
 
 		//assert
-		boolean containsSongName = false;
-		boolean containsArtist = false;
-
-		for (Track track : searchResultTracks){
-
-			//tests if the search results have at least one result with the correct Artist name
-			if (track.getArtists().get(0).getName().equals(testArtist)){
-				containsArtist = true;
-			}
-
-			//tests if the search results have at least one result with the correct track title
-			if (track.getName().equalsIgnoreCase(testSongName)){
-				containsSongName = true;
-			}
-		}
-
-		assertThat(containsArtist, is (true));
-		assertThat(containsSongName, is (true));
+		assertThat(searchResultId.equals(expectedId), is (true));
 
 	}
 

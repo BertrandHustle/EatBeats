@@ -64,7 +64,7 @@ public class SpotifyService {
     }
 
     //todo: make this return the track id of the search result (or "not found" if not found)
-    public Page<Track> searchByTrackName (String trackName, String artist) throws IOException, WebApiException {
+    public String searchByTrackName (String trackName, String artist) throws IOException, WebApiException {
 
         final Api api = Api.builder()
                 .clientId("f5b8721c375a43eb801334c0d4329a0d")
@@ -79,8 +79,26 @@ public class SpotifyService {
         final TrackSearchRequest trackSearchRequest = api.searchTracks("\"" + trackName + "\"").limit(3).query(trackName)
                 .build();
 
-        Page<Track> searchResults = trackSearchRequest.get();
-        return searchResults;
+        //init arraylists
+        ArrayList<Track> searchResultTracks = new ArrayList<>();
+        String searchResultSpotifyId = "";
+
+        searchResultTracks.addAll(trackSearchRequest.get().getItems());
+
+        //try/catch exception handling for an empty search result
+        //iterates through search results and finds correct result id by artist/song name
+        try {
+            for (Track track : searchResultTracks) {
+                if ((track.getArtists().get(0).getName().equals(artist)
+                        && track.getName().equalsIgnoreCase(trackName))) {
+                    searchResultSpotifyId = track.getId();
+                }
+            }
+        } catch (NullPointerException npe){
+            searchResultSpotifyId = "no results found!";
+        }
+
+        return searchResultSpotifyId;
 
     }
 }
