@@ -64,6 +64,9 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	SongRepo songRepo;
 
+	@Autowired
+	PlaylistService playlistService;
+
 	//todo: remove this and/or clean it up
 	@Before
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
@@ -633,6 +636,55 @@ public class EatBeatsApplicationTests {
 	}
 
 	//todo: make and test method for making playlist based on song tags
+
+	/**
+	 * Given a recipe
+	 * When spotify playlist is created for recipe using recommendations request
+	 * Then all songs in Playlist have same tags as recipe
+	 */
+
+	@Test
+	public void whenGivenRecipeThenPlaylistCreatedFromRecipeTags() throws IOException, WebApiException {
+
+		//arrange
+		User testUser = userRepo.findFirstByUsername("name");
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		Song testSong = new Song("artist", "title");
+
+		ArrayList<String> testRecipeTags = new ArrayList<>();
+		testRecipeTags.add(testRecipe.getCategory());
+		testRecipeTags.add(testRecipe.getRegion());
+		testRecipeTags.add(testRecipe.getSeason());
+
+		testSong.setTags(testRecipeTags);
+		testSong.setCategory(testRecipe.getCategory());
+		songRepo.save(testSong);
+
+		//act
+		Playlist testPlaylist = playlistService.makePlaylistFromRecipe(testRecipe, testUser);
+		List<Song> testSongs = testPlaylist.getSongs();
+
+		//assert
+
+		boolean doTagsMatch = true;
+
+		for (Song song : testSongs){
+			for (String tag : song.getTags()){
+				if (!testRecipeTags.contains(tag)){
+					doTagsMatch = false;
+				}
+			}
+		}
+
+		testPlaylist.getSpotifyLink();
+
+		assertThat(doTagsMatch, is(true));
+		assertThat(testPlaylist.getSongs().isEmpty(), is(false));
+
+	}
+
+
+
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
 	/* we already have recipes as a necessary part of the Playlist constructor, we can just
 	tag each song in the playlist with the tags on the recipe, then add all songs to the db */

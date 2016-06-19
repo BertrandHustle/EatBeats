@@ -47,15 +47,21 @@ public class Song {
     @Id
     @GeneratedValue
     private int id;
-
     //ranking of thumbs up vs thumbs down for track
     private int rank;
-    //holds tags for track (e.g. season, category, etc.)
+    //tags for track (e.g. season, category, etc.)
+    //todo: remove this and replace with individual tags
     private ArrayList<String> tags = new ArrayList<>();
+    private String category;
+    private String region;
+    private String season;
 
     //links to Playlist to which Song belongs
     @ManyToOne
     Playlist playlist;
+
+    public Song() {
+    }
 
     public Song(String artist, String name) throws IOException, WebApiException {
         this.artist = artist;
@@ -228,5 +234,29 @@ public class Song {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public String getSeason() {
+        return season;
+    }
+
+    public void setSeason(String season) {
+        this.season = season;
     }
 }

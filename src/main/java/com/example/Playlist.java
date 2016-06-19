@@ -59,6 +59,9 @@ public class Playlist {
 
         for (Song song : songs){
             song.getTags().addAll(recipeTags);
+            song.setRegion(recipe.getRegion());
+            song.setSeason(recipe.getSeason());
+            song.setCategory(recipe.getCategory());
         }
     }
 
