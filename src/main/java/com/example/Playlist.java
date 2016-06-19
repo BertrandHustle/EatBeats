@@ -49,6 +49,17 @@ public class Playlist {
         String joinedIds = joinSongIds(songs);
         String recipeName = recipe.getName();
         this.spotifyLink = "https://embed.spotify.com/?uri=spotify:trackset:"+recipeName+":"+ joinedIds;
+
+        //auto-sets songs in playlist to have tags from recipe
+        ArrayList<String> recipeTags = new ArrayList<>();
+
+        recipeTags.add(recipe.getCategory());
+        recipeTags.add(recipe.getSeason());
+        recipeTags.add(recipe.getRegion());
+
+        for (Song song : songs){
+            song.getTags().addAll(recipeTags);
+        }
     }
 
 
