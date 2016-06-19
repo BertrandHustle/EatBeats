@@ -332,7 +332,6 @@ public class EatBeatsApplicationTests {
 		String testSongName = "space is the place";
 		String testArtist = "Sun Ra";
 		String expectedId = "0JOKubEAJYJSh9DQ0hDDQq";
-		ArrayList<Track> searchResultTracks = new ArrayList<>();
 
 		//act
 		String searchResultId = spotifyService.searchByTrackName(testSongName, testArtist);
@@ -352,12 +351,16 @@ public class EatBeatsApplicationTests {
 	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongsAndIdsMatchOriginalList() throws IOException, WebApiException {
 
 		//arrange
-		//todo: move this to @before method
+		//todo: move this to @before method (do this by creating objects AND adding them to database, then pulling them out in test)
 		Song testSong1 = new Song("Coldplay", "Yellow");
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
-		String testRecipe = "Coq Au Vin";
+		Recipe testRecipe = new Recipe();
+		testRecipe.setName("Coq Au Vin");
 		User testUser = new User();
+		testRecipe.setUser(testUser);
+		userRepo.save(testUser);
+		recipeRepo.save(testRecipe);
 
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
 		songIdsToBeAdded.add(testSong1.getSpotifyId());
@@ -379,8 +382,6 @@ public class EatBeatsApplicationTests {
 		assertThat(joinedIdsToBeAdded.equals(joinedRetrievedPlaylistIds), is(true));
 	}
 
-	//todo: make and test spotify playlist link builder (this can be a string! See doug's notes)
-
 	/**
 	 * Given a list of songs
 	 * When Playlist is constructed with list
@@ -396,8 +397,13 @@ public class EatBeatsApplicationTests {
 		Song testSong1 = new Song("Coldplay", "Yellow");
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
-		String testRecipe = "Coq Au Vin";
+
+		Recipe testRecipe = new Recipe();
+		testRecipe.setName("Coq Au Vin");
 		User testUser = new User();
+		userRepo.save(testUser);
+		testRecipe.setUser(testUser);
+		recipeRepo.save(testRecipe);
 
 		//constructs playlist
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
@@ -460,24 +466,43 @@ public class EatBeatsApplicationTests {
 
 		//arrange
 		User testUser = new User("name", "pass");
-		ArrayList<Playlist> testPlaylists = new ArrayList<>();
+
+		userRepo.save(testUser);
+		List<Playlist> testPlaylists = new ArrayList<>();
+
 		boolean isAPlaylist = true;
 
+		//two of everything is necessary for testing multiple playlists
+		//todo: fix this by moving to @before! (see above note)
 		Song testSong1 = new Song("Coldplay", "Yellow");
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
-		String testRecipe = "Coq Au Vin";
+		Song testSong4 = new Song("Wu-Tang Clan", "Gravel Pit");
+		Recipe testRecipe = new Recipe();
+		testRecipe.setName("Coq Au Vin");
+		testRecipe.setUser(testUser);
+		Recipe testRecipe2 = new Recipe();
+		testRecipe2.setName("Ortolan");
+		testRecipe2.setUser(testUser);
+
+		recipeRepo.save(testRecipe);
+		recipeRepo.save(testRecipe2);
 
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
+		ArrayList<String> songIdsToBeAdded2 = new ArrayList<>();
 		songIdsToBeAdded.add(testSong1.getSpotifyId());
 		songIdsToBeAdded.add(testSong2.getSpotifyId());
-		songIdsToBeAdded.add(testSong3.getSpotifyId());
+		songIdsToBeAdded2.add(testSong3.getSpotifyId());
+		songIdsToBeAdded2.add(testSong4.getSpotifyId());
 
 		Playlist testPlaylist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
+		Playlist testPlaylist2 = new Playlist(testRecipe2, songIdsToBeAdded2, testUser);
+
 		playlistRepo.save(testPlaylist);
+		playlistRepo.save(testPlaylist2);
 
 		//act
-		userRepo.findPlaylistByUsername(testUser.getUsername());
+		testPlaylists = playlistRepo.findByUser(testUser);
 
 		//assert
 		//tests if every object in testPlaylists is a playlist

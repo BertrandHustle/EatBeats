@@ -55,7 +55,7 @@ public class Song {
 
     //links to Playlist to which Song belongs
     @ManyToOne
-    private Playlist playlist;
+    Playlist playlist;
 
     public Song(String artist, String name) throws IOException, WebApiException {
         this.artist = artist;

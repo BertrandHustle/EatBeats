@@ -3,6 +3,7 @@ package com.example;
 import com.google.common.base.Joiner;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 
 /**
@@ -20,21 +21,23 @@ public class Playlist {
     private String spotifyLink;
 
     //this is the recipe which the playlist belongs to
-    private String recipeName;
+    @ManyToOne
+    private Recipe recipe;
 
     //this holds the Song objects which comprise the Playlist
     private ArrayList<String> songSpotifyIds;
 
     //cascading needed because of multiple @ManyToOne annotations to user?
-    @ManyToOne(cascade= CascadeType.ALL)
-    private User user;
+    @ManyToOne //(cascade= CascadeType.ALL)
+    @NotNull
+    User user;
 
     //default constructor
     public Playlist() {
     }
 
-    public Playlist(String recipeName, ArrayList<String> songSpotifyIds, User user) {
-        this.recipeName = recipeName;
+    public Playlist(Recipe recipe, ArrayList<String> songSpotifyIds, User user) {
+        this.recipe = recipe;
         this.songSpotifyIds = songSpotifyIds;
         this.user = user;
         //todo: modify so USERNAME is replaced by the user who made the playlist
@@ -77,12 +80,12 @@ public class Playlist {
         this.spotifyLink = spotifyLink;
     }
 
-    public String getRecipe() {
-        return recipeName;
+    public Recipe getRecipe() {
+        return recipe;
     }
 
-    public void setRecipe(String recipe) {
-        this.recipeName = recipe;
+    public void setRecipe(Recipe recipe) {
+        this.recipe = recipe;
     }
 
     public ArrayList<String> getSongSpotifyIds() {
@@ -101,11 +104,4 @@ public class Playlist {
         this.user = user;
     }
 
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
 }

@@ -1,9 +1,7 @@
 package com.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Class for users, will have one-to-many for recipes/favorited playlists
@@ -19,7 +17,6 @@ public class User {
 
     private String username;
     private String password;
-
 
     public User(String username, String password) throws PasswordHasher.CannotPerformOperationException {
         this.username = username;
