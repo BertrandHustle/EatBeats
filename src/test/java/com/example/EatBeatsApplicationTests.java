@@ -24,6 +24,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -60,21 +61,46 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	PlaylistRepo playlistRepo;
 
+	@Autowired
+	SongRepo songRepo;
+
 	//todo: remove this and/or clean it up
 	@Before
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 
-		User testUser = new User("name", "pass");
+		//make test recipe
 		String season = "season";
 		String name = "name";
 		String category = "category";
 		String region = "region";
 		String description = "description";
 		Recipe testRecipe = new Recipe(season, name, category, region, description);
+
+		//make test user and set recipe to user
+		User testUser = new User("name", "pass");
 		testRecipe.setUser(testUser);
+
+		//save recipe and user to repo
 		userRepo.save(testUser);
 		recipeRepo.save(testRecipe);
+
+		//construct new songs
+		Song testSong1 = new Song("Coldplay", "Yellow");
+		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+
+		//save new songs to repo
+		songRepo.save(testSong1);
+		songRepo.save(testSong2);
+		songRepo.save(testSong3);
+
+		//make song list and construct playlist
+		List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
+		Playlist testPlaylist = new Playlist(testRecipe, testSongs, testUser);
+
+		//save playlist to repo
+		playlistRepo.save(testPlaylist);
 	}
 
 	@Test
@@ -344,11 +370,11 @@ public class EatBeatsApplicationTests {
 	/**
 	 * Given a list of songs
 	 * When playlist is constructed with said songs, saved to database, and retrieved from db
-	 * Then playlist contains all expected songs and all song ids match original list
+	 * Then playlist contains all expected songs
 	 */
 
 	@Test
-	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongsAndIdsMatchOriginalList() throws IOException, WebApiException {
+	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongs() throws IOException, WebApiException {
 
 		//arrange
 		//todo: move this to @before method (do this by creating objects AND adding them to database, then pulling them out in test)
@@ -362,12 +388,14 @@ public class EatBeatsApplicationTests {
 		userRepo.save(testUser);
 		recipeRepo.save(testRecipe);
 
+		List<Song> songs = Arrays.asList(testSong1, testSong2, testSong3);
+
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
 		songIdsToBeAdded.add(testSong1.getSpotifyId());
 		songIdsToBeAdded.add(testSong2.getSpotifyId());
 		songIdsToBeAdded.add(testSong3.getSpotifyId());
 
-		Playlist playlist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
+		Playlist playlist = new Playlist(testRecipe, songs, testUser);
 
 		//joins ids together for assertion check
 		String joinedIdsToBeAdded = Joiner.on(",").join(songIdsToBeAdded);
@@ -376,10 +404,10 @@ public class EatBeatsApplicationTests {
 		playlistRepo.save(playlist);
 		Playlist retrievedPlaylist = playlistRepo.findById(playlist.getId());
 
-		String joinedRetrievedPlaylistIds = Joiner.on(",").join(retrievedPlaylist.getSongSpotifyIds());
+		//String joinedRetrievedPlaylistIds = Joiner.on(",").join(retrievedPlaylist.getSongSpotifyIds());
 
 		//assert
-		assertThat(joinedIdsToBeAdded.equals(joinedRetrievedPlaylistIds), is(true));
+		assertThat(songs.equals(playlist.getSongs()), is(true));
 	}
 
 	/**
@@ -405,6 +433,8 @@ public class EatBeatsApplicationTests {
 		testRecipe.setUser(testUser);
 		recipeRepo.save(testRecipe);
 
+		List<Song> songsToBeAdded = Arrays.asList(testSong1, testSong2, testSong3);
+
 		//constructs playlist
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
 		songIdsToBeAdded.add(testSong1.getSpotifyId());
@@ -423,7 +453,7 @@ public class EatBeatsApplicationTests {
 		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+joinedIds;
 
 		//act
-		Playlist playlist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
+		Playlist playlist = new Playlist(testRecipe, songsToBeAdded, testUser);
 		String testUrl = playlist.getSpotifyLink();
 
 		//assert
@@ -488,6 +518,9 @@ public class EatBeatsApplicationTests {
 		recipeRepo.save(testRecipe);
 		recipeRepo.save(testRecipe2);
 
+		List<Song> songs = Arrays.asList(testSong1, testSong2);
+		List<Song> songs2 = Arrays.asList(testSong3, testSong4);
+
 		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
 		ArrayList<String> songIdsToBeAdded2 = new ArrayList<>();
 		songIdsToBeAdded.add(testSong1.getSpotifyId());
@@ -495,8 +528,9 @@ public class EatBeatsApplicationTests {
 		songIdsToBeAdded2.add(testSong3.getSpotifyId());
 		songIdsToBeAdded2.add(testSong4.getSpotifyId());
 
-		Playlist testPlaylist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
-		Playlist testPlaylist2 = new Playlist(testRecipe2, songIdsToBeAdded2, testUser);
+		//todo: refactor Playlist constructor so it takes songs, not song ids
+		Playlist testPlaylist = new Playlist(testRecipe, songs, testUser);
+		Playlist testPlaylist2 = new Playlist(testRecipe2, songs2, testUser);
 
 		playlistRepo.save(testPlaylist);
 		playlistRepo.save(testPlaylist2);
@@ -518,6 +552,56 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a playlist
+	 * When playlist is created
+	 * Then all songs in playlist have the same tags as the recipe used to construct the playlist
+	 */
+
+	@Test
+	public void whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe() throws IOException, WebApiException {
+
+		//arrange
+		User testUser = new User();
+		Song testSong1 = new Song("Coldplay", "Yellow");
+		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+
+		Recipe testRecipe = new Recipe();
+		testRecipe.setName("Coq Au Vin");
+		testRecipe.setCategory("Entree");
+		testRecipe.setDescription("description");
+		testRecipe.setSeason("Spring");
+		testRecipe.setRegion("French");
+		testRecipe.setUser(testUser);
+
+		recipeRepo.save(testRecipe);
+
+		//holds tags in recipe
+		ArrayList<String> testRecipeTags = new ArrayList<>();
+		testRecipeTags.add(testRecipe.getCategory());
+		testRecipeTags.add(testRecipe.getDescription());
+		testRecipeTags.add(testRecipe.getName());
+		testRecipeTags.add(testRecipe.getRegion());
+		testRecipeTags.add(testRecipe.getSeason());
+
+		List<Song> songsToBeAdded = Arrays.asList(testSong1, testSong2);
+
+		//act
+		Playlist testPlaylist = new Playlist(testRecipe, songsToBeAdded, testUser);
+
+		playlistRepo.save(testPlaylist);
+
+		//adds tags from songs here
+		ArrayList<String> testSongTags = new ArrayList<>();
+		ArrayList<String> testSongTags2 = new ArrayList<>();
+		testSongTags.addAll(testPlaylist.getSongs().get(0).getTags());
+		testSongTags2.addAll(testPlaylist.getSongs().get(1).getTags());
+
+		//assert
+		assertThat(testSongTags.equals(testRecipeTags), is(true));
+		assertThat(testSongTags2.equals(testRecipeTags), is(true));
+
+	}
 
 	//todo: make and test method for making playlist based on song tags
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)

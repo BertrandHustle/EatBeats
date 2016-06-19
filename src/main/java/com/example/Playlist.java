@@ -5,6 +5,7 @@ import com.google.common.base.Joiner;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Holds playlists and their rankings
@@ -25,7 +26,10 @@ public class Playlist {
     private Recipe recipe;
 
     //this holds the Song objects which comprise the Playlist
-    private ArrayList<String> songSpotifyIds;
+    //private ArrayList<String> songSpotifyIds;
+
+    @OneToMany
+    private List<Song> songs;
 
     //cascading needed because of multiple @ManyToOne annotations to user?
     @ManyToOne //(cascade= CascadeType.ALL)
@@ -36,22 +40,22 @@ public class Playlist {
     public Playlist() {
     }
 
-    public Playlist(Recipe recipe, ArrayList<String> songSpotifyIds, User user) {
+    public Playlist(Recipe recipe, List<Song> songs, User user) {
         this.recipe = recipe;
-        this.songSpotifyIds = songSpotifyIds;
+        this.songs = songs;
         this.user = user;
-        //todo: modify so USERNAME is replaced by the user who made the playlist
 
         //auto-sets spotify playlist link based on songs passed in
-        String joinedIds = Joiner.on(",").join(songSpotifyIds);
-        this.spotifyLink = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+ joinedIds;
+        String joinedIds = joinSongIds(songs);
+        String recipeName = recipe.getName();
+        this.spotifyLink = "https://embed.spotify.com/?uri=spotify:trackset:"+recipeName+":"+ joinedIds;
     }
 
-    /*
-    public String joinSongIds (ArrayList<Song> songs){
+
+    public String joinSongIds (List<Song> songs){
 
         //holds song ids before joining
-        ArrayList<String> songIds = new ArrayList<>();
+        List<String> songIds = new ArrayList<>();
 
         //gets spotify id of each song and adds to arraylist
         for (Song song : songs){
@@ -62,7 +66,7 @@ public class Playlist {
         String joinedIds = Joiner.on(",").join(songIds);
         return joinedIds;
     }
-    */
+
 
     public int getId() {
         return id;
@@ -88,14 +92,6 @@ public class Playlist {
         this.recipe = recipe;
     }
 
-    public ArrayList<String> getSongSpotifyIds() {
-        return songSpotifyIds;
-    }
-
-    public void setSongSpotifyIds(ArrayList<String> songSpotifyIds) {
-        this.songSpotifyIds = songSpotifyIds;
-    }
-
     public User getUser() {
         return user;
     }
@@ -104,4 +100,11 @@ public class Playlist {
         this.user = user;
     }
 
+    public List<Song> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
+    }
 }
