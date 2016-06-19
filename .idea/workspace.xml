@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Song.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java" />
     </list>
     <ignored path="EatBeats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -100,8 +97,8 @@
       <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="659" column="53" selection-start-line="659" selection-start-column="53" selection-end-line="659" selection-end-column="53" />
+            <state relative-caret-position="308">
+              <caret line="660" column="26" selection-start-line="660" selection-start-column="26" selection-end-line="660" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,8 +109,8 @@
       <file leaf-file-name="PlaylistService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+            <state relative-caret-position="197">
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -699,8 +696,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java" />
       </list>
     </option>
   </component>
@@ -1612,8 +1609,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeDeletedThenRecipeNotInDatabase" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenUserGivenThenPlaylistsRetrievedFromDatabase" />
       </list>
@@ -1634,19 +1631,13 @@
       <updated>1466170167482</updated>
       <workItem from="1466170169934" duration="15190000" />
       <workItem from="1466264291619" duration="19216000" />
-      <workItem from="1466343803827" duration="13224000" />
+      <workItem from="1466343803827" duration="14045000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 20m 12s.xml">
-      <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 21m 44s.xml">
-      <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 24m 03s.xml">
-      <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests - 2016.06.19 at 19h 41m 37s.xml">
+      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
     </history-entry>
     <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 25m 13s.xml">
       <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
@@ -1669,13 +1660,19 @@
     <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 39m 56s.xml">
       <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 52m 07s.xml">
+      <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenGivenRecipeThenPlaylistCreatedFromRecipeTags - 2016.06.19 at 19h 53m 49s.xml">
+      <configuration name="EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47630000" />
+    <option name="totallyTimeSpent" value="48451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="709" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2287,8 +2284,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+        <state relative-caret-position="197">
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2297,8 +2294,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="659" column="53" selection-start-line="659" selection-start-column="53" selection-end-line="659" selection-end-column="53" />
+        <state relative-caret-position="308">
+          <caret line="660" column="26" selection-start-line="660" selection-start-column="26" selection-end-line="660" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

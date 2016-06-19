@@ -3,8 +3,7 @@ package com.example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Holds methods for creating/handling Playlists
@@ -24,9 +23,28 @@ public class PlaylistService {
         recipeTags.add(recipe.getRegion());
         recipeTags.add(recipe.getSeason());
 
+        //todo: fix this so it's cleaner
         //gets all songs which match tag list
-        //todo: add other database searches for region/season etc.
-        List<Song> songs = songRepo.findByCategory(recipe.getCategory());
+        List<Song> songsByCategory = songRepo.findByCategory(recipe.getCategory());
+        List<Song> songsByRegion = songRepo.findByRegion(recipe.getRegion());
+        List<Song> songsBySeason = songRepo.findBySeason(recipe.getSeason());
+
+        List<Song> songs = songsByCategory;
+
+        //unsure if this identity check will do what I want (may get different instances of
+        //songs identical in properties, resulting in duplicates)
+
+        for (Song song : songsByRegion){
+            if (!songs.contains(song)){
+                songs.add(song);
+            }
+        }
+
+        for (Song song : songsBySeason){
+            if (!songs.contains(song)){
+                songs.add(song);
+            }
+        }
 
         //makes playlist from recipe, song, and user
         Playlist playlist = new Playlist(recipe, songs, user);
