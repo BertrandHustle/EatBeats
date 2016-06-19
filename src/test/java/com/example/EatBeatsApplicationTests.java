@@ -240,11 +240,18 @@ public class EatBeatsApplicationTests {
 	 * Then recipe no longer appears in database
 	 */
 
+	//todo: fix bug where recipe cannot be deleted if it belongs to a playlist (or add option to let user know this!)
+	//e.g. (This will delete all playlists associated with this recipe, are you sure?)
+	//or: distinguish between user recipes and public recipes
 	@Test
 	public void whenRecipeDeletedThenRecipeNotInDatabase(){
 
 		//arrange
-		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		User testUser = new User();
+		userRepo.save(testUser);
+		Recipe testRecipe = new Recipe();
+		testRecipe.setUser(testUser);
+		recipeRepo.save(testRecipe);
 		int testDeleteId = testRecipe.getId();
 
 		//act
@@ -381,6 +388,11 @@ public class EatBeatsApplicationTests {
 		Song testSong1 = new Song("Coldplay", "Yellow");
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+
+		songRepo.save(testSong1);
+		songRepo.save(testSong2);
+		songRepo.save(testSong3);
+
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
 		User testUser = new User();
@@ -450,7 +462,7 @@ public class EatBeatsApplicationTests {
 
 		String joinedIds = Joiner.on(",").join(testSongIds);
 
-		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+joinedIds;
+		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:"+testRecipe.getName()+":"+joinedIds;
 
 		//act
 		Playlist playlist = new Playlist(testRecipe, songsToBeAdded, testUser);
@@ -508,6 +520,12 @@ public class EatBeatsApplicationTests {
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 		Song testSong4 = new Song("Wu-Tang Clan", "Gravel Pit");
+
+		songRepo.save(testSong1);
+		songRepo.save(testSong2);
+		songRepo.save(testSong3);
+		songRepo.save(testSong4);
+
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
 		testRecipe.setUser(testUser);
@@ -563,8 +581,12 @@ public class EatBeatsApplicationTests {
 
 		//arrange
 		User testUser = new User();
+		userRepo.save(testUser);
 		Song testSong1 = new Song("Coldplay", "Yellow");
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+
+		songRepo.save(testSong1);
+		songRepo.save(testSong2);
 
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
