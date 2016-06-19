@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class EatBeatsApplicationTests {
 	@Autowired
 	PlaylistRepo playlistRepo;
 
+	//todo: remove this and/or clean it up
 	@Before
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
@@ -351,31 +353,30 @@ public class EatBeatsApplicationTests {
 
 		//arrange
 		//todo: move this to @before method
-		Song testSong1 = new Song("Yellow", "Coldplay");
-		Song testSong2 = new Song("Space is the Place", "Sun Ra");
-		Song testSong3 = new Song("M.E.T.H.O.D Man", "Wu Tang Clan");
+		Song testSong1 = new Song("Coldplay", "Yellow");
+		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 		String testRecipe = "Coq Au Vin";
+		User testUser = new User();
 
-		ArrayList<Song> songsToBeAdded = new ArrayList<>();
-		Playlist playlist = new Playlist(testRecipe, songsToBeAdded);
+		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
+		songIdsToBeAdded.add(testSong1.getSpotifyId());
+		songIdsToBeAdded.add(testSong2.getSpotifyId());
+		songIdsToBeAdded.add(testSong3.getSpotifyId());
+
+		Playlist playlist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
+
+		//joins ids together for assertion check
+		String joinedIdsToBeAdded = Joiner.on(",").join(songIdsToBeAdded);
 
 		//act
 		playlistRepo.save(playlist);
-		playlistRepo.findById(playlist.getId());
+		Playlist retrievedPlaylist = playlistRepo.findById(playlist.getId());
+
+		String joinedRetrievedPlaylistIds = Joiner.on(",").join(retrievedPlaylist.getSongSpotifyIds());
 
 		//assert
-		boolean songIdsDontMatch = false;
-
-		//checks each song in original list of ids against each song in added playlist to see if all ids match
-		for (Song song : songsToBeAdded){
-			for (Song s : playlist.getSongs()){
-				if (!song.getSpotifyId().equals(s.getSpotifyId())){
-					songIdsDontMatch = true;
-				}
-			}
-		}
-
-		assertThat(songIdsDontMatch, is(false));
+		assertThat(joinedIdsToBeAdded.equals(joinedRetrievedPlaylistIds), is(true));
 	}
 
 	//todo: make and test spotify playlist link builder (this can be a string! See doug's notes)
@@ -396,18 +397,19 @@ public class EatBeatsApplicationTests {
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 		String testRecipe = "Coq Au Vin";
+		User testUser = new User();
 
 		//constructs playlist
-		ArrayList<Song> songsToBeAdded = new ArrayList<>();
-		songsToBeAdded.add(testSong1);
-		songsToBeAdded.add(testSong2);
-		songsToBeAdded.add(testSong3);
+		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
+		songIdsToBeAdded.add(testSong1.getSpotifyId());
+		songIdsToBeAdded.add(testSong2.getSpotifyId());
+		songIdsToBeAdded.add(testSong3.getSpotifyId());
 
 		ArrayList<String> testSongIds = new ArrayList<>();
 
 		//gets spotify id of each song and adds to arraylist
-		for (Song song : songsToBeAdded){
-			testSongIds.add(song.getSpotifyId());
+		for (String id : songIdsToBeAdded){
+			testSongIds.add(id);
 		}
 
 		String joinedIds = Joiner.on(",").join(testSongIds);
@@ -415,7 +417,7 @@ public class EatBeatsApplicationTests {
 		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+joinedIds;
 
 		//act
-		Playlist playlist = new Playlist(testRecipe, songsToBeAdded);
+		Playlist playlist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
 		String testUrl = playlist.getSpotifyLink();
 
 		//assert
@@ -445,9 +447,56 @@ public class EatBeatsApplicationTests {
 
 	}
 
-
 	//todo: make and test method for retrieving all of user's playlists
+
+	/**
+	 * Given a user
+	 * When user's playlists are retrieved from database
+	 * Then playlists are successfully retrieved
+	 */
+
+	@Test
+	public void whenUserGivenThenPlaylistsRetrievedFromDatabase() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
+
+		//arrange
+		User testUser = new User("name", "pass");
+		ArrayList<Playlist> testPlaylists = new ArrayList<>();
+		boolean isAPlaylist = true;
+
+		Song testSong1 = new Song("Coldplay", "Yellow");
+		Song testSong2 = new Song("Sun Ra", "Space is the Place");
+		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+		String testRecipe = "Coq Au Vin";
+
+		ArrayList<String> songIdsToBeAdded = new ArrayList<>();
+		songIdsToBeAdded.add(testSong1.getSpotifyId());
+		songIdsToBeAdded.add(testSong2.getSpotifyId());
+		songIdsToBeAdded.add(testSong3.getSpotifyId());
+
+		Playlist testPlaylist = new Playlist(testRecipe, songIdsToBeAdded, testUser);
+		playlistRepo.save(testPlaylist);
+
+		//act
+		userRepo.findPlaylistByUsername(testUser.getUsername());
+
+		//assert
+		//tests if every object in testPlaylists is a playlist
+		for (Playlist playlist : testPlaylists){
+			if (playlist.getClass() != Playlist.class){
+				isAPlaylist = false;
+			}
+		}
+
+		//tests if the list retrieved by repo isn't empty (may be unnecessary because of null pointer exception)
+		assertThat(!testPlaylists.isEmpty(), is(true));
+		assertThat(isAPlaylist, is(true));
+
+	}
+
+
 	//todo: make and test method for making playlist based on song tags
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
+	/* we already have recipes as a necessary part of the Playlist constructor, we can just
+	tag each song in the playlist with the tags on the recipe, then add all songs to the db */
 
 }

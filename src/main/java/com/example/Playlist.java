@@ -2,9 +2,7 @@ package com.example;
 
 import com.google.common.base.Joiner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.ArrayList;
 
 /**
@@ -25,24 +23,28 @@ public class Playlist {
     private String recipeName;
 
     //this holds the Song objects which comprise the Playlist
-    private ArrayList<Song> songs;
+    private ArrayList<String> songSpotifyIds;
 
-    //todo: add many-to-one link to user for saving favorite playlists
+    //cascading needed because of multiple @ManyToOne annotations to user?
+    @ManyToOne(cascade= CascadeType.ALL)
+    private User user;
 
     //default constructor
     public Playlist() {
     }
 
-    public Playlist(String recipeName, ArrayList<Song> songs) {
+    public Playlist(String recipeName, ArrayList<String> songSpotifyIds, User user) {
         this.recipeName = recipeName;
-        this.songs = songs;
+        this.songSpotifyIds = songSpotifyIds;
+        this.user = user;
         //todo: modify so USERNAME is replaced by the user who made the playlist
 
         //auto-sets spotify playlist link based on songs passed in
-        String joinedIds = joinSongIds(songs);
+        String joinedIds = Joiner.on(",").join(songSpotifyIds);
         this.spotifyLink = "https://embed.spotify.com/?uri=spotify:trackset:USERNAME:"+ joinedIds;
     }
 
+    /*
     public String joinSongIds (ArrayList<Song> songs){
 
         //holds song ids before joining
@@ -57,6 +59,7 @@ public class Playlist {
         String joinedIds = Joiner.on(",").join(songIds);
         return joinedIds;
     }
+    */
 
     public int getId() {
         return id;
@@ -82,11 +85,27 @@ public class Playlist {
         this.recipeName = recipe;
     }
 
-    public ArrayList<Song> getSongs() {
-        return songs;
+    public ArrayList<String> getSongSpotifyIds() {
+        return songSpotifyIds;
     }
 
-    public void setSongs(ArrayList<Song> songs) {
-        this.songs = songs;
+    public void setSongSpotifyIds(ArrayList<String> songSpotifyIds) {
+        this.songSpotifyIds = songSpotifyIds;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
 }

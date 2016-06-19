@@ -52,6 +52,7 @@ public class Song {
     private int rank;
     //holds tags for track (e.g. season, category, etc.)
     private ArrayList<String> tags = new ArrayList<>();
+
     //links to Playlist to which Song belongs
     @ManyToOne
     private Playlist playlist;

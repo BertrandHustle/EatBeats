@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserRepo extends CrudRepository<User, Integer>{
     User findFirstByUsername(String name);
+    Playlist findPlaylistByUsername(String username);
 }
