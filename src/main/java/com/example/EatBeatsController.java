@@ -150,7 +150,7 @@ public class EatBeatsController {
                 //todo: generate playlist if no tracks found
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
 
-                String spotifyPlaylistUrl = playlist.getSpotifyLink();
+                String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
                 model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
 
                 return "recipe-playlist";
