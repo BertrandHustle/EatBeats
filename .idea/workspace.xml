@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
     </list>
     <ignored path="EatBeats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -141,11 +136,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="RecipeRepo.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecipeRepo.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/RecipeRepo.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="16" column="20" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -173,11 +168,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="96" column="83" selection-start-line="96" selection-start-column="83" selection-end-line="96" selection-end-column="83" />
+            <state relative-caret-position="158">
+              <caret line="113" column="43" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
               <folding>
                 <element signature="e#2182#2183#0" expanded="true" />
                 <element signature="e#2220#2221#0" expanded="true" />
@@ -662,9 +657,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
       </list>
     </option>
   </component>
@@ -1027,7 +1022,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Scott/Projects/EatBeats/src/test/java/com/example/EatBeatsApplicationTests.java" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
   </component>
-  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests">
+  <component name="RunManager" selected="Application.EatBeatsApplication">
     <configuration default="false" name="EatBeatsApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1571,10 +1566,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenArtistAndTitleAreSearchedOnSpotifyThenCorrectSongIsReturned" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenSongCreatedThenSongHasCorrectSpotifyId" />
-        <item index="3" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
+        <item index="0" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenArtistAndTitleAreSearchedOnSpotifyThenCorrectSongIsReturned" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenSongCreatedThenSongHasCorrectSpotifyId" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenGivenRecipeThenPlaylistCreatedFromRecipeTags" />
       </list>
     </recent_temporary>
@@ -1595,7 +1590,7 @@
       <workItem from="1466170169934" duration="15190000" />
       <workItem from="1466264291619" duration="19216000" />
       <workItem from="1466343803827" duration="14911000" />
-      <workItem from="1466429331425" duration="8989000" />
+      <workItem from="1466429331425" duration="9430000" />
     </task>
     <servers />
   </component>
@@ -1632,7 +1627,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58306000" />
+    <option name="totallyTimeSpent" value="58747000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="23" width="1280" height="709" extended-state="0" />
@@ -1704,7 +1699,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java</url>
-          <line>133</line>
+          <line>153</line>
           <properties />
           <option name="timeStamp" value="28" />
         </line-breakpoint>
@@ -2262,17 +2257,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="96" column="83" selection-start-line="96" selection-start-column="83" selection-end-line="96" selection-end-column="83" />
-          <folding>
-            <element signature="e#2182#2183#0" expanded="true" />
-            <element signature="e#2220#2221#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2306,8 +2290,19 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/RecipeRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="16" column="20" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="113" column="43" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
+          <folding>
+            <element signature="e#2182#2183#0" expanded="true" />
+            <element signature="e#2220#2221#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

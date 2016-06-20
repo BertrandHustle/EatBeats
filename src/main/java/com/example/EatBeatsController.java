@@ -94,7 +94,27 @@ public class EatBeatsController {
 
         recipeService.saveRecipe(user, season, name, category, region, description);
 
-        String song1Id = spotifyService.searchByTrackName(songTitle1, songArtist1);
+        //gets song suggestions from user, sets attributes
+        Song song1 = spotifyService.getSongFromSpotify(songTitle1, songArtist1);
+        song1.setCategory(category);
+        song1.setSeason(season);
+        song1.setRegion(region);
+
+        Song song2 = spotifyService.getSongFromSpotify(songTitle2, songArtist2);
+        song2.setCategory(category);
+        song2.setSeason(season);
+        song2.setRegion(region);
+
+        Song song3 = spotifyService.getSongFromSpotify(songTitle3, songArtist3);
+        song3.setCategory(category);
+        song3.setSeason(season);
+        song3.setRegion(region);
+
+        //saves songs to repo
+        //todo: don't add if song is empty!
+        songRepo.save(song1);
+        songRepo.save(song2);
+        songRepo.save(song3);
 
         //todo: was this redirecting correctly?
         return "redirect:/";
