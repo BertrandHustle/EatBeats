@@ -683,7 +683,29 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a title and artist
+	 * When title and artist are searched on Spotify
+	 * Then Song is returned with correct title, artist, and spotify id
+	 */
 
+	@Test
+	public void whenArtistAndTitleAreSearchedOnSpotifyThenCorrectSongIsReturned() throws IOException, WebApiException {
+
+		//arrange
+		//todo: add artist field to Song
+		String testArtist = "Coldplay";
+		String testTitle = "Yellow";
+		String expectedId = "3AJwUDP919kvQ9QcozQPxg";
+
+		//act
+		Song testSong = spotifyService.getSongFromSpotify(testTitle, testArtist);
+
+		//assert
+		assertThat(testSong.getName().equals(testTitle), is(true));
+		assertThat(testSong.getSpotifyId().equals(expectedId), is(true));
+
+	}
 
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
 	/* we already have recipes as a necessary part of the Playlist constructor, we can just

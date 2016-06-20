@@ -63,7 +63,7 @@ public class SpotifyService {
 
     }
 
-    //todo: make this return the track id of the search result (or "not found" if not found)
+    //todo: rename this to denote that it returns id, not song
     public String searchByTrackName (String trackName, String artist) throws IOException, WebApiException {
 
         final Api api = Api.builder()
@@ -100,5 +100,43 @@ public class SpotifyService {
 
         return searchResultSpotifyId;
 
+    }
+
+    public Song getSongFromSpotify(String trackName, String artist) throws IOException, WebApiException {
+
+        final Api api = Api.builder()
+                .clientId("f5b8721c375a43eb801334c0d4329a0d")
+                .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+
+        final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
+        ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
+
+        api.setAccessToken(clientCredentials.getAccessToken());
+
+        //surrounds trackName with quotes so Spotify API can get an exact query match
+        final TrackSearchRequest trackSearchRequest = api.searchTracks("\"" + trackName + "\"").limit(3).query(trackName)
+                .build();
+
+        //todo: make this so it doesn't mirror above code
+        //init arraylists
+        ArrayList<Track> searchResultTracks = new ArrayList<>();
+
+        searchResultTracks.addAll(trackSearchRequest.get().getItems());
+        Track returnTrack = new Track();
+
+        //makes new song from title, artist of search result
+        try {
+            for (Track track : searchResultTracks) {
+                if ((track.getArtists().get(0).getName().equals(artist)
+                        && track.getName().equalsIgnoreCase(trackName))) {
+                    returnTrack = track;
+                }
+            }
+        } catch (NullPointerException npe){
+            System.out.println("no results found!");
+        }
+
+        Song song = new Song(returnTrack.getArtists().get(0).getName(), returnTrack.getName());
+        return song;
     }
 }

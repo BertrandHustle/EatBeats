@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //todo: put copyright text here
-//todo: make generate-playlist route
+//todo: DEPLOY!
 //todo: make single recipe page (edit page)
 //todo: fix package structure
 
@@ -41,10 +41,16 @@ public class EatBeatsController {
     PlaylistRepo playlistRepo;
 
     @Autowired
+    PlaylistService playlistService;
+
+    @Autowired
     RecipeService recipeService;
 
     @Autowired
     SpotifyService spotifyService;
+
+    @Autowired
+    SongRepo songRepo;
 
     //root
     @RequestMapping(path = "/", method = RequestMethod.GET)
@@ -74,7 +80,9 @@ public class EatBeatsController {
     //creates recipe and stores in database
     @RequestMapping(path = "/create-recipe", method = RequestMethod.POST)
     public String postCreateRecipe(HttpSession session, String season, String name,
-                                   String category, String region, String description){
+                                   String category, String region, String description,
+                                   String songTitle1, String songTitle2, String songTitle3,
+                                   String songArtist1, String songArtist2, String songArtist3) throws IOException, WebApiException {
 
         //retrieves current user
 
@@ -85,6 +93,8 @@ public class EatBeatsController {
         //creates new recipe from user input, saves to db
 
         recipeService.saveRecipe(user, season, name, category, region, description);
+
+        String song1Id = spotifyService.searchByTrackName(songTitle1, songArtist1);
 
         //todo: was this redirecting correctly?
         return "redirect:/";
@@ -100,22 +110,28 @@ public class EatBeatsController {
 
         //add recipes to model and return page
         model.addAttribute("recipes", recipes);
-        return "/my-recipes";
+
+        return "my-recipes";
 
     }
 
 
     //creates random Spotify playlist based on seed tracks
-    @RequestMapping(path = "/create-playlist", method = RequestMethod.GET)
-    public String createPlaylist(HttpSession session) throws IOException, WebApiException {
+    @RequestMapping(path = "/make-playlist", method = RequestMethod.GET)
+    public String createPlaylist(HttpSession session, String id, Model model) throws IOException, WebApiException {
 
-                ArrayList<String> seeds = new ArrayList<>();
+                String username = session.getAttribute("username").toString();
+                User user = userRepo.findFirstByUsername(username);
 
-                seeds.add("55PqUrPAZ67MYPvTptskA4");
+                int ID = Integer.parseInt(id);
+                Recipe recipe = recipeRepo.findById(ID);
 
-                List<Track> tracks = spotifyService.getListOfRecommendationsFromSeedTracks(seeds);
+                //todo: generate playlist if no tracks found
+                Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
+                String spotifyPlaylistUrl = playlist.getSpotifyLink();
+                model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
 
-                return "";
+                return "recipe-playlist";
             }
 
 
