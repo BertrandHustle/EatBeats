@@ -11,4 +11,5 @@ import java.util.List;
 public interface PlaylistRepo extends CrudRepository<Playlist, Integer> {
     Playlist findById(int id);
     List<Playlist> findByUser(User user);
+    List<Playlist> findByRecipe(Recipe recipe);
 }

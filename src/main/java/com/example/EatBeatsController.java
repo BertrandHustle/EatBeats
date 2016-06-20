@@ -94,6 +94,7 @@ public class EatBeatsController {
 
         recipeService.saveRecipe(user, season, name, category, region, description);
 
+        //todo: this should be leaner: move this to service and pass in songs as arguments
         //gets song suggestions from user, sets attributes
         Song song1 = spotifyService.getSongFromSpotify(songTitle1, songArtist1);
         song1.setCategory(category);
@@ -148,6 +149,7 @@ public class EatBeatsController {
 
                 //todo: generate playlist if no tracks found
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
+
                 String spotifyPlaylistUrl = playlist.getSpotifyLink();
                 model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
 

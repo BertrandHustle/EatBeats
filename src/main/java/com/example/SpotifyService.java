@@ -44,6 +44,34 @@ public class SpotifyService {
 
     }
 
+    public String getRecommendationsPlaylistUrlFromSeedTracks(List<Track> tracks, String name) throws IOException, WebApiException {
+
+        //makes array of passed-in track ids and converts to list of recommended track ids, then joins
+        //those ids into a single string separated by commas
+        ArrayList<String> joinedTrackIds = getSpotifyIdArrayFromTracks(tracks);
+        List<Track> seedTracks = getListOfRecommendationsFromSeedTracks(joinedTrackIds);
+        String joinedRecommendationIds = getCommaJoinedTrackIds(seedTracks);
+
+        //builds and returns recommendations playlist url
+        String recommendationsPlaylistUrl = "https://embed.spotify.com/?uri=spotify:trackset:"+name+":"+joinedRecommendationIds;
+        return recommendationsPlaylistUrl;
+
+    }
+
+    public ArrayList<String> getSpotifyIdArrayFromTracks(List<Track> tracks){
+
+        ArrayList<String> trackIds = new ArrayList<>();
+
+        for (Track track : tracks){
+            if (track.getId() != null){
+                trackIds.add(track.getId());
+            }
+        }
+
+        return trackIds;
+    }
+
+    //refactor this so it's named better
     public String getCommaJoinedTrackIds(List<Track> tracks){
 
         //holds track ids
@@ -61,6 +89,23 @@ public class SpotifyService {
         String joinedTracks = Joiner.on(",").join(trackIds);
         return joinedTracks;
 
+    }
+
+    public String getCommaJoinedTrackIdsFromSongList(List<Song> songs){
+        //holds song ids
+        ArrayList<String> songIds = new ArrayList<>();
+
+        //checks if each song has a Spotify id, and adds to arraylist if it does
+        //(probably an unnecessary check, but there for safety)
+        for (Song song : songs){
+            if (song.getSpotifyId() != null){
+                songIds.add(song.getSpotifyId());
+            }
+        }
+
+        //joins tracks on comma and returns joined string
+        String joinedTracks = Joiner.on(",").join(songIds);
+        return joinedTracks;
     }
 
     //todo: rename this to denote that it returns id, not song
@@ -138,5 +183,23 @@ public class SpotifyService {
 
         Song song = new Song(returnTrack.getArtists().get(0).getName(), returnTrack.getName());
         return song;
+    }
+
+    public String createRecommendationsPlaylistUrlFromPlaylist (Playlist playlist, String name) throws IOException, WebApiException {
+
+        List<Song> testSongs = playlist.getSongs();
+        ArrayList<String> testSeeds = new ArrayList<>();
+
+        for (Song song : testSongs){
+            testSeeds.add(song.getSpotifyId());
+        }
+
+        List<Track> recommendationTracks = getListOfRecommendationsFromSeedTracks(testSeeds);
+        String joinedIds = getCommaJoinedTrackIds(recommendationTracks);
+
+        String recommendationsUrl = "https://embed.spotify.com/?uri=spotify:trackset:"+name+":"+joinedIds;
+
+        return recommendationsUrl;
+
     }
 }

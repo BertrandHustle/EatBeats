@@ -8,6 +8,7 @@ import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
 import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
+import org.hibernate.Hibernate;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
@@ -707,6 +709,33 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a playlist
+	 * When recommendations request is made from playlist
+	 * Then correct recommendations request is created
+	 */
+
+
+	@Test
+	//treats entire test method as if it exists in a single Hibernate session (or so we think!)
+	@Transactional
+	public void whenPlaylistCreatedThenRecommendationsRequestIsCreatedAndRecommendationsRequestUrlIsCorrect() throws IOException, WebApiException {
+
+		//arrange
+		Playlist testPlaylist = playlistRepo.findById(1);
+		String name = "name";
+
+		//act
+		String playlistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(testPlaylist, name);
+
+		//assert
+		assertThat(playlistUrl.startsWith("https://embed.spotify.com/?uri=spotify:trackset:"), is(true));
+		assertThat(playlistUrl.equals("https://embed.spotify.com/?uri=spotify:trackset:"), is(false));
+
+	}
+
+
+	//todo: test behavior for when playlist created is empty
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
 	/* we already have recipes as a necessary part of the Playlist constructor, we can just
 	tag each song in the playlist with the tags on the recipe, then add all songs to the db */

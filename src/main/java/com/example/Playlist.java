@@ -28,8 +28,8 @@ public class Playlist {
     //this holds the Song objects which comprise the Playlist
     //private ArrayList<String> songSpotifyIds;
 
-    @OneToMany
-    private List<Song> songs;
+    @OneToMany //(fetch = FetchType.EAGER)
+    private List<Song> songs = new ArrayList<>();
 
     //cascading needed because of multiple @ManyToOne annotations to user?
     @ManyToOne //(cascade= CascadeType.ALL)
