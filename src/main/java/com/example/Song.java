@@ -259,4 +259,12 @@ public class Song {
     public void setSeason(String season) {
         this.season = season;
     }
+
+    public String getArtist() {
+        return artist;
+    }
+
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
 }

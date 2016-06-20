@@ -12,5 +12,9 @@
             <input type="hidden" name="id" value="{{id}}">
             <button type="submit" name="edit-recipe">Edit Recipe</button>
         </form>
+        <form action="/delete-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="delete-recipe">Delete Recipe</button>
+        </form>
     </div>
 {{/recipes}}

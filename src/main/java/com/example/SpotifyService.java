@@ -7,7 +7,6 @@ import com.wrapper.spotify.methods.RecommendationsRequest;
 import com.wrapper.spotify.methods.TrackSearchRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
 import org.springframework.stereotype.Service;
 
@@ -44,6 +43,7 @@ public class SpotifyService {
 
     }
 
+    /*
     public String getRecommendationsPlaylistUrlFromSeedTracks(List<Track> tracks, String name) throws IOException, WebApiException {
 
         //makes array of passed-in track ids and converts to list of recommended track ids, then joins
@@ -58,6 +58,7 @@ public class SpotifyService {
 
     }
 
+
     public ArrayList<String> getSpotifyIdArrayFromTracks(List<Track> tracks){
 
         ArrayList<String> trackIds = new ArrayList<>();
@@ -67,9 +68,9 @@ public class SpotifyService {
                 trackIds.add(track.getId());
             }
         }
-
         return trackIds;
     }
+    */
 
     //refactor this so it's named better
     public String getCommaJoinedTrackIds(List<Track> tracks){
@@ -91,6 +92,7 @@ public class SpotifyService {
 
     }
 
+    /*
     public String getCommaJoinedTrackIdsFromSongList(List<Song> songs){
         //holds song ids
         ArrayList<String> songIds = new ArrayList<>();
@@ -107,6 +109,7 @@ public class SpotifyService {
         String joinedTracks = Joiner.on(",").join(songIds);
         return joinedTracks;
     }
+    */
 
     //todo: rename this to denote that it returns id, not song
     public String searchByTrackName (String trackName, String artist) throws IOException, WebApiException {

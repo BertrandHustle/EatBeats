@@ -24,6 +24,10 @@ public class PlaylistService {
         recipeTags.add(recipe.getSeason());
 
         //todo: fix this so it's cleaner
+        //todo: make sure this can handle 0 song cases
+        //todo: make sure playlists do not exceed 10 songs
+        //todo: incorporate ranking system
+        //todo: incorporate algorithm using Spotify parameters (e.g. tempo, mood, etc)
         //gets all songs which match tag list
         List<Song> songsByCategory = songRepo.findByCategory(recipe.getCategory());
         List<Song> songsByRegion = songRepo.findByRegion(recipe.getRegion());

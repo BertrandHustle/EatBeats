@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 //todo: put copyright text here
@@ -95,30 +96,52 @@ public class EatBeatsController {
         recipeService.saveRecipe(user, season, name, category, region, description);
 
         //todo: this should be leaner: move this to service and pass in songs as arguments
-        //gets song suggestions from user, sets attributes
+        //constructs songs from user input
         Song song1 = spotifyService.getSongFromSpotify(songTitle1, songArtist1);
-        song1.setCategory(category);
-        song1.setSeason(season);
-        song1.setRegion(region);
-
         Song song2 = spotifyService.getSongFromSpotify(songTitle2, songArtist2);
-        song2.setCategory(category);
-        song2.setSeason(season);
-        song2.setRegion(region);
-
         Song song3 = spotifyService.getSongFromSpotify(songTitle3, songArtist3);
-        song3.setCategory(category);
-        song3.setSeason(season);
-        song3.setRegion(region);
 
-        //saves songs to repo
-        //todo: don't add if song is empty!
-        songRepo.save(song1);
-        songRepo.save(song2);
-        songRepo.save(song3);
+        //set song attributes by recipe attributes, saves songs to database
+        List<Song> songs = Arrays.asList(song1, song2, song3);
+        for (Song song : songs){
+            if (song.getName() != null && song.getArtist() != null)
+            song.setCategory(category);
+            song.setSeason(season);
+            song.setRegion(region);
+            songRepo.save(song);
+        }
 
         //todo: was this redirecting correctly?
         return "redirect:/";
+    }
+
+    //todo: add edit recipe route
+    //todo: add favorite playlists
+    //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
+
+    //edit recipe route (GET)
+    @RequestMapping(path = "/edit-recipe", method = RequestMethod.GET)
+    public String getEditRecipe(HttpSession session, String id, Model model){
+
+        Recipe recipe = recipeRepo.findById(Integer.parseInt(id));
+        model.addAttribute("recipe", recipe);
+
+        return "edit-recipe";
+    }
+
+    @RequestMapping(path = "/edit-recipe", method = RequestMethod.POST)
+    public String postEditRecipe(HttpSession session, String id, Model model){
+
+        Recipe recipe = recipeRepo.findById(Integer.parseInt(id));
+        return "redirect:/my-recipes";
+
+    }
+
+    //delete recipe route
+    @RequestMapping(path = "/delete-recipe", method = RequestMethod.GET)
+    public String deleteRecipe(HttpSession session, String id){
+        recipeRepo.delete(Integer.parseInt(id));
+        return "redirect:/my-recipes";
     }
 
     //displays recipes
