@@ -7,6 +7,8 @@ import java.util.List;
  * Class for users, will have one-to-many for recipes/favorited playlists
  */
 
+//todo: add field for voted songs
+
 @Entity
 @Table(name = "users")
 public class User {

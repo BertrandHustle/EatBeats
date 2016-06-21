@@ -25,6 +25,9 @@ import java.util.List;
 //todo: DEPLOY!
 //todo: make single recipe page (edit page)
 //todo: fix package structure
+//todo: implement search feature for recipes
+//todo: allow user to view other users' recipes (via search)
+//todo: implement @notNull tags on recipe fields?
 
 /**
  * Controller class for EatBeats

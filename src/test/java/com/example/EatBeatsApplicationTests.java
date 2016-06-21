@@ -67,6 +67,9 @@ public class EatBeatsApplicationTests {
 	SongRepo songRepo;
 
 	@Autowired
+	SongService songService;
+
+	@Autowired
 	PlaylistService playlistService;
 
 	//todo: remove this and/or clean it up
@@ -95,10 +98,24 @@ public class EatBeatsApplicationTests {
 		Song testSong2 = new Song("Sun Ra", "Space is the Place");
 		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 
+		/*
+		//todo: make this a method in the Song class
+		List<Song> songs = Arrays.asList(testSong1, testSong2, testSong3);
+		for (Song song : songs){
+			if (song.getName() != null && song.getArtist() != null)
+				song.setCategory(category);
+				song.setSeason(season);
+				song.setRegion(region);
+			songRepo.save(song);
+		}
+		*/
+
+
 		//save new songs to repo
 		songRepo.save(testSong1);
 		songRepo.save(testSong2);
 		songRepo.save(testSong3);
+
 
 		//make song list and construct playlist
 		List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
@@ -734,6 +751,77 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a category, region, and season
+	 * When database is queried with these (above) parameters
+	 * Then all songs returned have all three of these (above) parameters
+	 */
+
+	@Test
+	public void whenDatabaseQueriedWithCategoryRegionAndSeasonThenSongsReturnedHaveGivenParameters(){
+
+		//arrange
+		//see @before method
+
+		//act
+		List<Song> testSongs = songRepo.findByCategoryAndRegionAndSeason("category", "region", "season");
+
+		//assert
+		boolean matchingTags = true;
+		for (Song song : testSongs){
+
+			//todo: formatting!
+			if (
+			!song.getCategory().equals("category") ||
+			!song.getRegion().equals("region") ||
+			!song.getSeason().equals("season")
+			) {
+				matchingTags = false;
+			}
+		}
+
+		assertThat(matchingTags, is(true));
+
+	}
+
+	/**
+	 * Given a list of songs and a recipe
+	 * When songs are assigned tags from recipe
+	 * Then songs have correct tags
+	 */
+
+	@Test
+	public void whenGivenSongsAndRecipeThenSongsHaveCorrectTags(){
+
+		//arrange
+		//also tests whether songs can be searched with wrong casing
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("c.r.e.a.m.");
+		Song testSong3 = songRepo.findByNameIgnoreCase("space is the place");
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+
+		List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
+
+		//act
+		List<Song> taggedSongs = songService.tagAndSaveSongsFromRecipe(testSongs, testRecipe);
+
+		//assert
+		boolean matchingTags = true;
+		for (Song song : taggedSongs){
+
+			//todo: formatting!
+			if (
+					!song.getCategory().equals("category") ||
+							!song.getRegion().equals("region") ||
+							!song.getSeason().equals("season")
+					) {
+				matchingTags = false;
+			}
+		}
+
+		assertThat(matchingTags, is(true));
+
+	}
 
 	//todo: test behavior for when playlist created is empty
 	//todo: figure out how and when songs are tagged (must relate to recipe somehow)

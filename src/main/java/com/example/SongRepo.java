@@ -14,5 +14,6 @@ public interface SongRepo extends CrudRepository<Song, Integer>{
     List<Song> findByCategory(String category);
     List<Song> findByRegion(String region);
     List<Song> findBySeason(String season);
-    Song findByName(String name);
+    List<Song> findByCategoryAndRegionAndSeason(String category, String region, String season);
+    Song findByNameIgnoreCase(String name);
 }
