@@ -9,7 +9,7 @@
     <div>
         Season
         <select id="season" name="season">
-            <option value="{{recipe.season}}" selected="selected"></option>
+            <option selected>{{recipe.season}}</option>
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
             <option value="Fall">Fall</option>
@@ -20,6 +20,7 @@
     <div>
         Category
         <select id="category" name="category">
+            <option selected>{{recipe.category}}</option>
             <option value="Breakfast">Breakfast</option>
             <option value="Brunch">Brunch</option>
             <option value="Lunch">Lunch</option>
@@ -31,6 +32,7 @@
     <div>
         Region
         <select id="region" name="region">
+            <option selected>{{recipe.region}}</option>
             <option value="French">French</option>
             <!-- placeholder: to be extended to multiple regions in Asia -->
             <option value="Asian">Asian</option>
@@ -42,20 +44,11 @@
 
     <div>
         Description
-        <textarea title="description" name="description" rows="5" cols="10"></textarea>
-    </div>
-
-    <div>
-        Suggest a few songs!
-        <input type="text" placeholder="Title" name="songTitle1"/>
-        <input type="text" placeholder="Artist" name="songArtist1"/>
-        <input type="text" placeholder="Title" name="songTitle2"/>
-        <input type="text" placeholder="Artist" name="songArtist2"/>
-        <input type="text" placeholder="Title" name="songTitle3"/>
-        <input type="text" placeholder="Artist" name="songArtist3"/>
+        <textarea title="description" name="description" rows="5" cols="10">{{recipe.description}}</textarea>
     </div>
 
     <div>
         <button type="submit" >Submit Recipe</button>
+        <input type="hidden" name="id" value="{{recipe.id}}">
     </div>
 </form>

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -130,9 +131,26 @@ public class EatBeatsController {
     }
 
     @RequestMapping(path = "/edit-recipe", method = RequestMethod.POST)
-    public String postEditRecipe(HttpSession session, String id, Model model){
+    public String postEditRecipe(HttpSession session, String id, Model model,
+                                 String season, String name, String category,
+                                 String region, String description){
 
         Recipe recipe = recipeRepo.findById(Integer.parseInt(id));
+        recipe.setRegion(region);
+        recipe.setName(name);
+        recipe.setCategory(category);
+        recipe.setSeason(season);
+        recipe.setDescription(description);
+
+        //checks if any recipe fields are null, saves to db if not
+        if (recipe.getRegion() != null &&
+            recipe.getName() != null &&
+            recipe.getCategory() != null &&
+            recipe.getSeason() != null &&
+            recipe.getDescription() != null) {
+            recipeRepo.save(recipe);
+        }
+
         return "redirect:/my-recipes";
 
     }
