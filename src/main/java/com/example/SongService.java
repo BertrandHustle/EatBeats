@@ -1,6 +1,7 @@
 package com.example;
 
 import org.hibernate.HibernateException;
+import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,20 +40,27 @@ public class SongService {
 
             try {
                 foundSong = songRepo.findByNameIgnoreCase(song.getName());
-            } catch (HibernateException he){
+            } catch (NonUniqueResultException hure){
                 System.out.println("too many results found!");
             }
 
-            if (//song.getName() != null &&
-                //song.getArtist() != null &&
-                !song.getSpotifyId().equals("") &&
-                foundSong != null)
+            try {
+                foundSong = songRepo.findByNameIgnoreCase(song.getName());
+            } catch (NullPointerException npe){
+                System.out.println("no results found!");
+            }
+
+            if (!song.getSpotifyId().equals("") &&
+                foundSong == null) {
 
                 song.setCategory(category);
                 song.setSeason(season);
                 song.setRegion(region);
                 songRepo.save(song);
                 returnSongs.add(song);
+            } else {
+                System.out.println("song not added");
+            }
         }
 
         //returns tagged songs

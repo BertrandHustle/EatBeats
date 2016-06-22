@@ -71,9 +71,6 @@ public class EatBeatsApplicationTests {
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 
-		boolean setUpComplete = false;
-
-		if (setUpComplete = false) {
 			//make test recipe
 			String season = "season";
 			String name = "name";
@@ -98,11 +95,13 @@ public class EatBeatsApplicationTests {
 			Song testSong2 = new Song("Sun Ra", "Space is the Place");
 			Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 			Song testSong4 = new Song("Wu-Tang Clan", "Gravel Pit");
-			Song testSong5 = new Song("MF DOOM", "Saffron");
+
+			//use this for exception testing
+			//Song testSong5 = new Song("MF DOOM", "Saffron");
 
 			//make song list and save to db
-			List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
-			List<Song> testSongs2 = Arrays.asList(testSong4, testSong5);
+			List<Song> testSongs = Arrays.asList(testSong1, testSong2);
+			List<Song> testSongs2 = Arrays.asList(testSong3, testSong4);
 			songService.tagAndSaveSongsFromRecipe(testSongs, testRecipe);
 			songService.tagAndSaveSongsFromRecipe(testSongs2, testRecipe2);
 
@@ -111,11 +110,15 @@ public class EatBeatsApplicationTests {
 			Playlist testPlaylist2 = new Playlist(testRecipe, testSongs2, testUser);
 
 			//save playlist to db
-			playlistRepo.save(testPlaylist);
-			playlistRepo.save(testPlaylist2);
 
-			setUpComplete = true;
-		}
+			if (playlistRepo.findById(1) == null){
+				playlistRepo.save(testPlaylist);
+			}
+
+			if (playlistRepo.findById(2) == null){
+				playlistRepo.save(testPlaylist2);
+			}
+
 	}
 
 	@Test
@@ -808,8 +811,7 @@ public class EatBeatsApplicationTests {
 	}
 
 	//todo: test behavior for when playlist created is empty
-	//todo: figure out how and when songs are tagged (must relate to recipe somehow)
-	/* we already have recipes as a necessary part of the Playlist constructor, we can just
-	tag each song in the playlist with the tags on the recipe, then add all songs to the db */
+	//todo: test behavior for when duplicate songs are added to DB
+
 
 }
