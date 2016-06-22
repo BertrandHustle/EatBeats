@@ -1,15 +1,11 @@
 package com.example;
 
 import com.google.common.base.Joiner;
-import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.methods.RecommendationsRequest;
-import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.Page;
 import com.wrapper.spotify.models.Track;
-import org.hibernate.Hibernate;
+import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +14,11 @@ import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -77,52 +71,51 @@ public class EatBeatsApplicationTests {
 	public void before() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
 
-		//make test recipe
-		String season = "season";
-		String name = "name";
-		String category = "category";
-		String region = "region";
-		String description = "description";
-		Recipe testRecipe = new Recipe(season, name, category, region, description);
+		boolean setUpComplete = false;
 
-		//make test user and set recipe to user
-		User testUser = new User("name", "pass");
-		testRecipe.setUser(testUser);
+		if (setUpComplete = false) {
+			//make test recipe
+			String season = "season";
+			String name = "name";
+			String category = "category";
+			String region = "region";
+			String description = "description";
+			Recipe testRecipe = new Recipe(season, name, category, region, description);
+			Recipe testRecipe2 = new Recipe("season2", "name2", "category2", "region2", "description2");
 
-		//save recipe and user to repo
-		userRepo.save(testUser);
-		recipeRepo.save(testRecipe);
+			//make test user and set recipe to user
+			User testUser = new User("name", "pass");
+			testRecipe.setUser(testUser);
+			testRecipe2.setUser(testUser);
 
-		//construct new songs
-		Song testSong1 = new Song("Coldplay", "Yellow");
-		Song testSong2 = new Song("Sun Ra", "Space is the Place");
-		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+			//save recipe and user to repo
+			userRepo.save(testUser);
+			recipeRepo.save(testRecipe);
+			recipeRepo.save(testRecipe2);
 
-		/*
-		//todo: make this a method in the Song class
-		List<Song> songs = Arrays.asList(testSong1, testSong2, testSong3);
-		for (Song song : songs){
-			if (song.getName() != null && song.getArtist() != null)
-				song.setCategory(category);
-				song.setSeason(season);
-				song.setRegion(region);
-			songRepo.save(song);
+			//construct new songs
+			Song testSong1 = new Song("Coldplay", "Yellow");
+			Song testSong2 = new Song("Sun Ra", "Space is the Place");
+			Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+			Song testSong4 = new Song("Wu-Tang Clan", "Gravel Pit");
+			Song testSong5 = new Song("MF DOOM", "Saffron");
+
+			//make song list and save to db
+			List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
+			List<Song> testSongs2 = Arrays.asList(testSong4, testSong5);
+			songService.tagAndSaveSongsFromRecipe(testSongs, testRecipe);
+			songService.tagAndSaveSongsFromRecipe(testSongs2, testRecipe2);
+
+			//construct playlist
+			Playlist testPlaylist = new Playlist(testRecipe, testSongs, testUser);
+			Playlist testPlaylist2 = new Playlist(testRecipe, testSongs2, testUser);
+
+			//save playlist to db
+			playlistRepo.save(testPlaylist);
+			playlistRepo.save(testPlaylist2);
+
+			setUpComplete = true;
 		}
-		*/
-
-
-		//save new songs to repo
-		songRepo.save(testSong1);
-		songRepo.save(testSong2);
-		songRepo.save(testSong3);
-
-
-		//make song list and construct playlist
-		List<Song> testSongs = Arrays.asList(testSong1, testSong2, testSong3);
-		Playlist testPlaylist = new Playlist(testRecipe, testSongs, testUser);
-
-		//save playlist to repo
-		playlistRepo.save(testPlaylist);
 	}
 
 	@Test
@@ -406,21 +399,16 @@ public class EatBeatsApplicationTests {
 	public void whenPlaylistBuiltAndSavedThenPlaylistContainsCorrectSongs() throws IOException, WebApiException {
 
 		//arrange
-		//todo: move this to @before method (do this by creating objects AND adding them to database, then pulling them out in test)
-		Song testSong1 = new Song("Coldplay", "Yellow");
-		Song testSong2 = new Song("Sun Ra", "Space is the Place");
-		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
+		Song testSong3 = songRepo.findByNameIgnoreCase("C.R.E.A.M.");
 
-		songRepo.save(testSong1);
-		songRepo.save(testSong2);
-		songRepo.save(testSong3);
-
-		Recipe testRecipe = new Recipe();
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
 		testRecipe.setName("Coq Au Vin");
-		User testUser = new User();
-		testRecipe.setUser(testUser);
-		userRepo.save(testUser);
-		recipeRepo.save(testRecipe);
+		User testUser = userRepo.findFirstByUsername("name");
+		//testRecipe.setUser(testUser);
+		//userRepo.save(testUser);
+		//recipeRepo.save(testRecipe);
 
 		List<Song> songs = Arrays.asList(testSong1, testSong2, testSong3);
 
@@ -431,6 +419,7 @@ public class EatBeatsApplicationTests {
 
 		Playlist playlist = new Playlist(testRecipe, songs, testUser);
 
+		//todo: clean this up (most of it is greyed out)
 		//joins ids together for assertion check
 		String joinedIdsToBeAdded = Joiner.on(",").join(songIdsToBeAdded);
 
@@ -456,16 +445,18 @@ public class EatBeatsApplicationTests {
 		//arrange
 		//remember: artist and title have to be in CORRECT ORDER when songs are created!
 		//todo: add a "fuzzy" search for song creation/track lookup
-		Song testSong1 = new Song("Coldplay", "Yellow");
-		Song testSong2 = new Song("Sun Ra", "Space is the Place");
-		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
 
-		Recipe testRecipe = new Recipe();
-		testRecipe.setName("Coq Au Vin");
-		User testUser = new User();
-		userRepo.save(testUser);
-		testRecipe.setUser(testUser);
-		recipeRepo.save(testRecipe);
+		//tests casing
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
+		Song testSong3 = songRepo.findByNameIgnoreCase("C.r.E.A.m.");
+
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		//testRecipe.setName("Coq Au Vin");
+		User testUser = userRepo.findFirstByUsername("name");
+		//userRepo.save(testUser);
+		//testRecipe.setUser(testUser);
+		//recipeRepo.save(testRecipe);
 
 		List<Song> songsToBeAdded = Arrays.asList(testSong1, testSong2, testSong3);
 
@@ -483,6 +474,7 @@ public class EatBeatsApplicationTests {
 		}
 
 		String joinedIds = Joiner.on(",").join(testSongIds);
+
 
 		String expectedUrl = "https://embed.spotify.com/?uri=spotify:trackset:"+testRecipe.getName()+":"+joinedIds;
 
@@ -537,16 +529,11 @@ public class EatBeatsApplicationTests {
 		boolean isAPlaylist = true;
 
 		//two of everything is necessary for testing multiple playlists
-		//todo: fix this by moving to @before! (see above note)
-		Song testSong1 = new Song("Coldplay", "Yellow");
-		Song testSong2 = new Song("Sun Ra", "Space is the Place");
-		Song testSong3 = new Song("Wu-Tang Clan", "C.R.E.A.M.");
-		Song testSong4 = new Song("Wu-Tang Clan", "Gravel Pit");
-
-		songRepo.save(testSong1);
-		songRepo.save(testSong2);
-		songRepo.save(testSong3);
-		songRepo.save(testSong4);
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
+		Song testSong3 = songRepo.findByNameIgnoreCase("C.R.E.a.M.");
+		Song testSong4 = songRepo.findByNameIgnoreCase("gravel pit");
+		Song testSong5 = songRepo.findByNameIgnoreCase("saffron");
 
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
@@ -604,11 +591,8 @@ public class EatBeatsApplicationTests {
 		//arrange
 		User testUser = new User();
 		userRepo.save(testUser);
-		Song testSong1 = new Song("Coldplay", "Yellow");
-		Song testSong2 = new Song("Sun Ra", "Space is the Place");
-
-		songRepo.save(testSong1);
-		songRepo.save(testSong2);
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
 
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");

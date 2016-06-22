@@ -2,7 +2,6 @@ package com.example;
 
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,10 +1,10 @@
 package com.example;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Class for recipes, these will have playlists associated with them as well as properties (e.g. season and type)
@@ -30,6 +30,8 @@ public class Recipe {
     private String region;
     //description of the recipe
     private String description;
+
+    private HashSet<String> tags = new HashSet<>();
 
     //links many to one mapped on User
     @ManyToOne
@@ -114,5 +116,13 @@ public class Recipe {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(HashSet<String> tags) {
+        this.tags = tags;
     }
 }

@@ -28,6 +28,10 @@ import java.util.List;
 //todo: implement search feature for recipes
 //todo: allow user to view other users' recipes (via search)
 //todo: implement @notNull tags on recipe fields?
+//todo: add spotify suggestions as songs in database
+//todo: have user confirm that selected songs are correct
+//todo: switch edit endpoint to GET, not POST (can use image rather than button)
+//todo: make it so it doesn't add recipe if it hits an error
 
 /**
  * Controller class for EatBeats
@@ -191,7 +195,7 @@ public class EatBeatsController {
                 int ID = Integer.parseInt(id);
                 Recipe recipe = recipeRepo.findById(ID);
 
-                //todo: generate playlist if no tracks found
+                //todo: don't generate playlist if no tracks found
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
 
                 String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());

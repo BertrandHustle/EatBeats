@@ -1,5 +1,6 @@
 package com.example;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,12 +30,29 @@ public class SongService {
 
         //tags each song with recipe fields (if not null) and saves to database
         for (Song song : songs) {
-            if (song.getName() != null && song.getArtist() != null)
+            //todo: handle cases where song not found in spotify (empty spotifyId string)
+            //todo: handle duplicates in DB
+
+            //checks if spotify id is empty and if song exists in database
+
+            Song foundSong = new Song();
+
+            try {
+                foundSong = songRepo.findByNameIgnoreCase(song.getName());
+            } catch (HibernateException he){
+                System.out.println("too many results found!");
+            }
+
+            if (//song.getName() != null &&
+                //song.getArtist() != null &&
+                !song.getSpotifyId().equals("") &&
+                foundSong != null)
+
                 song.setCategory(category);
-            song.setSeason(season);
-            song.setRegion(region);
-            songRepo.save(song);
-            returnSongs.add(song);
+                song.setSeason(season);
+                song.setRegion(region);
+                songRepo.save(song);
+                returnSongs.add(song);
         }
 
         //returns tagged songs

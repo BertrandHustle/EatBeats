@@ -172,6 +172,7 @@ public class SpotifyService {
         searchResultTracks.addAll(trackSearchRequest.get().getItems());
         Track returnTrack = new Track();
 
+        //todo: check if song is in DB first
         //makes new song from title, artist of search result
         try {
             for (Track track : searchResultTracks) {
@@ -197,6 +198,7 @@ public class SpotifyService {
             testSeeds.add(song.getSpotifyId());
         }
 
+        //todo: fix duplicates here!
         List<Track> recommendationTracks = getListOfRecommendationsFromSeedTracks(testSeeds);
         String joinedIds = getCommaJoinedTrackIds(recommendationTracks);
 
