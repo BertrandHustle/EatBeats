@@ -3,9 +3,7 @@ package com.example;
 import com.google.common.base.Joiner;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.models.Track;
-import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -731,6 +729,10 @@ public class EatBeatsApplicationTests {
 		//arrange
 		Playlist testPlaylist = playlistRepo.findById(1);
 		String name = "name";
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
+		List<Song> testSongs = Arrays.asList(testSong1, testSong2);
+		testPlaylist.setSongs(testSongs);
 
 		//act
 		String playlistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(testPlaylist, name);
@@ -922,17 +924,17 @@ public class EatBeatsApplicationTests {
 	 */
 
 	@Test
-	public void whenSongPreviewRequestedThenCorrectUrlReturned(){
+	public void whenSongPreviewRequestedThenCorrectUrlReturned() throws IOException, WebApiException {
 
 		//arrange
 		Song song = songRepo.findByNameIgnoreCase("yellow");
-		String expectedUrl = "https://p.scdn.co/mp3-preview/bf085f7b43b6be637374a858eeab87741d9454e0";
+		String expectedUrl = "https://p.scdn.co/mp3-preview/c119ca773ef844108da21c4679dc54c007cf0926";
 
 		//act
-		//String previewUrl = songService.getSongPreview(song);
+		String previewUrl = songService.getSongPreviewUrl(song);
 
 		//assert
-		//assertThat(expectedUrl.equals(previewUrl), is(true));
+		assertThat(expectedUrl.equals(previewUrl), is(true));
 
 	}
 

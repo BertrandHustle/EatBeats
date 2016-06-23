@@ -110,7 +110,6 @@ public class EatBeatsController {
         //todo: DON'T ALLOW THIS UNLESS SONGS ARE FOUND
         Recipe recipe = new Recipe(season, name, category, region, description);
         recipe.setUser(user);
-        recipeRepo.save(recipe);
 
         //todo: this should be leaner: move this to service and pass in songs as arguments
         //constructs songs from user input
@@ -122,6 +121,10 @@ public class EatBeatsController {
         List<Song> songs = Arrays.asList(song1, song2, song3);
         songService.tagAndSaveSongsFromRecipe(songs, recipe);
 
+        if (!songs.isEmpty()){
+            recipeRepo.save(recipe);
+        }
+
         /*
         for (Song song : songs){
             if (song.getName() != null && song.getArtist() != null)
@@ -132,7 +135,11 @@ public class EatBeatsController {
         }
         */
 
+        model.addAttribute("recipe", recipe);
+        model.addAttribute("son")
+
         //todo: add songs into model and redirect to search-songs
+        //todo: add recipe into model so it can be saved on the next route
 
         return "redirect:/";
     }

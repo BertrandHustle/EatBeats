@@ -1,10 +1,13 @@
 package com.example;
 
+import com.wrapper.spotify.exceptions.WebApiException;
+import com.wrapper.spotify.models.Track;
 import org.hibernate.HibernateException;
 import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +21,10 @@ public class SongService {
 
     @Autowired
     SongRepo songRepo;
+
+    @Autowired
+    SpotifyService spotifyService;
+
 
     public List<Song> tagAndSaveSongsFromRecipe(List<Song> songs, Recipe recipe) {
 
@@ -65,5 +72,14 @@ public class SongService {
 
         //returns tagged songs
         return returnSongs;
+    }
+
+    //gets a 30sec preview of the song from Spotify (user authentication not needed)
+    public String getSongPreviewUrl(Song song) throws IOException, WebApiException {
+
+        Track track = spotifyService.getTrackFromSpotify(song.getName(), song.getArtist());
+        String songPreviewUrl = track.getPreviewUrl();
+        return songPreviewUrl;
+
     }
 }

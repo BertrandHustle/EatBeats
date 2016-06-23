@@ -155,6 +155,32 @@ public class SpotifyService {
 
     }
 
+    public Track getTrackFromSpotify(String trackName, String artist) throws IOException, WebApiException {
+
+        final Api api = Api.builder()
+                .clientId(clientId)
+                .clientSecret(clientSecret).build();
+
+        final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
+        ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
+
+        api.setAccessToken(clientCredentials.getAccessToken());
+
+        //surrounds trackName with quotes so Spotify API can get an exact query match
+        final TrackSearchRequest trackSearchRequest = api.searchTracks("\"" + trackName + "\"").limit(3).query(trackName)
+                .build();
+
+        //todo: make this so it doesn't mirror above code
+        //init arraylists
+
+        ArrayList<Track> searchResultTracks = new ArrayList<>();
+        searchResultTracks.addAll(trackSearchRequest.get().getItems());
+        Track returnTrack = searchResultTracks.get(0);
+
+        return returnTrack;
+
+    }
+
     public Song getSongFromSpotify(String trackName, String artist) throws IOException, WebApiException {
 
         final Api api = Api.builder()
