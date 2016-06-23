@@ -20,6 +20,10 @@ public class User {
     private String username;
     private String password;
 
+    //may need to fix this from being Eager
+    @OneToMany(targetEntity=Playlist.class, mappedBy="user", fetch=FetchType.EAGER)
+    private List<Playlist> favoritePlaylists;
+
     public User(String username, String password) throws PasswordHasher.CannotPerformOperationException {
         this.username = username;
         //auto-hashes passwords when User is constructed
@@ -44,5 +48,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Playlist> getFavoritePlaylists() {
+        return favoritePlaylists;
+    }
+
+    public void setFavoritePlaylists(List<Playlist> favoritePlaylists) {
+        this.favoritePlaylists = favoritePlaylists;
     }
 }

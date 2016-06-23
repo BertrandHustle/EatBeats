@@ -54,7 +54,7 @@ public class Song {
     private String season;
 
     //links to Playlist to which Song belongs
-    @ManyToOne (cascade = CascadeType.MERGE)
+    @ManyToOne
     Playlist playlist;
 
     public Song() {

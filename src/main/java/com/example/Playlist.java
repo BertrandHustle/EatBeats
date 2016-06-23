@@ -28,7 +28,7 @@ public class Playlist {
     //this holds the Song objects which comprise the Playlist
     //private ArrayList<String> songSpotifyIds;
 
-    @OneToMany //(fetch = FetchType.EAGER)
+    @OneToMany (targetEntity=Song.class, mappedBy="playlist", fetch=FetchType.EAGER)
     private List<Song> songs = new ArrayList<>();
 
     //cascading needed because of multiple @ManyToOne annotations to user?

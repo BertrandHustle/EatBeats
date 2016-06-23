@@ -866,7 +866,7 @@ public class EatBeatsApplicationTests {
 	 */
 
 
-	//todo: find way to save playlists with duplicate songlists 
+	//todo: find way to save playlists with duplicate songlists
 	@Test
 	public void whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown() throws PasswordHasher.CannotPerformOperationException {
 
@@ -877,7 +877,8 @@ public class EatBeatsApplicationTests {
 		Recipe testRecipe = recipeRepo.findById(1);
 		User testUser = userRepo.findFirstByUsername("name");
 		User testUser2 = new User("name2", "pass2");
-		Recipe testRecipe2 = new Recipe();
+		userRepo.save(testUser2);
+		Recipe testRecipe2 = recipeRepo.findById(2);
 		Playlist testPlaylist1 = new Playlist(testRecipe, testSongs, testUser);
 		Playlist testPlaylist2 = new Playlist(testRecipe2, testSongs, testUser2);
 		boolean completedTest = true;
@@ -889,6 +890,27 @@ public class EatBeatsApplicationTests {
 		//assert
 		//always true because we're testing to see if test completes without errors
 		assertThat(completedTest, is(true));
+
+	}
+
+	/**
+	 * Given a playlist
+	 * When playlist is saved as favorite for user
+	 * Then playlist appears in user playlist list
+	 */
+
+	@Test
+	public void whenPlaylistAddedAsFavoriteThenPlaylistSavedInUser(){
+
+		//arrange
+		User testUser = userRepo.findFirstByUsername("name");
+		Playlist testPlaylist = playlistRepo.findByUser(testUser).get(0);
+
+		//act
+		userService.saveFavoritePlaylist(testUser, testPlaylist);
+
+		//assert
+		assertThat(testUser.getFavoritePlaylists().contains(testPlaylist), is(true));
 
 	}
 

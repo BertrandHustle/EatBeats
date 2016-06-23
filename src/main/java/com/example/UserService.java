@@ -6,6 +6,8 @@ import com.example.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Service for User-related methods
  */
@@ -21,4 +23,10 @@ public class UserService {
         userRepo.save(user);
     }
 
+    public void saveFavoritePlaylist(User user, Playlist playlist){
+
+        List<Playlist> favoritePlaylists = user.getFavoritePlaylists();
+        favoritePlaylists.add(playlist);
+
+    }
 }
