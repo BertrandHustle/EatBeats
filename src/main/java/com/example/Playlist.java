@@ -42,7 +42,7 @@ public class Playlist {
 
     public Playlist(Recipe recipe, List<Song> songs, User user) {
         this.recipe = recipe;
-        this.songs = songs;
+        this.songs.addAll(songs);
         this.user = user;
 
         //auto-sets spotify playlist link based on songs passed in

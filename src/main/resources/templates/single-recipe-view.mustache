@@ -1,0 +1,34 @@
+{{recipe.name}}
+
+<form action="/single-recipe-view" method="get">
+    <div>
+        Name
+        {{recipe.name}}
+    </div>
+
+    <div>
+        Season
+
+        {{recipe.season}}
+    </div>
+
+    <div>
+        Category
+        {{recipe.category}}
+    </div>
+
+    <div>
+        Region
+        {{recipe.region}}
+    </div>
+
+    <div>
+        Description
+        {{recipe.description}}
+    </div>
+
+    <div>
+        <button type="submit" >Submit Recipe</button>
+        <input type="hidden" name="id" value="{{recipe.id}}">
+    </div>
+</form>

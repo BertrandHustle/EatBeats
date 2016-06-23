@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SongService.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/example/Playlist.class" afterPath="$PROJECT_DIR$/build/classes/main/com/example/Playlist.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/com/example/EatBeatsApplicationTests.class" afterPath="$PROJECT_DIR$/build/classes/test/com/example/EatBeatsApplicationTests.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Song.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
     </list>
     <ignored path="EatBeats.iws" />
@@ -105,11 +111,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
+      <file leaf-file-name="SpotifyService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="429" column="0" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
+            <state relative-caret-position="344">
+              <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -117,13 +123,124 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="868" column="64" selection-start-line="868" selection-start-column="64" selection-end-line="868" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit-recipe.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="36" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="single-recipe-view.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SongService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SongService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
+            <state relative-caret-position="404">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Song.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Song.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+              <folding>
+                <marker date="1466644301000" expanded="false" signature="2030:2041" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2054:2060" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2105:2116" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2135:2141" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2185:2196" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2211:2217" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2273:2284" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2307:2313" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2360:2371" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2395:2401" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2469:2480" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2521:2527" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2559:2570" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2588:2594" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2641:2652" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2681:2687" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2717:2728" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2744:2750" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2793:2804" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2829:2835" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2868:2879" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2895:2901" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="2948:2959" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="2984:2990" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3031:3042" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3061:3067" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3124:3135" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3166:3172" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3215:3226" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3246:3252" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3312:3323" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3356:3362" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3391:3402" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3414:3420" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3458:3469" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3486:3492" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3516:3527" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3537:3543" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3636:3647" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3665:3671" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3718:3729" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3758:3764" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3799:3810" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3828:3834" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3884:3895" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3924:3930" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="3963:3974" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="3993:3999" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="4048:4059" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="4090:4096" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="4136:4147" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="4159:4165" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="4214:4225" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="4242:4248" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="4276:4287" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="4298:4304" placeholder=" }" />
+                <marker date="1466644301000" expanded="false" signature="4340:4351" placeholder=" { " />
+                <marker date="1466644301000" expanded="false" signature="4366:4372" placeholder=" }" />
               </folding>
             </state>
           </provider>
@@ -546,11 +663,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/PlaylistRepo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java" />
@@ -558,6 +673,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/RecipeService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
       </list>
     </option>
@@ -579,7 +697,7 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="28" />
+    <option name="x" value="53" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="709" />
@@ -821,7 +939,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Scott/Projects/EatBeats/src/test/java/com/example/EatBeatsApplicationTests.java" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
   </component>
-  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests">
+  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown">
     <configuration default="false" name="EatBeatsApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -848,27 +966,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="EatBeatsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplication" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="EatBeats_main" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="EatBeatsApplicationTests.whenDatabaseQueriedWithCategoryRegionAndSeasonThenSongsReturnedHaveGivenParameters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EatBeatsApplicationTests.whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
@@ -880,7 +978,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
-      <option name="METHOD_NAME" value="whenDatabaseQueriedWithCategoryRegionAndSeasonThenSongsReturnedHaveGivenParameters" />
+      <option name="METHOD_NAME" value="whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -894,7 +992,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="EatBeatsApplicationTests.whenGivenSongsAndRecipeThenSongsHaveCorrectTags" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EatBeatsApplicationTests.whenPlaylistContainsZeroSongsThenNotSavedToDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
@@ -906,7 +1004,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
-      <option name="METHOD_NAME" value="whenGivenSongsAndRecipeThenSongsHaveCorrectTags" />
+      <option name="METHOD_NAME" value="whenPlaylistContainsZeroSongsThenNotSavedToDatabase" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -920,7 +1018,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="EatBeatsApplicationTests.whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
@@ -932,7 +1030,33 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
-      <option name="METHOD_NAME" value="whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist" />
+      <option name="METHOD_NAME" value="whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="EatBeats_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
+      <option name="METHOD_NAME" value="whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1367,18 +1491,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
-      <item index="1" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenDatabaseQueriedWithCategoryRegionAndSeasonThenSongsReturnedHaveGivenParameters" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenGivenSongsAndRecipeThenSongsHaveCorrectTags" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistContainsZeroSongsThenNotSavedToDatabase" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenCorrectSpotifyPlaylistLinkContainedInPlaylist" />
-        <item index="2" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenGivenSongsAndRecipeThenSongsHaveCorrectTags" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenDatabaseQueriedWithCategoryRegionAndSeasonThenSongsReturnedHaveGivenParameters" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistContainsZeroSongsThenNotSavedToDatabase" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe" />
       </list>
     </recent_temporary>
   </component>
@@ -1399,47 +1523,47 @@
       <workItem from="1466264291619" duration="19216000" />
       <workItem from="1466343803827" duration="14911000" />
       <workItem from="1466429331425" duration="24429000" />
-      <workItem from="1466516259657" duration="26981000" />
+      <workItem from="1466516259657" duration="34946000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 11m 14s.xml">
+    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 20h 51m 43s.xml">
       <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 13m 17s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenDuplicateSongsAddedToDBThenOnlyOneSongReturned - 2016.06.22 at 20h 58m 12s.xml">
+      <configuration name="EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 14m 46s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenDuplicateSongsAddedToDBThenOnlyOneSongReturned - 2016.06.22 at 20h 59m 21s.xml">
+      <configuration name="EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 15m 35s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenDuplicateSongsAddedToDBThenOnlyOneSongReturned - 2016.06.22 at 21h 00m 28s.xml">
+      <configuration name="EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 15m 51s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenDuplicateSongsAddedToDBThenOnlyOneSongReturned - 2016.06.22 at 21h 02m 25s.xml">
+      <configuration name="EatBeatsApplicationTests.whenDuplicateSongsAddedToDBThenOnlyOneSongReturned" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 17m 41s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown - 2016.06.22 at 21h 06m 51s.xml">
+      <configuration name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 18m 47s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown - 2016.06.22 at 21h 07m 45s.xml">
+      <configuration name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 23m 25s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown - 2016.06.22 at 21h 09m 33s.xml">
+      <configuration name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 28m 45s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown - 2016.06.22 at 21h 12m 09s.xml">
+      <configuration name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EatBeatsApplicationTests - 2016.06.22 at 17h 31m 13s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
+    <history-entry file="EatBeatsApplicationTests_whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown - 2016.06.22 at 21h 14m 02s.xml">
+      <configuration name="EatBeatsApplicationTests.whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="100727000" />
+    <option name="totallyTimeSpent" value="108692000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="28" y="23" width="1280" height="709" extended-state="0" />
+    <frame x="53" y="23" width="1280" height="709" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1522,33 +1646,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>639</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>684</line>
+          <line>686</line>
           <properties />
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>732</line>
+          <line>734</line>
           <properties />
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>769</line>
+          <line>771</line>
           <properties />
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>784</line>
-          <properties />
-          <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java</url>
@@ -1564,29 +1676,44 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>104</line>
-          <properties />
-          <option name="timeStamp" value="65" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/SongService.java</url>
-          <line>41</line>
-          <properties />
-          <option name="timeStamp" value="66" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
           <line>195</line>
           <properties />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
+          <line>429</line>
+          <properties />
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
+          <line>633</line>
+          <properties />
+          <option name="timeStamp" value="73" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
+          <line>836</line>
+          <properties />
+          <option name="timeStamp" value="74" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
+          <line>858</line>
+          <properties />
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="68" />
+      <option name="time" value="78" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="songRepo.findAll()" language="JAVA" custom="" />
-        <watch expression="song" language="JAVA" custom="" />
+        <watch expression="playlistRepo.findAll()" language="JAVA" custom="" />
+        <watch expression="songRepo.findByNameIgnoreCase(&quot;yellow&quot;)" language="JAVA" custom="" />
+        <watch expression="testRecipe" language="JAVA" custom="" />
+        <watch expression="recipeRepo.findByUser(testUser)" language="JAVA" custom="" />
       </configuration>
       <configuration name="Application">
         <watch expression="playlist" language="JAVA" custom="" />
@@ -1599,24 +1726,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Recipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1230">
-          <caret line="110" column="24" selection-start-line="110" selection-start-column="24" selection-end-line="110" selection-end-column="24" />
-          <folding>
-            <element signature="e#1514#1515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/RecipeService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="51" column="32" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/RecipeRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1660,66 +1769,64 @@
         <state relative-caret-position="135">
           <caret line="15" column="2" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
           <folding>
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <marker date="1466600256000" expanded="false" signature="2111:2122" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2135:2141" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2186:2197" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2216:2222" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2266:2277" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2292:2298" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2354:2365" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2388:2394" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2441:2452" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2476:2482" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2550:2561" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2602:2608" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2640:2651" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2669:2675" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2722:2733" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2762:2768" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2798:2809" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2825:2831" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2874:2885" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2910:2916" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2949:2960" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2976:2982" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3029:3040" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3065:3071" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3112:3123" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3142:3148" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3205:3216" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3247:3253" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3296:3307" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3327:3333" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3393:3404" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3437:3443" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3472:3483" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3495:3501" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3539:3550" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3567:3573" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3597:3608" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3618:3624" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3717:3728" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3746:3752" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3799:3810" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3839:3845" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3880:3891" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3909:3915" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3965:3976" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4005:4011" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4044:4055" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4074:4080" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4129:4140" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4171:4177" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4217:4228" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4240:4246" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4295:4306" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4323:4329" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4357:4368" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4379:4385" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4421:4432" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4447:4453" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2030:2041" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2054:2060" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2105:2116" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2135:2141" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2185:2196" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2211:2217" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2273:2284" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2307:2313" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2360:2371" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2395:2401" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2469:2480" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2521:2527" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2559:2570" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2588:2594" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2641:2652" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2681:2687" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2717:2728" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2744:2750" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2793:2804" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2829:2835" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2868:2879" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2895:2901" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2948:2959" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2984:2990" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3031:3042" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3061:3067" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3124:3135" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3166:3172" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3215:3226" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3246:3252" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3312:3323" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3356:3362" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3391:3402" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3414:3420" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3458:3469" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3486:3492" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3516:3527" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3537:3543" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3636:3647" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3665:3671" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3718:3729" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3758:3764" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3799:3810" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3828:3834" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3884:3895" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3924:3930" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3963:3974" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3993:3999" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4048:4059" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4090:4096" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4136:4147" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4159:4165" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4214:4225" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4242:4248" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4276:4287" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4298:4304" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4340:4351" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4366:4372" placeholder=" }" />
           </folding>
         </state>
       </provider>
@@ -1800,22 +1907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="49" column="9" selection-start-line="49" selection-start-column="9" selection-end-line="49" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="35" column="12" selection-start-line="35" selection-start-column="12" selection-end-line="35" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1844,75 +1935,6 @@
         <state relative-caret-position="120">
           <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Song.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="721">
-          <caret line="72" column="33" selection-start-line="72" selection-start-column="33" selection-end-line="72" selection-end-column="33" />
-          <folding>
-            <element signature="e#5654#5655#0" expanded="true" />
-            <element signature="e#5683#5684#0" expanded="true" />
-            <marker date="1466600256000" expanded="false" signature="2111:2122" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2135:2141" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2186:2197" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2216:2222" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2266:2277" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2292:2298" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2354:2365" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2388:2394" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2441:2452" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2476:2482" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2550:2561" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2602:2608" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2640:2651" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2669:2675" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2722:2733" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2762:2768" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2798:2809" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2825:2831" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2874:2885" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2910:2916" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="2949:2960" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="2976:2982" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3029:3040" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3065:3071" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3112:3123" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3142:3148" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3205:3216" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3247:3253" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3296:3307" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3327:3333" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3393:3404" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3437:3443" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3472:3483" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3495:3501" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3539:3550" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3567:3573" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3597:3608" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3618:3624" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3717:3728" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3746:3752" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3799:3810" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3839:3845" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3880:3891" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="3909:3915" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="3965:3976" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4005:4011" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4044:4055" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4074:4080" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4129:4140" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4171:4177" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4217:4228" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4240:4246" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4295:4306" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4323:4329" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4357:4368" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4379:4385" placeholder=" }" />
-            <marker date="1466600256000" expanded="false" signature="4421:4432" placeholder=" { " />
-            <marker date="1466600256000" expanded="false" signature="4447:4453" placeholder=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2039,16 +2061,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="200" column="20" selection-start-line="200" selection-start-column="20" selection-end-line="200" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SongRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -2064,8 +2076,8 @@
         <state relative-caret-position="149">
           <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
-            <element signature="e#1464#1658#0" expanded="true" />
-            <element signature="e#1657#1658#0" expanded="true" />
+            <element signature="e#1464#1658#0" expanded="false" />
+            <element signature="e#1657#1658#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2107,10 +2119,10 @@
         <state relative-caret-position="119">
           <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
           <folding>
-            <element signature="e#2922#2923#0" expanded="true" />
-            <element signature="e#2966#2967#0" expanded="true" />
-            <element signature="e#11040#11204#0" expanded="true" />
-            <element signature="e#11203#11204#0" expanded="true" />
+            <element signature="e#2922#2923#0" expanded="false" />
+            <element signature="e#2966#2967#0" expanded="false" />
+            <element signature="e#11040#11204#0" expanded="false" />
+            <element signature="e#11203#11204#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -2136,9 +2148,17 @@
         <state relative-caret-position="927">
           <caret line="117" column="13" selection-start-line="117" selection-start-column="13" selection-end-line="117" selection-end-column="13" />
           <folding>
-            <element signature="e#2673#2674#0" expanded="true" />
-            <element signature="e#2701#2702#0" expanded="true" />
+            <element signature="e#2673#2674#0" expanded="false" />
+            <element signature="e#2701#2702#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/4.2.6.RELEASE/233683d43b9f874461dfef7ba1ae0f5a65575930/spring-aop-4.2.6.RELEASE-sources.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2150,16 +2170,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SongService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="66" column="0" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/model/ReflectiveCallable.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -2168,10 +2178,121 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="133" column="0" selection-start-line="133" selection-start-column="0" selection-end-line="133" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="36" column="28" selection-start-line="0" selection-start-column="0" selection-end-line="53" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SongService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Song.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="56" column="31" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <marker date="1466644301000" expanded="false" signature="2030:2041" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2054:2060" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2105:2116" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2135:2141" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2185:2196" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2211:2217" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2273:2284" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2307:2313" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2360:2371" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2395:2401" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2469:2480" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2521:2527" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2559:2570" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2588:2594" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2641:2652" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2681:2687" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2717:2728" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2744:2750" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2793:2804" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2829:2835" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2868:2879" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2895:2901" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="2948:2959" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="2984:2990" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3031:3042" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3061:3067" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3124:3135" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3166:3172" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3215:3226" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3246:3252" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3312:3323" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3356:3362" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3391:3402" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3414:3420" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3458:3469" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3486:3492" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3516:3527" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3537:3543" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3636:3647" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3665:3671" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3718:3729" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3758:3764" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3799:3810" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3828:3834" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3884:3895" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3924:3930" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="3963:3974" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="3993:3999" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4048:4059" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4090:4096" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4136:4147" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4159:4165" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4214:4225" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4242:4248" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4276:4287" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4298:4304" placeholder=" }" />
+            <marker date="1466644301000" expanded="false" signature="4340:4351" placeholder=" { " />
+            <marker date="1466644301000" expanded="false" signature="4366:4372" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="429" column="0" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
+        <state relative-caret-position="121">
+          <caret line="868" column="64" selection-start-line="868" selection-start-column="64" selection-end-line="868" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

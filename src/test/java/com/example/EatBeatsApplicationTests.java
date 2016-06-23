@@ -524,19 +524,19 @@ public class EatBeatsApplicationTests {
 	public void whenUserGivenThenPlaylistsRetrievedFromDatabase() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 
 		//arrange
-		User testUser = new User("name", "pass");
+		User testUser = userRepo.findFirstByUsername("name");
 
-		userRepo.save(testUser);
-		List<Playlist> testPlaylists = new ArrayList<>();
+		//userRepo.save(testUser);
+		//List<Playlist> testPlaylists;
 
 		boolean isAPlaylist = true;
 
+		/*
 		//two of everything is necessary for testing multiple playlists
 		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
 		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
 		Song testSong3 = songRepo.findByNameIgnoreCase("C.R.E.a.M.");
 		Song testSong4 = songRepo.findByNameIgnoreCase("gravel pit");
-		Song testSong5 = songRepo.findByNameIgnoreCase("saffron");
 
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
@@ -564,9 +564,10 @@ public class EatBeatsApplicationTests {
 
 		playlistRepo.save(testPlaylist);
 		playlistRepo.save(testPlaylist2);
+		*/
 
 		//act
-		testPlaylists = playlistRepo.findByUser(testUser);
+		List <Playlist> testPlaylists = playlistRepo.findByUser(testUser);
 
 		//assert
 		//tests if every object in testPlaylists is a playlist
@@ -588,14 +589,17 @@ public class EatBeatsApplicationTests {
 	 * Then all songs in playlist have the same tags as the recipe used to construct the playlist
 	 */
 
+	//todo: fix bug: playlists with same songs can't be added
 	@Test
-	public void whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe() throws IOException, WebApiException {
+	public void whenPlaylistConstructedThenSongsHaveSameTagsAsRecipe() throws IOException, WebApiException, PasswordHasher.CannotPerformOperationException {
 
 		//arrange
-		User testUser = new User();
-		userRepo.save(testUser);
-		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
-		Song testSong2 = songRepo.findByNameIgnoreCase("space is the place");
+		User testUser1 = new User("uname", "utest");
+		userRepo.save(testUser1);
+		Song testSong1 = new Song ("Coldplay", "Parachutes");
+		Song testSong2 = new Song ("Coldplay", "The Scientist");
+		songRepo.save(testSong1);
+		songRepo.save(testSong2);
 
 		Recipe testRecipe = new Recipe();
 		testRecipe.setName("Coq Au Vin");
@@ -603,30 +607,28 @@ public class EatBeatsApplicationTests {
 		testRecipe.setDescription("description");
 		testRecipe.setSeason("Spring");
 		testRecipe.setRegion("French");
-		testRecipe.setUser(testUser);
+		testRecipe.setUser(testUser1);
 
 		recipeRepo.save(testRecipe);
 
 		//holds tags in recipe
 		ArrayList<String> testRecipeTags = new ArrayList<>();
 		testRecipeTags.add(testRecipe.getCategory());
-		//testRecipeTags.add(testRecipe.getDescription());
-		//testRecipeTags.add(testRecipe.getName());
 		testRecipeTags.add(testRecipe.getRegion());
 		testRecipeTags.add(testRecipe.getSeason());
 
 		List<Song> songsToBeAdded = Arrays.asList(testSong1, testSong2);
 
 		//act
-		Playlist testPlaylist = new Playlist(testRecipe, songsToBeAdded, testUser);
+		Playlist testPlaylist3 = new Playlist(testRecipe, songsToBeAdded, testUser1);
 
-		playlistRepo.save(testPlaylist);
+		playlistRepo.save(testPlaylist3);
 
 		//adds tags from songs here
 		ArrayList<String> testSongTags = new ArrayList<>();
 		ArrayList<String> testSongTags2 = new ArrayList<>();
-		testSongTags.addAll(testPlaylist.getSongs().get(0).getTags());
-		testSongTags2.addAll(testPlaylist.getSongs().get(1).getTags());
+		testSongTags.addAll(testPlaylist3.getSongs().get(0).getTags());
+		testSongTags2.addAll(testPlaylist3.getSongs().get(1).getTags());
 
 		//assert
 		boolean matchingTags = true;
@@ -811,7 +813,83 @@ public class EatBeatsApplicationTests {
 	}
 
 	//todo: test behavior for when playlist created is empty
-	//todo: test behavior for when duplicate songs are added to DB
 
+	/**
+	 * Given a playlist
+	 * When playlist contains zero songs
+	 * Then playlist is not saved to database
+	 */
+
+	@Test
+	public void whenPlaylistContainsZeroSongsThenNotSavedToDatabase(){
+
+		//arrange
+		User testUser = userRepo.findFirstByUsername("name");
+		Recipe testRecipe = recipeRepo.findById(1);
+		ArrayList<Song> emptySongs = new ArrayList<>();
+
+		//act
+		Playlist testPlaylist = new Playlist(testRecipe, emptySongs, testUser);
+		int testId = testPlaylist.getId();
+		playlistRepo.save(testPlaylist);
+
+		//assert
+		assertThat(playlistRepo.findById(testId) == null, is(true));
+
+	}
+
+	/**
+	 * Given two duplicate songs
+	 * When songs are added to db
+	 * Then only one instance of song is returned upon query
+	 */
+
+	@Test
+	public void whenDuplicateSongsAddedToDBThenOnlyOneSongReturned(){
+
+		//arrange
+		Song testSong = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("yellow");
+
+		//act
+		songRepo.save(testSong);
+		songRepo.save(testSong2);
+
+		//act
+		assertThat(songRepo.findByNameIgnoreCase("Yellow").getName(), is("Yellow"));
+	}
+
+	/**
+	 * Given two playlists with identical lists of songs
+	 * When playlists are saved to db
+	 * Then no errors thrown
+	 */
+
+
+	//todo: find way to save playlists with duplicate songlists 
+	@Test
+	public void whenTwoPlaylistsWithIdenticalSongsSavedThenNoErrorsThrown() throws PasswordHasher.CannotPerformOperationException {
+
+		//arrange
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("gravel pit");
+		List<Song> testSongs = Arrays.asList(testSong1, testSong2);
+		Recipe testRecipe = recipeRepo.findById(1);
+		User testUser = userRepo.findFirstByUsername("name");
+		User testUser2 = new User("name2", "pass2");
+		Recipe testRecipe2 = new Recipe();
+		Playlist testPlaylist1 = new Playlist(testRecipe, testSongs, testUser);
+		Playlist testPlaylist2 = new Playlist(testRecipe2, testSongs, testUser2);
+		boolean completedTest = true;
+
+		//act
+		playlistRepo.save(testPlaylist1);
+		playlistRepo.save(testPlaylist2);
+
+		//assert
+		//always true because we're testing to see if test completes without errors
+		assertThat(completedTest, is(true));
+
+	}
 
 }
