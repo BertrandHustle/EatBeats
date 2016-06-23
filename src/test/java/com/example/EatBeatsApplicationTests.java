@@ -385,6 +385,7 @@ public class EatBeatsApplicationTests {
 		String expectedId = "0JOKubEAJYJSh9DQ0hDDQq";
 
 		//act
+		//todo: refactor to "searchByTrackNameAndArtist"
 		String searchResultId = spotifyService.searchByTrackName(testSongName, testArtist);
 
 		//assert
@@ -911,6 +912,27 @@ public class EatBeatsApplicationTests {
 
 		//assert
 		assertThat(testUser.getFavoritePlaylists().contains(testPlaylist), is(true));
+
+	}
+
+	/**
+	 * Given a song
+	 * When song preview is requested through Spotify
+	 * Then correct song preview url is returned
+	 */
+
+	@Test
+	public void whenSongPreviewRequestedThenCorrectUrlReturned(){
+
+		//arrange
+		Song song = songRepo.findByNameIgnoreCase("yellow");
+		String expectedUrl = "https://p.scdn.co/mp3-preview/bf085f7b43b6be637374a858eeab87741d9454e0";
+
+		//act
+		//String previewUrl = songService.getSongPreview(song);
+
+		//assert
+		//assertThat(expectedUrl.equals(previewUrl), is(true));
 
 	}
 

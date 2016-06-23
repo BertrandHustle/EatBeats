@@ -33,6 +33,7 @@ import java.util.List;
 //todo: switch edit endpoint to GET, not POST (can use image rather than button)
 //todo: make it so it doesn't add recipe if it hits an error
 
+
 /**
  * Controller class for EatBeats
  */
@@ -57,6 +58,9 @@ public class EatBeatsController {
 
     @Autowired
     SpotifyService spotifyService;
+
+    @Autowired
+    SongService songService;
 
     @Autowired
     SongRepo songRepo;
@@ -87,11 +91,13 @@ public class EatBeatsController {
     }
 
     //creates recipe and stores in database
+    //todo: change this so it redirects to search-songs
     @RequestMapping(path = "/create-recipe", method = RequestMethod.POST)
     public String postCreateRecipe(HttpSession session, String season, String name,
                                    String category, String region, String description,
                                    String songTitle1, String songTitle2, String songTitle3,
-                                   String songArtist1, String songArtist2, String songArtist3) throws IOException, WebApiException {
+                                   String songArtist1, String songArtist2, String songArtist3,
+                                   Model model) throws IOException, WebApiException {
 
         //retrieves current user
 
@@ -101,6 +107,7 @@ public class EatBeatsController {
 
         //creates new recipe from user input, saves to db
 
+        //todo: DON'T ALLOW THIS UNLESS SONGS ARE FOUND
         recipeService.saveRecipe(user, season, name, category, region, description);
 
         //todo: this should be leaner: move this to service and pass in songs as arguments
@@ -113,11 +120,14 @@ public class EatBeatsController {
         List<Song> songs = Arrays.asList(song1, song2, song3);
         for (Song song : songs){
             if (song.getName() != null && song.getArtist() != null)
+
             song.setCategory(category);
             song.setSeason(season);
             song.setRegion(region);
             songRepo.save(song);
         }
+
+        //model.addAttribute(songs.get(0).getSpotifyId())
 
         //todo: was this redirecting correctly?
         return "redirect:/";
@@ -126,6 +136,29 @@ public class EatBeatsController {
     //todo: add edit recipe route
     //todo: add favorite playlists
     //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
+
+    //favorite playlists route
+    @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
+    public String favoritePlaylists(HttpSession session, String id, Model model){
+
+        String username = session.getAttribute("username").toString();
+        User user = userRepo.findFirstByUsername(username);
+
+        List<Playlist> favoritePlaylists = user.getFavoritePlaylists();
+        model.addAttribute("playlists", favoritePlaylists);
+
+        return "favorite-playlists";
+
+    }
+
+    @RequestMapping(path = "/search-songs", method = RequestMethod.GET)
+    public String getSearchSongs(HttpSession session, String songTitle1, String artist1,
+                                 String songTitle2, String artist2, String songTitle3,
+                                 String artist3){
+
+        return "search-songs";
+
+    }
 
     //edit recipe route (GET)
     @RequestMapping(path = "/edit-recipe", method = RequestMethod.GET)
@@ -198,6 +231,9 @@ public class EatBeatsController {
                 //todo: don't generate playlist if no tracks found
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
 
+                //todo: removes duplicates for test purposes, needs to be fixed
+                playlist.setSongs(playlist.getSongs().subList(0, 3));
+
                 String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
                 model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
 
@@ -240,6 +276,11 @@ public class EatBeatsController {
     public String logout(HttpSession session){
         session.invalidate();
         return "redirect:/";
+    }
+
+    @RequestMapping(path = "/create-account", method = RequestMethod.GET)
+    public String getCreateAccount(){
+        return "create-account";
     }
 
     //route for creating account and saving to database

@@ -16,5 +16,18 @@
             <input type="hidden" name="id" value="{{id}}">
             <button type="submit" name="delete-recipe">Delete Recipe</button>
         </form>
+        <form action="/view-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="view-recipe">View Recipe</button>
+        </form>
     </div>
 {{/recipes}}
+
+{{^recipes}}
+    You have no recipes!
+{{/recipes}}
+
+<form>
+    <a href="/">Home</a>
+</form>
+

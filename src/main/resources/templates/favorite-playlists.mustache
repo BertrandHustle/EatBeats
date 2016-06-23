@@ -1,9 +1,14 @@
-<!-- find way to put up/down arrow next to each song, or put votes on each playlist instead of
- individual songs-->
+<form>
+    <a href="/">Home</a>
+</form>
 
 {{#playlists}}
     .
     <div>
         <button type="submit">Play</button>
     </div>
+{{/playlists}}
+
+{{^playlists}}
+    You have no playlists saved!
 {{/playlists}}

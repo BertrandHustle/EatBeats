@@ -1,3 +1,7 @@
+<form>
+    <a href="/">Home</a>
+</form>
+
 Create a recipe:
 
 <form action="/create-recipe" method="post">
@@ -42,6 +46,16 @@ Create a recipe:
     <div>
             Description
             <textarea title="description" name="description" rows="5" cols="10"></textarea>
+    </div>
+
+    <div>
+            Suggest a few songs!
+        <input type="text" placeholder="Title" name="songTitle1"/>
+        <input type="text" placeholder="Artist" name="songArtist1"/>
+        <input type="text" placeholder="Title" name="songTitle2"/>
+        <input type="text" placeholder="Artist" name="songArtist2"/>
+        <input type="text" placeholder="Title" name="songTitle3"/>
+        <input type="text" placeholder="Artist" name="songArtist3"/>
     </div>
 
     <div>

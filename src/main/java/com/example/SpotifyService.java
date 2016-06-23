@@ -23,12 +23,17 @@ import java.util.List;
 @Service
 public class SpotifyService {
 
+
+    String clientId = "219a55148b404fb18b61c44cdb010719";
+    String clientSecret = "6cd7039b1a314ed7ab5208d07f9db234";
+
+
     public List<Track> getListOfRecommendationsFromSeedTracks(ArrayList<String> seeds) throws IOException, WebApiException {
 
         //todo: move this into separate method
         final Api api = Api.builder()
-                .clientId("f5b8721c375a43eb801334c0d4329a0d")
-                .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+                .clientId(clientId)
+                .clientSecret(clientSecret).build();
 
         final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
         ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
@@ -115,8 +120,8 @@ public class SpotifyService {
     public String searchByTrackName (String trackName, String artist) throws IOException, WebApiException {
 
         final Api api = Api.builder()
-                .clientId("f5b8721c375a43eb801334c0d4329a0d")
-                .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+                .clientId(clientId)
+                .clientSecret(clientSecret).build();
 
         final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
         ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
@@ -153,8 +158,8 @@ public class SpotifyService {
     public Song getSongFromSpotify(String trackName, String artist) throws IOException, WebApiException {
 
         final Api api = Api.builder()
-                .clientId("f5b8721c375a43eb801334c0d4329a0d")
-                .clientSecret("e4cf678de40843279f667da0b7dfabae").build();
+                .clientId(clientId)
+                .clientSecret(clientSecret).build();
 
         final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
         ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
@@ -170,8 +175,9 @@ public class SpotifyService {
         ArrayList<Track> searchResultTracks = new ArrayList<>();
 
         searchResultTracks.addAll(trackSearchRequest.get().getItems());
-        Track returnTrack = new Track();
+        Track returnTrack = searchResultTracks.get(0);
 
+        /*
         //todo: check if song is in DB first
         //makes new song from title, artist of search result
         try {
@@ -179,11 +185,14 @@ public class SpotifyService {
                 if ((track.getArtists().get(0).getName().equals(artist)
                         && track.getName().equalsIgnoreCase(trackName))) {
                     returnTrack = track;
+                } else {
+                    System.out.println("no exact match found!");
                 }
             }
         } catch (NullPointerException npe){
             System.out.println("no results found!");
         }
+        */
 
         Song song = new Song(returnTrack.getArtists().get(0).getName(), returnTrack.getName());
         return song;

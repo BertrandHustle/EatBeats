@@ -1,5 +1,10 @@
 {{recipe.name}}
 
+
+<form>
+    <a href="/">Home</a>
+</form>
+
 <form action="/single-recipe-view" method="get">
     <div>
         Name
@@ -31,4 +36,6 @@
         <button type="submit" >Submit Recipe</button>
         <input type="hidden" name="id" value="{{recipe.id}}">
     </div>
+
+
 </form>

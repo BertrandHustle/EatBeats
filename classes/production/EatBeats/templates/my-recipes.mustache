@@ -4,11 +4,30 @@
 {{#recipes}}
     {{.}}
     <div>
-        <form action="/generate-playlist" method="get">
-            <button type="submit" name="generate-playlist">Generate Playlist</button>
+        <form action="/make-playlist" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="make-playlist">Make Playlist</button>
         </form>
         <form action="/edit-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
             <button type="submit" name="edit-recipe">Edit Recipe</button>
+        </form>
+        <form action="/delete-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="delete-recipe">Delete Recipe</button>
+        </form>
+        <form action="/view-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="view-recipe">View Recipe</button>
         </form>
     </div>
 {{/recipes}}
+
+{{^recipes}}
+    You have no recipes!
+{{/recipes}}
+
+<form>
+    <a href="/">Home</a>
+</form>
+
