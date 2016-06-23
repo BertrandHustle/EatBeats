@@ -135,6 +135,9 @@ public class EatBeatsController {
         }
         */
 
+        //may want to change this to flash attribute?
+        session.setAttribute("recipe", recipe);
+        session.setAttribute("songs", songs);
         model.addAttribute("recipe", recipe);
         model.addAttribute("songs", songs);
 
@@ -144,7 +147,23 @@ public class EatBeatsController {
         return "redirect:/song-search";
     }
 
-    //todo: add edit recipe route
+    @RequestMapping(path = "/song-search", method = RequestMethod.GET)
+    public String getSongSearch(HttpSession session, Model model) throws IOException, WebApiException {
+
+        List<Song> songs = (List<Song>) session.getAttribute("songs");
+        Recipe recipe = (Recipe) session.getAttribute("recipe");
+
+        //gets song preview urls for each song
+        String songPreview1 = songService.getSongPreviewUrl(songs.get(0));
+        String songPreview2 = songService.getSongPreviewUrl(songs.get(1));
+        String songPreview3 = songService.getSongPreviewUrl(songs.get(2));
+
+        model.addAttribute("songPreview1", songPreview1);
+        model.addAttribute("songPreview2", songPreview2);
+        model.addAttribute("songPreview3", songPreview3);
+        return "song-search";
+    }
+
     //todo: add favorite playlists
     //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
 
