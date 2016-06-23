@@ -136,12 +136,12 @@ public class EatBeatsController {
         */
 
         model.addAttribute("recipe", recipe);
-        model.addAttribute("son")
+        model.addAttribute("songs", songs);
 
         //todo: add songs into model and redirect to search-songs
         //todo: add recipe into model so it can be saved on the next route
 
-        return "redirect:/";
+        return "redirect:/song-search";
     }
 
     //todo: add edit recipe route

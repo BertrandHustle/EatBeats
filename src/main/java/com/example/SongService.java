@@ -47,26 +47,21 @@ public class SongService {
 
             try {
                 foundSong = songRepo.findByNameIgnoreCase(song.getName());
-            } catch (NonUniqueResultException hure){
-                System.out.println("too many results found!");
-            }
-
-            try {
-                foundSong = songRepo.findByNameIgnoreCase(song.getName());
-            } catch (NullPointerException npe){
-                System.out.println("no results found!");
+            } catch (Exception e){
+                System.out.println("too many or too few results found!");
             }
 
             if (!song.getSpotifyId().equals("") &&
                 foundSong == null) {
-
                 song.setCategory(category);
                 song.setSeason(season);
                 song.setRegion(region);
                 songRepo.save(song);
                 returnSongs.add(song);
             } else {
-                System.out.println("song not added");
+                //if song already exists in DB, retrieves song and adds to return list
+                song = foundSong;
+                returnSongs.add(song);
             }
         }
 
