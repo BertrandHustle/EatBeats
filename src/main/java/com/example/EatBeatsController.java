@@ -143,6 +143,11 @@ public class EatBeatsController {
         Song song2 = suggestedSongs.get(1);
         Song song3 = suggestedSongs.get(2);
 
+        //todo: rewrite html to use {{song1.name}}, etc.
+        model.addAttribute("song1", song1);
+        model.addAttribute("song2", song2);
+        model.addAttribute("song3", song3);
+
         String songPreview1 = songService.getSongPreviewUrl(song1);
         String songPreview2 = songService.getSongPreviewUrl(song2);
         String songPreview3 = songService.getSongPreviewUrl(song3);

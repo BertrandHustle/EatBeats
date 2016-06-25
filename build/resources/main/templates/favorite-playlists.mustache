@@ -3,10 +3,7 @@
 </form>
 
 {{#playlists}}
-    .
-    <div>
-        <button type="submit">Play</button>
-    </div>
+    <a href={{playlist.spotifyLink}}>{{playlist.recipeName}} featuring:{{playlist.songs}}</a>
 {{/playlists}}
 
 {{^playlists}}

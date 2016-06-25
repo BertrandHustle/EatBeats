@@ -242,7 +242,8 @@ public class SpotifyService {
 
         for (Song song : testSongs){
             String spotifyId = song.getSpotifyId();
-            if (!testSeeds.contains(spotifyId)){
+            //checks for duplicates and imposes limit of 5 because of spotify api limits
+            if (!testSeeds.contains(spotifyId) && testSeeds.size() < 5){
                 testSeeds.add(spotifyId);
             }
         }
@@ -274,20 +275,9 @@ public class SpotifyService {
         for (String id : suggestedSongIds){
             Song song = (getSongFromSpotifyId(id));
             songs.add(song);
-
-            //tags songs with recipe tags
-            for (String recipeTag : recipe.getTags()){
-                song.getTags().add(recipeTag);
-
-            }
-
-            //saves song to repo if it doesn't already exist
-            //todo: move this into an encapsulated method
-            if (songRepo.findByNameIgnoreCaseAndArtistIgnoreCase(song.getName(), song.getArtist()) == null &&
-                    !song.getSpotifyId().equals("")){
-                songRepo.save(song);
-            }
         }
+
+        songService.tagAndSaveSongsFromRecipe(songs, recipe);
 
         return songs;
     }
