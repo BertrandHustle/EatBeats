@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EatBeats.bmpr" afterPath="$PROJECT_DIR$/EatBeats.bmpr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Song.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SongService.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
     </list>
     <ignored path="EatBeats.iws" />
@@ -147,8 +141,20 @@
       <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="136" column="60" selection-start-line="136" selection-start-column="60" selection-end-line="136" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="971" column="0" selection-start-line="971" selection-start-column="0" selection-end-line="971" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -166,11 +172,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create-recipe.mustache" pinned="false" current-in-tab="true">
+      <file leaf-file-name="create-recipe.mustache" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="10" />
+            <state relative-caret-position="153">
+              <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -189,8 +195,8 @@
       <file leaf-file-name="SpotifyService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+            <state relative-caret-position="209">
+              <caret line="276" column="40" selection-start-line="276" selection-start-column="40" selection-end-line="276" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -732,12 +738,12 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Recipe.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Song.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
       </list>
@@ -1002,7 +1008,7 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Scott/Projects/EatBeats/src/test/java/com/example/EatBeatsApplicationTests.java" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="PostgreSQL" />
   </component>
-  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB">
+  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe">
     <configuration default="false" name="EatBeatsApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1049,32 +1055,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="EatBeatsApplicationTests.whenSongPreviewRequestedThenCorrectUrlReturned" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.example.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="EatBeats_test" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.example" />
-      <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
-      <option name="METHOD_NAME" value="whenSongPreviewRequestedThenCorrectUrlReturned" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1114,6 +1094,32 @@
       <option name="PACKAGE_NAME" value="com.example" />
       <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
       <option name="METHOD_NAME" value="whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="EatBeats_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.example" />
+      <option name="MAIN_CLASS_NAME" value="com.example.EatBeatsApplicationTests" />
+      <option name="METHOD_NAME" value="whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1549,17 +1555,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
       <item index="1" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenSongPreviewRequestedThenCorrectUrlReturned" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
-        <item index="1" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenSongPreviewRequestedThenCorrectUrlReturned" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
+        <item index="2" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests" />
       </list>
     </recent_temporary>
   </component>
@@ -1581,26 +1587,11 @@
       <workItem from="1466343803827" duration="14911000" />
       <workItem from="1466429331425" duration="24429000" />
       <workItem from="1466516259657" duration="36797000" />
-      <workItem from="1466688720563" duration="28448000" />
+      <workItem from="1466688720563" duration="30171000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="EatBeatsApplicationTests - 2016.06.23 at 14h 18m 16s.xml">
-      <configuration name="EatBeatsApplicationTests" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenRecipeHasNullFieldThenRecipeNotAddedToDatabase - 2016.06.24 at 09h 49m 44s.xml">
-      <configuration name="EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenRecipeHasNullFieldThenRecipeNotAddedToDatabase - 2016.06.24 at 09h 51m 32s.xml">
-      <configuration name="EatBeatsApplicationTests.whenRecipeHasNullFieldThenRecipeNotAddedToDatabase" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB - 2016.06.25 at 11h 28m 22s.xml">
-      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB - 2016.06.25 at 11h 30m 38s.xml">
-      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB - 2016.06.25 at 11h 39m 50s.xml">
       <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" configurationId="JUnit" />
     </history-entry>
@@ -1616,13 +1607,28 @@
     <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB - 2016.06.25 at 12h 07m 03s.xml">
       <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe - 2016.06.25 at 12h 21m 46s.xml">
+      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe - 2016.06.25 at 12h 24m 39s.xml">
+      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe - 2016.06.25 at 12h 27m 09s.xml">
+      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe - 2016.06.25 at 12h 30m 58s.xml">
+      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="EatBeatsApplicationTests_whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe - 2016.06.25 at 12h 35m 59s.xml">
+      <configuration name="EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="138991000" />
+    <option name="totallyTimeSpent" value="140714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="33" y="23" width="1280" height="709" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1647,7 +1653,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34856176" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34856176" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1728,16 +1734,20 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>968</line>
+          <line>970</line>
           <properties />
-          <option name="timeStamp" value="93" />
+          <option name="timeStamp" value="97" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="94" />
+      <option name="time" value="98" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
         <watch expression="songRepo.findAll()" language="JAVA" custom="" />
+        <watch expression="testRecipe.getTags()" language="JAVA" custom="" />
+        <watch expression="testSongs.get(3).getTags()" language="JAVA" custom="" />
+        <watch expression="song" language="JAVA" custom="" />
+        <watch expression="song.getTags()" language="JAVA" custom="" />
       </configuration>
       <configuration name="Application">
         <watch expression="playlist.getSongs().subList(0, 3)" language="JAVA" custom="" />
@@ -2174,28 +2184,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-search.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-192">
           <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2298,10 +2290,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="136" column="60" selection-start-line="136" selection-start-column="60" selection-end-line="136" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="267" column="0" selection-start-line="267" selection-start-column="0" selection-end-line="267" selection-end-column="0" />
+        <state relative-caret-position="209">
+          <caret line="276" column="40" selection-start-line="276" selection-start-column="40" selection-end-line="276" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -2310,19 +2328,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="968" column="0" selection-start-line="968" selection-start-column="0" selection-end-line="968" selection-end-column="0" />
+        <state relative-caret-position="134">
+          <caret line="971" column="0" selection-start-line="971" selection-start-column="0" selection-end-line="971" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="50" column="4" selection-start-line="50" selection-start-column="4" selection-end-line="52" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>

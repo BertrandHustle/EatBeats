@@ -31,6 +31,7 @@ import java.util.List;
 //todo: switch edit endpoint to GET, not POST (can use image rather than button)
 //todo: make it so it doesn't add recipe if it hits an error
 //todo: change spotify song search function to return more results than 3?
+//todo: check if user exists at each page
 
 
 /**
@@ -120,8 +121,28 @@ public class EatBeatsController {
         //may want to change this to flash attribute?
         session.setAttribute("recipe", recipe);
         model.addAttribute("recipe", recipe);
+        session.setAttribute("user", user);
 
-        return "redirect:/song-search";
+        return "redirect:/song-suggest";
+    }
+
+    @RequestMapping(path = "/song-suggest", method = RequestMethod.GET)
+    public String getSongSuggest(HttpSession session, Model model) throws IOException, WebApiException {
+
+        //gets user out of session
+        User user = (User) session.getAttribute("user");
+        //gets recipe from last page out of session
+        Recipe recipe = (Recipe) session.getAttribute("recipe");
+
+        ArrayList<Song> suggestedSongs = spotifyService.getListOfSuggestedSongsFromRecipeAndSaveToDatabase(recipe, user);
+        for (int x = 0; x < 3; x++){
+           Song song = suggestedSongs.get(x);
+
+
+        }
+
+        return "song-suggest";
+
     }
 
     //todo: add checkmarks for each song and default to checked

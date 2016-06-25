@@ -942,11 +942,11 @@ public class EatBeatsApplicationTests {
 	/**
 	 * Given a recipe
 	 * When recipe tags are used to retrive a suggested playlist url
-	 * Then list of songs is returned and added to DB
+	 * Then list of songs is returned and added to DB and all songs share tags with recipe
 	 */
 
 	@Test
-	public void whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB() throws IOException, WebApiException {
+	public void whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe() throws IOException, WebApiException {
 
 		//arrange
 		Recipe testRecipe = recipeRepo.findFirstByName("name");
@@ -959,14 +959,33 @@ public class EatBeatsApplicationTests {
 		//assert
 		//tests each song added in @before and sees if it's the same song as each song in testSongs
 		boolean addedToDBInBeforeMethod = false;
+		boolean recipeTagsMatchSongTags = true;
+		boolean songHasEmptyTagsList = false;
+
 		for (Song song : songRepo.findAll()){
 			if (testSongs.contains(song)){
 				addedToDBInBeforeMethod = true;
 			}
 		}
 
+		for (Song song : testSongs){
+			for (String tag : song.getTags()){
+				if (!testRecipe.getTags().contains(tag)){
+					recipeTagsMatchSongTags = false;
+				}
+			}
+		}
+
+		for (Song song : testSongs){
+			if (song.getTags().size() == 0){
+				songHasEmptyTagsList = true;
+			}
+		}
+
 		assertThat(testSongs.isEmpty(), is(false));
 		assertThat(addedToDBInBeforeMethod, is(false));
+		assertThat(recipeTagsMatchSongTags, is(true));
+		assertThat(songHasEmptyTagsList, is(false));
 
 	}
 

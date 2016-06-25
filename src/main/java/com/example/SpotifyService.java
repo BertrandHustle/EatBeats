@@ -271,6 +271,12 @@ public class SpotifyService {
             Song song = (getSongFromSpotifyId(id));
             songs.add(song);
 
+            //tags songs with recipe tags
+            ArrayList<String> songTags = song.getTags();
+            for (String recipeTag : recipe.getTags()){
+                songTags.add(recipeTag);
+            }
+
             //saves song to repo if it doesn't already exist
             //todo: move this into an encapsulated method
             if (songRepo.findByNameIgnoreCaseAndArtistIgnoreCase(song.getName(), song.getArtist()) == null){
