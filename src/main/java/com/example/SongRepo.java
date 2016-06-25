@@ -10,9 +10,7 @@ import java.util.List;
 
 //todo: find a more concise way to make these database searches
 public interface SongRepo extends CrudRepository<Song, Integer>{
-    List<Song> findByCategory(String category);
-    List<Song> findByRegion(String region);
-    List<Song> findBySeason(String season);
+    Song findByNameIgnoreCaseAndArtistIgnoreCase(String name, String artist);
     List<Song> findByCategoryAndRegionAndSeason(String category, String region, String season);
     Song findByNameIgnoreCase(String name);
 }

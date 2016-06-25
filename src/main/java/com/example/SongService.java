@@ -77,4 +77,11 @@ public class SongService {
         return songPreviewUrl;
 
     }
+
+    public Song convertTrackToSong(Track track) throws IOException, WebApiException {
+
+        Song song = new Song(track.getArtists().get(0).getName(), track.getName());
+        return song;
+
+    }
 }

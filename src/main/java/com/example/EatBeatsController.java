@@ -23,15 +23,14 @@ import java.util.List;
 
 //todo: put copyright text here
 //todo: DEPLOY!
-//todo: make single recipe page (edit page)
 //todo: fix package structure
 //todo: implement search feature for recipes
 //todo: allow user to view other users' recipes (via search)
 //todo: implement @notNull tags on recipe fields?
 //todo: add spotify suggestions as songs in database
-//todo: have user confirm that selected songs are correct
 //todo: switch edit endpoint to GET, not POST (can use image rather than button)
 //todo: make it so it doesn't add recipe if it hits an error
+//todo: change spotify song search function to return more results than 3?
 
 
 /**
@@ -95,8 +94,6 @@ public class EatBeatsController {
     @RequestMapping(path = "/create-recipe", method = RequestMethod.POST)
     public String postCreateRecipe(HttpSession session, String season, String name,
                                    String category, String region, String description,
-                                   String songTitle1, String songTitle2, String songTitle3,
-                                   String songArtist1, String songArtist2, String songArtist3,
                                    Model model) throws IOException, WebApiException {
 
         //retrieves current user
@@ -106,46 +103,30 @@ public class EatBeatsController {
         User user = userRepo.findFirstByUsername(username);
 
         //creates new recipe from user input, saves to db
-
-        //todo: DON'T ALLOW THIS UNLESS SONGS ARE FOUND
         Recipe recipe = new Recipe(season, name, category, region, description);
         recipe.setUser(user);
 
-        //todo: this should be leaner: move this to service and pass in songs as arguments
-        //constructs songs from user input
-        Song song1 = spotifyService.getSongFromSpotify(songTitle1, songArtist1);
-        Song song2 = spotifyService.getSongFromSpotify(songTitle2, songArtist2);
-        Song song3 = spotifyService.getSongFromSpotify(songTitle3, songArtist3);
-
-        //set song attributes by recipe attributes, saves songs to database
-        List<Song> songs = Arrays.asList(song1, song2, song3);
-        songService.tagAndSaveSongsFromRecipe(songs, recipe);
-
-        if (!songs.isEmpty()){
+        //checks if any fields in recipe are null or songs list is empty
+        //if any fields are null, puts error into flash attribute,
+        //else, puts recipe into database successfully
+        if (recipe.getRegion() != null &&
+            recipe.getName() != null &&
+            recipe.getCategory() != null &&
+            recipe.getSeason() != null &&
+            recipe.getDescription() != null){
             recipeRepo.save(recipe);
         }
 
-        /*
-        for (Song song : songs){
-            if (song.getName() != null && song.getArtist() != null)
-            song.setCategory(category);
-            song.setSeason(season);
-            song.setRegion(region);
-            songRepo.save(song);
-        }
-        */
-
         //may want to change this to flash attribute?
         session.setAttribute("recipe", recipe);
-        session.setAttribute("songs", songs);
         model.addAttribute("recipe", recipe);
-        model.addAttribute("songs", songs);
-
-        //todo: add songs into model and redirect to search-songs
-        //todo: add recipe into model so it can be saved on the next route
 
         return "redirect:/song-search";
     }
+
+    //todo: add checkmarks for each song and default to checked
+    //todo: move song search off of recipe page to song search page (and handle cases where no songs are suggested)
+    //todo: query database when songs are suggested, create playlist from retrieved songs if song suggested is already in database
 
     @RequestMapping(path = "/song-search", method = RequestMethod.GET)
     public String getSongSearch(HttpSession session, Model model) throws IOException, WebApiException {
@@ -158,9 +139,18 @@ public class EatBeatsController {
         String songPreview2 = songService.getSongPreviewUrl(songs.get(1));
         String songPreview3 = songService.getSongPreviewUrl(songs.get(2));
 
+        String songName1 = songs.get(0).getName();
+        String songName2 = songs.get(1).getName();
+        String songName3 = songs.get(2).getName();
+
         model.addAttribute("songPreview1", songPreview1);
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
+
+        model.addAttribute("songName1", songName1);
+        model.addAttribute("songName2", songName2);
+        model.addAttribute("songName3", songName3);
+
         return "song-search";
     }
 
@@ -181,12 +171,55 @@ public class EatBeatsController {
 
     }
 
-    @RequestMapping(path = "/search-songs", method = RequestMethod.GET)
-    public String getSearchSongs(HttpSession session, String songTitle1, String artist1,
-                                 String songTitle2, String artist2, String songTitle3,
-                                 String artist3){
+    //routes for song search previews, re-searching songs and adding recipes
 
-        return "search-songs";
+    @RequestMapping(path = "/song-search", method = RequestMethod.POST)
+    public String postSongSearch(HttpSession session, String songTitle1, String artist1,
+                                  String songTitle2, String artist2, String songTitle3,
+                                  String artist3, Model model) throws IOException, WebApiException {
+
+        Recipe recipe = (Recipe) session.getAttribute("recipe");
+        List<Song> songs = (List<Song>) session.getAttribute("songs");
+
+        /**
+         * 1: make new songs from user input
+         * 2: get preview urls from songs
+         * 3: add preview urls to model and redirect
+         */
+
+        Song song1 = new Song (artist1, songTitle1);
+        Song song2 = new Song (artist2, songTitle2);
+        Song song3 = new Song (artist3, songTitle3);
+
+        String songPreview1 = songService.getSongPreviewUrl(song1);
+        String songPreview2 = songService.getSongPreviewUrl(song2);
+        String songPreview3 = songService.getSongPreviewUrl(song3);
+
+        model.addAttribute("songPreview1", songPreview1);
+        model.addAttribute("songPreview2", songPreview2);
+        model.addAttribute("songPreview3", songPreview3);
+
+        //where should this redirect to?
+        return "redirect:/song-search";
+
+    }
+
+    //submit recipe and songs
+    @RequestMapping(path = "/submit-songs", method = RequestMethod.POST)
+    public String submitSongs(HttpSession session){
+
+        List<Song> songs = (List<Song>) session.getAttribute("songs");
+
+        //iterates over all songs in song list and adds to repo if spotifyId isn't an empty string
+        //i.e. if the spotify search query was successful
+        for (Song song : songs){
+            if (!song.getSpotifyId().equals("")){
+                songRepo.save(song);
+            }
+        }
+
+        //todo: add "songs added!" message into model here to display on home page
+        return "redirect:/";
 
     }
 

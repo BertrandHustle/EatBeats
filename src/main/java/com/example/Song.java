@@ -264,4 +264,8 @@ public class Song {
     public void setArtist(String artist) {
         this.artist = artist;
     }
+
+    public int getId() {
+        return id;
+    }
 }

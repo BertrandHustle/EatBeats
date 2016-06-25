@@ -17,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -938,4 +939,55 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a recipe
+	 * When recipe tags are used to retrive a suggested playlist url
+	 * Then list of songs is returned and added to DB
+	 */
+
+	@Test
+	public void whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB() throws IOException, WebApiException {
+
+		//arrange
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		User testUser = userRepo.findFirstByUsername("name");
+
+		//act
+		ArrayList<Song> testSongs = new ArrayList<>();
+		testSongs = spotifyService.getListOfSuggestedSongsFromRecipeAndSaveToDatabase(testRecipe, testUser);
+
+		//assert
+		//tests each song added in @before and sees if it's the same song as each song in testSongs
+		boolean addedToDBInBeforeMethod = false;
+		for (Song song : songRepo.findAll()){
+			if (testSongs.contains(song)){
+				addedToDBInBeforeMethod = true;
+			}
+		}
+
+		assertThat(testSongs.isEmpty(), is(false));
+		assertThat(addedToDBInBeforeMethod, is(false));
+
+	}
+
+	/**
+	 * Given a playlist with more than twenty songs
+	 * When playlists are created
+	 * Then playlist is truncated to contain only ten songs
+	 */
+
+	public void whenPlaylistHasMoreThanTwentySongsThenPlaylistIsTruncatedToTwentySongs(){
+
+		//arrange
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		User testUser = userRepo.findFirstByUsername("name");
+		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
+		Song testSong2 = songRepo.findByNameIgnoreCase("gravel pit");
+
+
+		//List<Song> testSongs = Arrays.asList()
+
+		//Playlist testPlaylist = new Playlist(testRecipe, testUser)
+
+	}
 }

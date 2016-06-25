@@ -4,10 +4,12 @@ import com.google.common.base.Joiner;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
 import com.wrapper.spotify.methods.RecommendationsRequest;
+import com.wrapper.spotify.methods.TrackRequest;
 import com.wrapper.spotify.methods.TrackSearchRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
 import com.wrapper.spotify.models.Track;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -26,6 +28,15 @@ public class SpotifyService {
 
     String clientId = "219a55148b404fb18b61c44cdb010719";
     String clientSecret = "6cd7039b1a314ed7ab5208d07f9db234";
+
+    @Autowired
+    PlaylistService playlistService;
+
+    @Autowired
+    SongService songService;
+
+    @Autowired
+    SongRepo songRepo;
 
 
     public List<Track> getListOfRecommendationsFromSeedTracks(ArrayList<String> seeds) throws IOException, WebApiException {
@@ -241,5 +252,53 @@ public class SpotifyService {
 
         return recommendationsUrl;
 
+    }
+
+    public ArrayList<Song> getListOfSuggestedSongsFromRecipeAndSaveToDatabase(Recipe recipe, User user) throws IOException, WebApiException {
+
+        //gets recommendationUrl from recipe and user
+        //todo: fix this so it doesn't rely on playlist service
+        String recommendationUrl = createRecommendationsPlaylistUrlFromPlaylist
+                (playlistService.makePlaylistFromRecipe(recipe, user), recipe.getName());
+
+        //splits url on "trackset:", then on comma to get array of songIds
+        String[] splitOnTrackset = recommendationUrl.split("name:");
+        String[] suggestedSongIds = splitOnTrackset[1].split(",");
+
+        ArrayList<Song> songs = new ArrayList<>();
+
+        for (String id : suggestedSongIds){
+            Song song = (getSongFromSpotifyId(id));
+            songs.add(song);
+
+            //saves song to repo if it doesn't already exist
+            //todo: move this into an encapsulated method
+            if (songRepo.findByNameIgnoreCaseAndArtistIgnoreCase(song.getName(), song.getArtist()) == null){
+                songRepo.save(song);
+            }
+        }
+
+        return songs;
+    }
+
+    public Song getSongFromSpotifyId(String id) throws IOException, WebApiException {
+
+        final Api api = Api.builder()
+                .clientId(clientId)
+                .clientSecret(clientSecret).build();
+
+        final ClientCredentialsGrantRequest clientCredentialsGrantRequest = api.clientCredentialsGrant().build();
+        ClientCredentials clientCredentials = clientCredentialsGrantRequest.get();
+
+        api.setAccessToken(clientCredentials.getAccessToken());
+
+        //surrounds trackName with quotes so Spotify API can get an exact query match
+        final TrackRequest trackRequest = api.getTrack(id)
+                .build();
+
+        Track track = trackRequest.get();
+
+        Song song = songService.convertTrackToSong(track);
+        return song;
     }
 }
