@@ -5,7 +5,7 @@
 
     <form>
         {{#songPreview1}}
-            <a target="_blank" href={{songPreview1}}>Preview {{songName1}} by {{songArtist1}}</a>
+            <a href={{songPreview1}}>Preview {{songName1}}</a>
         {{/songPreview1}}
         {{^songPreview1}}
             No results found!
@@ -14,7 +14,7 @@
 
     <form>
         {{#songPreview2}}
-            <a target="_blank" href={{songPreview2}}>Preview {{songName2}} by {{songArtist2}}</a>
+            <iframe src={{songPreview2}} width="300" height="100" frameborder="0" allowtransparency="true"></iframe>
         {{/songPreview2}}
         {{^songPreview2}}
             No results found!
@@ -23,16 +23,12 @@
 
     <form>
         {{#songPreview3}}
-            <a target="_blank" href={{songPreview3}}>Preview {{songName3}} by {{songArtist3}}</a>
+            <iframe src={{songPreview3}} width="300" height="100" frameborder="0" allowtransparency="true"></iframe>
         {{/songPreview3}}
         {{^songPreview3}}
             No results found!
         {{/songPreview3}}
     </form>
-
-<form action="/song-search" method="post">
-    <button type="submit" >Submit Songs</button>
-</form>
 
 <div>
     Don't like our suggestions? Suggest a few of your own!
@@ -44,6 +40,6 @@
     <input type="text" placeholder="Artist" name="songArtist3"/>
 </div>
 
-<form action="/song-search" method="get">
-    <button type="submit" >Search Songs</button>
-</form>
+<div>
+    <button type="submit" >Submit Recipe</button>
+</div>

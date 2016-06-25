@@ -32,6 +32,7 @@ import java.util.List;
 //todo: make it so it doesn't add recipe if it hits an error
 //todo: change spotify song search function to return more results than 3?
 //todo: check if user exists at each page
+//todo: handle cases where no songs are found for recipe suggestion songs
 
 
 /**
@@ -126,6 +127,7 @@ public class EatBeatsController {
         return "redirect:/song-suggest";
     }
 
+    //todo: get this to return same page after searching (with new previews)
     @RequestMapping(path = "/song-suggest", method = RequestMethod.GET)
     public String getSongSuggest(HttpSession session, Model model) throws IOException, WebApiException {
 
@@ -134,14 +136,60 @@ public class EatBeatsController {
         //gets recipe from last page out of session
         Recipe recipe = (Recipe) session.getAttribute("recipe");
 
+        //gets previews for first three songs and adds to model
         ArrayList<Song> suggestedSongs = spotifyService.getListOfSuggestedSongsFromRecipeAndSaveToDatabase(recipe, user);
-        for (int x = 0; x < 3; x++){
-           Song song = suggestedSongs.get(x);
 
+        Song song1 = suggestedSongs.get(0);
+        Song song2 = suggestedSongs.get(1);
+        Song song3 = suggestedSongs.get(2);
 
-        }
+        String songPreview1 = songService.getSongPreviewUrl(song1);
+        String songPreview2 = songService.getSongPreviewUrl(song2);
+        String songPreview3 = songService.getSongPreviewUrl(song3);
+
+        model.addAttribute("songPreview1", songPreview1);
+        model.addAttribute("songPreview2", songPreview2);
+        model.addAttribute("songPreview3", songPreview3);
+
+        model.addAttribute("songName1", song1.getName());
+        model.addAttribute("songName2", song2.getName());
+        model.addAttribute("songName3", song3.getName());
+
+        model.addAttribute("songArtist1", song1.getArtist());
+        model.addAttribute("songArtist2", song2.getArtist());
+        model.addAttribute("songArtist3", song3.getArtist());
+
+        model.addAttribute("recipe", recipe);
 
         return "song-suggest";
+
+    }
+
+    @RequestMapping(path = "/song-suggest", method = RequestMethod.POST)
+    public String postSongSuggest(HttpSession session, String songTitle1, String artist1,
+                                  String songTitle2, String artist2, String songTitle3,
+                                  String artist3, Model model) throws IOException, WebApiException {
+
+        Song song1 = new Song(artist1, songTitle1);
+        Song song2 = new Song(artist2, songTitle2);
+        Song song3 = new Song(artist3, songTitle3);
+
+        List<Song> songs = Arrays.asList(song1, song2, song3);
+        session.setAttribute("songs", songs);
+
+        String songPreview1 = songService.getSongPreviewUrl(song1);
+        String songPreview2 = songService.getSongPreviewUrl(song2);
+        String songPreview3 = songService.getSongPreviewUrl(song3);
+
+        model.addAttribute("songPreview1", songPreview1);
+        model.addAttribute("songPreview2", songPreview2);
+        model.addAttribute("songPreview3", songPreview3);
+
+        model.addAttribute("songName1", songTitle1);
+        model.addAttribute("songName2", songTitle2);
+        model.addAttribute("songName3", songTitle3);
+
+        return "redirect:/song-suggest";
 
     }
 
@@ -175,23 +223,6 @@ public class EatBeatsController {
         return "song-search";
     }
 
-    //todo: add favorite playlists
-    //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
-
-    //favorite playlists route
-    @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
-    public String favoritePlaylists(HttpSession session, String id, Model model){
-
-        String username = session.getAttribute("username").toString();
-        User user = userRepo.findFirstByUsername(username);
-
-        List<Playlist> favoritePlaylists = user.getFavoritePlaylists();
-        model.addAttribute("playlists", favoritePlaylists);
-
-        return "favorite-playlists";
-
-    }
-
     //routes for song search previews, re-searching songs and adding recipes
 
     @RequestMapping(path = "/song-search", method = RequestMethod.POST)
@@ -222,6 +253,23 @@ public class EatBeatsController {
 
         //where should this redirect to?
         return "redirect:/song-search";
+
+    }
+
+    //todo: add favorite playlists
+    //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
+
+    //favorite playlists route
+    @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
+    public String favoritePlaylists(HttpSession session, String id, Model model){
+
+        String username = session.getAttribute("username").toString();
+        User user = userRepo.findFirstByUsername(username);
+
+        List<Playlist> favoritePlaylists = user.getFavoritePlaylists();
+        model.addAttribute("playlists", favoritePlaylists);
+
+        return "favorite-playlists";
 
     }
 

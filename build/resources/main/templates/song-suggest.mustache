@@ -1,6 +1,34 @@
-{{#suggestedSongs}}
-    {{.}}
-{{/suggestedSongs}}
+
+    <form>
+        <a href="/">Home</a>
+    </form>
+
+    <form>
+        {{#songPreview1}}
+            <a href={{songPreview1}}>Preview {{songName1}} by {{songArtist1}}</a>
+        {{/songPreview1}}
+        {{^songPreview1}}
+            No results found!
+        {{/songPreview1}}
+    </form>
+
+    <form>
+        {{#songPreview2}}
+            <a href={{songPreview2}}>Preview {{songName2}} by {{songArtist2}}</a>
+        {{/songPreview2}}
+        {{^songPreview2}}
+            No results found!
+        {{/songPreview2}}
+    </form>
+
+    <form>
+        {{#songPreview3}}
+            <a href={{songPreview3}}>Preview {{songName3}} by {{songArtist3}}</a>
+        {{/songPreview3}}
+        {{^songPreview3}}
+            No results found!
+        {{/songPreview3}}
+    </form>
 
 <div>
     Don't like our suggestions? Suggest a few of your own!

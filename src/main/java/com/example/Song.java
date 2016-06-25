@@ -47,7 +47,7 @@ public class Song {
     //ranking of thumbs up vs thumbs down for track
     private int rank;
     //tags for track (e.g. season, category, etc.)
-    //todo: remove this and replace with individual tags
+    //todo: change this to be a hashset so duplicates aren't added
     private ArrayList<String> tags = new ArrayList<>();
     private String category;
     private String region;

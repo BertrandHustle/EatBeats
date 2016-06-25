@@ -241,7 +241,10 @@ public class SpotifyService {
         ArrayList<String> testSeeds = new ArrayList<>();
 
         for (Song song : testSongs){
-            testSeeds.add(song.getSpotifyId());
+            String spotifyId = song.getSpotifyId();
+            if (!testSeeds.contains(spotifyId)){
+                testSeeds.add(spotifyId);
+            }
         }
 
         //todo: fix duplicates here!
@@ -262,7 +265,8 @@ public class SpotifyService {
                 (playlistService.makePlaylistFromRecipe(recipe, user), recipe.getName());
 
         //splits url on "trackset:", then on comma to get array of songIds
-        String[] splitOnTrackset = recommendationUrl.split("name:");
+        String recipeName = recipe.getName();
+        String[] splitOnTrackset = recommendationUrl.split(recipeName+":");
         String[] suggestedSongIds = splitOnTrackset[1].split(",");
 
         ArrayList<Song> songs = new ArrayList<>();
@@ -272,14 +276,15 @@ public class SpotifyService {
             songs.add(song);
 
             //tags songs with recipe tags
-            ArrayList<String> songTags = song.getTags();
             for (String recipeTag : recipe.getTags()){
-                songTags.add(recipeTag);
+                song.getTags().add(recipeTag);
+
             }
 
             //saves song to repo if it doesn't already exist
             //todo: move this into an encapsulated method
-            if (songRepo.findByNameIgnoreCaseAndArtistIgnoreCase(song.getName(), song.getArtist()) == null){
+            if (songRepo.findByNameIgnoreCaseAndArtistIgnoreCase(song.getName(), song.getArtist()) == null &&
+                    !song.getSpotifyId().equals("")){
                 songRepo.save(song);
             }
         }
