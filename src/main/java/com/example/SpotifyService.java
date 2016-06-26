@@ -182,11 +182,17 @@ public class SpotifyService {
                 .build();
 
         //todo: make this so it doesn't mirror above code
-        //init arraylists
+        //init arraylists and return track
 
         ArrayList<Track> searchResultTracks = new ArrayList<>();
         searchResultTracks.addAll(trackSearchRequest.get().getItems());
-        Track returnTrack = searchResultTracks.get(0);
+        Track returnTrack;
+
+        try {
+            returnTrack = searchResultTracks.get(0);
+        } catch (Exception e){
+            return null;
+        }
 
         return returnTrack;
 

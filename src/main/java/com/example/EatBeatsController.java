@@ -1,12 +1,7 @@
 package com.example;
 
 
-import com.wrapper.spotify.Api;
 import com.wrapper.spotify.exceptions.WebApiException;
-import com.wrapper.spotify.methods.RecommendationsRequest;
-import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
-import com.wrapper.spotify.models.ClientCredentials;
-import com.wrapper.spotify.models.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,6 +26,7 @@ import java.util.List;
 //todo: make it so it doesn't add recipe if it hits an error
 //todo: change spotify song search function to return more results than 3?
 //todo: check if user exists at each page
+//todo: fix display on my-recipes so it isn't just a to-string method
 
 
 //todo: handle cases where no songs are found for recipe suggestion songs
@@ -152,6 +147,9 @@ public class EatBeatsController {
         Song song2 = suggestedSongs.get(1);
         Song song3 = suggestedSongs.get(2);
 
+        List<Song> songs = Arrays.asList(song1, song2, song3);
+        session.setAttribute("songs", songs);
+
         String songName1 = song1.getName();
         String songName2 = song2.getName();
         String songName3 = song3.getName();
@@ -182,6 +180,8 @@ public class EatBeatsController {
         String songPreview2 = songService.getSongPreviewUrl(song2);
         String songPreview3 = songService.getSongPreviewUrl(song3);
 
+        //List<String> songPreviews = Arrays.asList(songPreview1, songPreview2, songPreview3);
+
         model.addAttribute("songPreview1", songPreview1);
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
@@ -203,7 +203,6 @@ public class EatBeatsController {
         Recipe recipe = (Recipe) session.getAttribute("recipe");
 
         List<Song> songs = Arrays.asList(song1, song2, song3);
-        session.setAttribute("songs", songs);
 
         String songPreview1 = songService.getSongPreviewUrl(song1);
         String songPreview2 = songService.getSongPreviewUrl(song2);
@@ -224,29 +223,32 @@ public class EatBeatsController {
     //todo: add checkmarks for each song and default to checked
 
     @RequestMapping(path = "/search-songs-again", method = RequestMethod.GET)
-    public String getSongSearch(HttpSession session, Model model) throws IOException, WebApiException {
+    public String searchSongsAgain(HttpSession session, Model model, String songTitle1,
+                                String songTitle2, String songTitle3, String songArtist1,
+                                String songArtist2, String songArtist3) throws IOException, WebApiException {
 
-        List<Song> songs = (List<Song>) session.getAttribute("songs");
-        Recipe recipe = (Recipe) session.getAttribute("recipe");
+        Song song1 = new Song(songArtist1, songTitle1);
+        Song song2 = new Song(songArtist2, songTitle2);
+        Song song3 = new Song(songArtist3, songTitle3);
 
         //gets song preview urls for each song
-        String songPreview1 = songService.getSongPreviewUrl(songs.get(0));
-        String songPreview2 = songService.getSongPreviewUrl(songs.get(1));
-        String songPreview3 = songService.getSongPreviewUrl(songs.get(2));
-
-        String songName1 = songs.get(0).getName();
-        String songName2 = songs.get(1).getName();
-        String songName3 = songs.get(2).getName();
+        String songPreview1 = songService.getSongPreviewUrl(song1);
+        String songPreview2 = songService.getSongPreviewUrl(song2);
+        String songPreview3 = songService.getSongPreviewUrl(song3);
 
         model.addAttribute("songPreview1", songPreview1);
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
 
-        model.addAttribute("songName1", songName1);
-        model.addAttribute("songName2", songName2);
-        model.addAttribute("songName3", songName3);
+        model.addAttribute("songArtist1", song1.getArtist());
+        model.addAttribute("songArtist2", song2.getArtist());
+        model.addAttribute("songArtist3", song3.getArtist());
 
-        return "song-search";
+        model.addAttribute("songName1", song1.getName());
+        model.addAttribute("songName2", song2.getName());
+        model.addAttribute("songName3", song3.getName());
+
+        return "song-suggest";
     }
 
     //todo: add favorite playlists
@@ -254,7 +256,7 @@ public class EatBeatsController {
 
     //favorite playlists route
     @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
-    public String favoritePlaylists(HttpSession session, String id, Model model){
+    public String getFavoritePlaylists(HttpSession session, String id, Model model){
 
         String username = session.getAttribute("username").toString();
         User user = userRepo.findFirstByUsername(username);
@@ -263,6 +265,17 @@ public class EatBeatsController {
         model.addAttribute("playlists", favoritePlaylists);
 
         return "favorite-playlists";
+
+    }
+
+    //saves favorite playlist to user list
+    @RequestMapping(path = "/favorite-playlists", method = RequestMethod.POST)
+    public String postFavoritePlaylists(HttpSession session, String id, Model model){
+
+        String username = session.getAttribute("username").toString();
+        User user = userRepo.findFirstByUsername(username);
+
+        //user.getFavoritePlaylists().add()
 
     }
 
