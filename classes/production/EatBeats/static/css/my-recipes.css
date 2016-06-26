@@ -1,0 +1,21 @@
+.content-wrapper {
+    margin: 10%;
+}
+
+form {
+    display: inline-block;
+}
+
+.btn-danger {
+    margin-left: 550px;
+}
+
+.recipe-card {
+    border: solid 1px lightgray;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.recipe-name {
+    font-size: 3em;
+}

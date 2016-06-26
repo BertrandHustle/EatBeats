@@ -13,3 +13,25 @@ h2 {
     width: 30%;
 }
 
+.home-form {
+    position: fixed;
+    top: 300;
+}
+
+.login-form {
+    position: fixed;
+    top: 350;
+
+}
+
+.login-form input, .login-form button {
+    display: block;
+    margin-top: 15px;
+    margin-left: 100px;
+}
+
+.create-account {
+    position: fixed;
+    top: 500;
+    left: 50;
+}

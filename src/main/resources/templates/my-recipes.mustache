@@ -3,27 +3,47 @@
 
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/my-recipes.css"></link>
 </head>
 
+<body>
+
+<div class="content-wrapper">
+
+
 {{#recipes}}
-    {{.}}
+<div class="recipe-card">
+    <div class="recipe-name">{{name}}</div>
+    <div>{{season}}</div>
+    <div>{{region}}</div>
+    <div>{{description}}</div>
     <div>
+
         <form action="/make-playlist" method="get">
             <input type="hidden" name="id" value="{{id}}">
             <button type="submit" name="make-playlist" class="btn btn-info">Make Playlist</button>
         </form>
-        <form action="/edit-recipe" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="edit-recipe" class="btn btn-default">Edit Recipe</button>
-        </form>
-        <form action="/delete-recipe" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="delete-recipe" class="btn btn-danger">Delete Recipe</button>
-        </form>
+
+
         <form action="/view-recipe" method="get">
             <input type="hidden" name="id" value="{{id}}">
             <button type="submit" name="view-recipe" class="btn btn-default">View Recipe</button>
         </form>
+
+        <form action="/edit-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="edit-recipe" class="btn btn-default">Edit Recipe</button>
+        </form>
+
+
+        <form action="/delete-recipe" method="get">
+            <input type="hidden" name="id" value="{{id}}">
+            <button type="submit" name="delete-recipe" class="btn btn-danger">Delete Recipe</button>
+        </form>
+
+
+
+    </div>
     </div>
 {{/recipes}}
 
@@ -35,3 +55,6 @@
     <a href="/">Home</a>
 </form>
 
+</div>
+
+</body>

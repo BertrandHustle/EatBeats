@@ -2,40 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/static/css/create-recipe.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/com/example/EatBeatsController.class" afterPath="$PROJECT_DIR$/build/classes/main/com/example/EatBeatsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/create-account.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/create-account.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/create-recipe.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/create-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/edit-recipe.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/edit-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/favorite-playlists.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/favorite-playlists.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/home.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/home.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/my-recipes.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/my-recipes.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/recipe-playlist.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/recipe-playlist.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/single-recipe-view.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/single-recipe-view.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/song-search.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/song-search.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/templates/song-suggest.mustache" afterPath="$PROJECT_DIR$/build/resources/main/templates/song-suggest.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/create-account.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/create-account.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/create-recipe.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/create-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/edit-recipe.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/edit-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/favorite-playlists.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/favorite-playlists.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/home.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/home.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/my-recipes.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/my-recipes.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/recipe-playlist.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/recipe-playlist.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/single-recipe-view.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/single-recipe-view.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/song-search.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/song-search.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/production/EatBeats/templates/song-suggest.mustache" afterPath="$PROJECT_DIR$/classes/production/EatBeats/templates/song-suggest.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/create-account.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/create-account.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/home.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/home.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/home.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
     </list>
     <ignored path="EatBeats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -193,51 +162,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.mustache" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-recipes.mustache" pinned="false" current-in-tab="false">
+      <file leaf-file-name="my-recipes.mustache" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="195">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="create-recipe.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
+      <file leaf-file-name="my-recipes.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/my-recipes.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create-recipe.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/create-recipe.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="27" selection-start-line="7" selection-start-column="27" selection-end-line="7" selection-end-column="27" />
+            <state relative-caret-position="135">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
               <folding />
             </state>
           </provider>
@@ -706,13 +645,14 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/static/styles.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/create-recipe.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/create-recipe.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/home.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.mustache" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/css/my-recipes.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
       </list>
     </option>
   </component>
@@ -1584,7 +1524,7 @@
       <workItem from="1466343803827" duration="14911000" />
       <workItem from="1466429331425" duration="24429000" />
       <workItem from="1466516259657" duration="36797000" />
-      <workItem from="1466688720563" duration="43243000" />
+      <workItem from="1466688720563" duration="45190000" />
     </task>
     <servers />
   </component>
@@ -1621,7 +1561,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="153786000" />
+    <option name="totallyTimeSpent" value="155733000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1650,7 +1590,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29261363" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49676898" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1765,14 +1705,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/se/michaelthelin/spotify/spotify-web-api-java/1.5.0-doug/spotify-web-api-java-1.5.0-doug-sources.jar!/com/wrapper/spotify/methods/TrackSearchRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-307">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/UserRepo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -2220,6 +2152,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -2230,18 +2186,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state relative-caret-position="120">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -2254,26 +2202,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.mustache">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/my-recipes.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding />
         </state>
       </provider>

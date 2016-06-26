@@ -5,30 +5,34 @@
 
 
 
-    <h2>Get started with EatBeats</h2>
-    <img src="https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg" width="100%">
+
 
 
  <body>
+
+ <h2>Get started with EatBeats</h2>
+ <img src="https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg" width="100%">
+
+ <div class="home-form">
     {{#username}}
-        {{username}}
+        <div>Hello, {{username}}</div>
 
 
     <div>
         <form action="/favorite-playlists" method="get">
-            <button class="btn btn-primary" type="submit" name="favorite-playlists">Favorite Playlists</button>
+            <button class="btn btn-default" type="submit" name="favorite-playlists">Favorite Playlists</button>
         </form>
     </div>
 
     <div>
         <form action="/my-recipes" method="get">
-            <button class="btn btn-primary" type="submit" name="my-recipes">My Recipes</button>
+            <button class="btn btn-default" type="submit" name="my-recipes">My Recipes</button>
         </form>
     </div>
 
     <div>
         <form action="/create-recipe" method="get">
-            <button class="btn btn-primary" type="submit" name="create-recipe">Make a New Recipe</button>
+            <button class="btn btn-default" type="submit" name="create-recipe">Make a New Recipe</button>
         </form>
     </div>
 
@@ -40,20 +44,21 @@
     {{/username}}
 
     {{^username}}
-    <div>
+    <div class="login-form">
         <form action="/login" method="post">
             <input type="text" placeholder="username" name="username"/>
             <input type="password" placeholder="password" name="password"/>
             <button type="submit">Login</button>
         </form>
     </div>
-    {{/username}}
 
-    {{^username}}
-        <div>
+        <div class="create-account">
             <form>
                 <a href="/create-account">Create Account</a>
             </form>
         </div>
     {{/username}}
+
+ </div>
+
  </body>
