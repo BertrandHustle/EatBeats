@@ -1,15 +1,16 @@
 
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/song-suggest.css"></link>
 </head>
 
     <form>
         <a href="/">Home</a>
     </form>
-
+<div class="content-wrapper">
     <form>
         {{#songPreview1}}
-            <a target="_blank" href={{songPreview1}}>Preview {{songName1}} by {{songArtist1}}</a>
+            <a class="song-preview" target="_blank" href={{songPreview1}}>{{songName1}} by {{songArtist1}}</a>
         {{/songPreview1}}
         {{^songPreview1}}
             No results found!
@@ -18,7 +19,7 @@
 
     <form>
         {{#songPreview2}}
-            <a target="_blank" href={{songPreview2}}>Preview {{songName2}} by {{songArtist2}}</a>
+            <a class="song-preview"target="_blank" href={{songPreview2}}>{{songName2}} by {{songArtist2}}</a>
         {{/songPreview2}}
         {{^songPreview2}}
             No results found!
@@ -27,7 +28,7 @@
 
     <form>
         {{#songPreview3}}
-            <a target="_blank" href={{songPreview3}}>Preview {{songName3}} by {{songArtist3}}</a>
+            <a class="song-preview" target="_blank" href={{songPreview3}}>{{songName3}} by {{songArtist3}}</a>
         {{/songPreview3}}
         {{^songPreview3}}
             No results found!
@@ -35,19 +36,28 @@
     </form>
 
 <form action="/song-search" method="post">
-    <button type="submit" >Submit Songs</button>
+    <button type="submit" class="btn btn-primary">Submit Songs</button>
 </form>
 
 <div>
-    Don't like our suggestions? Suggest a few of your own!
-    <input type="text" placeholder="Title" name="songTitle1"/>
-    <input type="text" placeholder="Artist" name="songArtist1"/>
-    <input type="text" placeholder="Title" name="songTitle2"/>
-    <input type="text" placeholder="Artist" name="songArtist2"/>
-    <input type="text" placeholder="Title" name="songTitle3"/>
-    <input type="text" placeholder="Artist" name="songArtist3"/>
+    <div>Don't like our suggestions? Suggest a few of your own!</div>
+    <div class="artist-title-suggest">
+        <input type="text" placeholder="Title" name="songTitle1"/>
+        <input type="text" placeholder="Artist" name="songArtist1"/>
+    </div>
+    <div class="artist-title-suggest">
+        <input type="text" placeholder="Title" name="songTitle2"/>
+        <input type="text" placeholder="Artist" name="songArtist2"/>
+    </div>
+
+    <div class="artist-title-suggest">
+        <input type="text" placeholder="Title" name="songTitle3"/>
+        <input type="text" placeholder="Artist" name="songArtist3"/>
+    </div>
 </div>
 
 <form action="/song-search" method="get">
-    <button type="submit" >Search Songs</button>
+    <button type="submit" class="btn btn-primary">Search Songs</button>
 </form>
+
+</div>
