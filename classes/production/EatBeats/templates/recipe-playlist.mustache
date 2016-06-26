@@ -1,11 +1,21 @@
 <html>
     <body>
+
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        </head>
+
         <form>
             <a href="/">Home</a>
         </form>
 
         <form>
             <iframe src={{spotifyPlaylistUrl}} width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+        </form>
+
+
+        <form action="/favorite-playlist" method="post">
+            <button type="submit" >Save as favorite</button>
         </form>
     </body>
 </html>

@@ -1,28 +1,40 @@
+<head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/home.css"></link>
+</head>
 
- HOME
 
+
+    <h2>Get started with EatBeats</h2>
+    <img src="https://static.pexels.com/photos/3329/food-kitchen-cutting-board-cooking.jpg" width="100%">
+
+
+ <body>
     {{#username}}
+        {{username}}
+
+
     <div>
-        <form action="favorite-playlists" method="get">
-            <button type="submit" name="favorite-playlists">Favorite Playlists</button>
+        <form action="/favorite-playlists" method="get">
+            <button class="btn btn-primary" type="submit" name="favorite-playlists">Favorite Playlists</button>
         </form>
     </div>
 
     <div>
-        <form action="my-recipes" method="get">
-            <button type="submit" name="my-recipes">My Recipes</button>
+        <form action="/my-recipes" method="get">
+            <button class="btn btn-primary" type="submit" name="my-recipes">My Recipes</button>
         </form>
     </div>
 
     <div>
         <form action="/create-recipe" method="get">
-            <button type="submit" name="create-recipe">Make a New Recipe</button>
+            <button class="btn btn-primary" type="submit" name="create-recipe">Make a New Recipe</button>
         </form>
     </div>
 
     <div>
         <form action="/logout" method="get">
-            <button type="submit">Logout</button>
+            <button class="btn btn-primary" type="submit">Logout</button>
         </form>
     </div>
     {{/username}}
@@ -44,3 +56,4 @@
             </form>
         </div>
     {{/username}}
+ </body>

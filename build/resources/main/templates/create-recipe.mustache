@@ -1,10 +1,17 @@
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" type="text/css" href="css/create-recipe.css"></link>
+</head>
+
+<body>
+
 <form>
     <a href="/">Home</a>
 </form>
 
-Create a recipe:
+<div class="header">Create a recipe:</div>
 
-<form action="/create-recipe" method="post">
+<form class="create-recipe" action="/create-recipe" method="post">
     <div>
         Name
         <input type="text" placeholder="name" name="name"/>
@@ -44,11 +51,13 @@ Create a recipe:
     </div>
 
     <div>
-            Description
+            <div>Description</div>
             <textarea title="description" name="description" rows="5" cols="10"></textarea>
     </div>
 
     <div>
-            <button type="submit" >Submit Recipe</button>
+            <button type="submit" class="btn btn-primary">Submit Recipe</button>
     </div>
 </form>
+
+</body>

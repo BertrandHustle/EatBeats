@@ -1,0 +1,15 @@
+img {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+h2 {
+    position: relative;
+    top: 35%;
+    left: 10%;
+    z-index: 9;
+    color: white;
+    width: 30%;
+}
+

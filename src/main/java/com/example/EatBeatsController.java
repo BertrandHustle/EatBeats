@@ -380,7 +380,8 @@ public class EatBeatsController {
 
     //login route
     @RequestMapping(path = "/login", method = RequestMethod.POST)
-    public String login(HttpSession session, String username, String password, Model model, RedirectAttributes redirectAttributes) throws Exception{
+    public String login(HttpSession session, String username, String password,
+                        Model model, RedirectAttributes redirectAttributes) throws Exception{
 
         //init user
         User user = userRepo.findFirstByUsername(username);
