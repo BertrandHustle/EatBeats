@@ -84,6 +84,11 @@ public class EatBeatsController {
             System.out.println("no user found");
         }
 
+        //confirmation for adding songs
+        if (session.getAttribute("thanks") != null){
+            model.addAttribute("thanks", "");
+        }
+
         return "home";
     }
 
@@ -121,6 +126,8 @@ public class EatBeatsController {
             recipeRepo.save(recipe);
         }
 
+        //todo: add error message here
+
         //may want to change this to flash attribute?
         session.setAttribute("recipe", recipe);
         model.addAttribute("recipe", recipe);
@@ -145,10 +152,31 @@ public class EatBeatsController {
         Song song2 = suggestedSongs.get(1);
         Song song3 = suggestedSongs.get(2);
 
+        String songName1 = song1.getName();
+        String songName2 = song2.getName();
+        String songName3 = song3.getName();
+
+        String songArtist1 = song1.getArtist();
+        String songArtist2 = song2.getArtist();
+        String songArtist3 = song3.getArtist();
+
         //todo: rewrite html to use {{song1.name}}, etc.
+        //name these attributes better!
         model.addAttribute("song1", song1);
         model.addAttribute("song2", song2);
-        model.addAttribute("song3", song3);
+        model.addAttribute("song2", song3);
+
+        session.setAttribute("song1", song1);
+        session.setAttribute("song2", song2);
+        session.setAttribute("song3", song3);
+
+        model.addAttribute("songName1", songName1);
+        model.addAttribute("songName2", songName2);
+        model.addAttribute("songName3", songName3);
+
+        model.addAttribute("songArtist1", songArtist1);
+        model.addAttribute("songArtist2", songArtist2);
+        model.addAttribute("songArtist3", songArtist3);
 
         String songPreview1 = songService.getSongPreviewUrl(song1);
         String songPreview2 = songService.getSongPreviewUrl(song2);
@@ -158,14 +186,6 @@ public class EatBeatsController {
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
 
-        model.addAttribute("songName1", song1.getName());
-        model.addAttribute("songName2", song2.getName());
-        model.addAttribute("songName3", song3.getName());
-
-        model.addAttribute("songArtist1", song1.getArtist());
-        model.addAttribute("songArtist2", song2.getArtist());
-        model.addAttribute("songArtist3", song3.getArtist());
-
         model.addAttribute("recipe", recipe);
 
         return "song-suggest";
@@ -173,13 +193,14 @@ public class EatBeatsController {
     }
 
     @RequestMapping(path = "/song-suggest", method = RequestMethod.POST)
-    public String postSongSuggest(HttpSession session, String songTitle1, String artist1,
-                                  String songTitle2, String artist2, String songTitle3,
-                                  String artist3, Model model) throws IOException, WebApiException {
+    public String postSongSuggest(HttpSession session, Model model,
+                                  final RedirectAttributes redirectAttributes) throws IOException, WebApiException {
 
-        Song song1 = new Song(artist1, songTitle1);
-        Song song2 = new Song(artist2, songTitle2);
-        Song song3 = new Song(artist3, songTitle3);
+        Song song1 = (Song) session.getAttribute("song1");
+        Song song2 = (Song) session.getAttribute("song2");
+        Song song3 = (Song) session.getAttribute("song3");
+
+        Recipe recipe = (Recipe) session.getAttribute("recipe");
 
         List<Song> songs = Arrays.asList(song1, song2, song3);
         session.setAttribute("songs", songs);
@@ -192,19 +213,17 @@ public class EatBeatsController {
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
 
-        model.addAttribute("songName1", songTitle1);
-        model.addAttribute("songName2", songTitle2);
-        model.addAttribute("songName3", songTitle3);
+        songService.tagAndSaveSongsFromRecipe(songs, recipe);
 
-        return "redirect:/song-suggest";
+        redirectAttributes.addFlashAttribute("thanks", "");
+
+        return "redirect:/";
 
     }
 
     //todo: add checkmarks for each song and default to checked
-    //todo: move song search off of recipe page to song search page (and handle cases where no songs are suggested)
-    //todo: query database when songs are suggested, create playlist from retrieved songs if song suggested is already in database
 
-    @RequestMapping(path = "/song-search", method = RequestMethod.GET)
+    @RequestMapping(path = "/search-songs-again", method = RequestMethod.GET)
     public String getSongSearch(HttpSession session, Model model) throws IOException, WebApiException {
 
         List<Song> songs = (List<Song>) session.getAttribute("songs");
@@ -228,39 +247,6 @@ public class EatBeatsController {
         model.addAttribute("songName3", songName3);
 
         return "song-search";
-    }
-
-    //routes for song search previews, re-searching songs and adding recipes
-
-    @RequestMapping(path = "/song-search", method = RequestMethod.POST)
-    public String postSongSearch(HttpSession session, String songTitle1, String artist1,
-                                  String songTitle2, String artist2, String songTitle3,
-                                  String artist3, Model model) throws IOException, WebApiException {
-
-        Recipe recipe = (Recipe) session.getAttribute("recipe");
-        List<Song> songs = (List<Song>) session.getAttribute("songs");
-
-        /**
-         * 1: make new songs from user input
-         * 2: get preview urls from songs
-         * 3: add preview urls to model and redirect
-         */
-
-        Song song1 = new Song (artist1, songTitle1);
-        Song song2 = new Song (artist2, songTitle2);
-        Song song3 = new Song (artist3, songTitle3);
-
-        String songPreview1 = songService.getSongPreviewUrl(song1);
-        String songPreview2 = songService.getSongPreviewUrl(song2);
-        String songPreview3 = songService.getSongPreviewUrl(song3);
-
-        model.addAttribute("songPreview1", songPreview1);
-        model.addAttribute("songPreview2", songPreview2);
-        model.addAttribute("songPreview3", songPreview3);
-
-        //where should this redirect to?
-        return "redirect:/song-search";
-
     }
 
     //todo: add favorite playlists
