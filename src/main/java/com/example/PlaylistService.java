@@ -17,6 +17,8 @@ public class PlaylistService {
 
     public Playlist makePlaylistFromRecipe(Recipe recipe, User user){
 
+        Random random = new Random();
+
         String category = recipe.getCategory();
         String region = recipe.getRegion();
         String season = recipe.getSeason();
@@ -24,31 +26,28 @@ public class PlaylistService {
         //adds attributes of recipe to recipe tag hashset (to avoid duplicates)
         recipe.getTags().addAll(Arrays.asList(category, region, season));
 
-        /*
-        //adds attributes of recipe to tag list
-        ArrayList<String> recipeTags = new ArrayList<>();
-        recipeTags.add(recipe.getCategory());
-        recipeTags.add(recipe.getRegion());
-        recipeTags.add(recipe.getSeason());
-        */
-
-        //todo: fix this so it's cleaner
-        //todo: make sure this can handle 0 song cases
-        //todo: make sure playlists do not exceed 10 songs
         //todo: incorporate algorithm using Spotify parameters (e.g. tempo, mood, etc)
-        //todo: fix this so it doesn't retrieve duplicates!
 
-        //gets all songs which match tag list
-        List<Song> songs = songRepo.findByCategoryAndRegionAndSeason(category, region, season);
+        Playlist playlist = new Playlist();
 
-        /*
-        List<Song> songsByCategory = songRepo.findByCategory(recipe.getCategory());
-        List<Song> songsByRegion = songRepo.findByRegion(recipe.getRegion());
-        List<Song> songsBySeason = songRepo.findBySeason(recipe.getSeason());
-        */
+        //gets all songs which match tag list, returns null if no songs are found
 
-        //makes playlist from recipe, song, and user
-        Playlist playlist = new Playlist(recipe, songs, user);
+        if (songRepo.findByCategoryAndRegionAndSeason(category, region, season).size() != 0){
+            List<Song> songs = songRepo.findByCategoryAndRegionAndSeason(category, region, season);
+            //makes playlist from recipe, song, and user
+
+            //generates random range of 5 songs within returned list
+            if (songs.size() >= 5){
+                int randomInt = random.nextInt(songs.size() - 5);
+                playlist.setSongs(songs.subList(randomInt, randomInt + 5));
+            } else {
+                playlist.setSongs(songs);
+            }
+            playlist.setUser(user);
+            playlist.setRecipe(recipe);
+        } else {
+            return null;
+        }
 
         return playlist;
 

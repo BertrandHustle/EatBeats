@@ -151,14 +151,15 @@ public class SpotifyService {
 
         //try/catch exception handling for an empty search result
         //iterates through search results and finds correct result id by artist/song name
+        //todo: fix this so if artist name isn't exact match it gets real artist name, not the one passed in by the user
         try {
             for (Track track : searchResultTracks) {
-                if ((track.getArtists().get(0).getName().equals(artist)
+                if ((track.getArtists().get(0).getName().contains(artist)
                         && track.getName().equalsIgnoreCase(trackName))) {
                     searchResultSpotifyId = track.getId();
                 }
             }
-        } catch (NullPointerException npe){
+        } catch (Exception e){
             searchResultSpotifyId = "no results found!";
         }
 
@@ -268,8 +269,19 @@ public class SpotifyService {
 
         //gets recommendationUrl from recipe and user
         //todo: fix this so it doesn't rely on playlist service
-        String recommendationUrl = createRecommendationsPlaylistUrlFromPlaylist
-                (playlistService.makePlaylistFromRecipe(recipe, user), recipe.getName());
+
+        //init
+        Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
+        String recommendationUrl;
+
+        //if playlist isn't null do, otherwise return null
+
+        if (playlist != null){
+            recommendationUrl = createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
+        } else {
+            return null;
+        }
+
 
         //splits url on "trackset:", then on comma to get array of songIds
         String recipeName = recipe.getName();

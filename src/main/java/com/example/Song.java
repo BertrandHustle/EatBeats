@@ -65,6 +65,7 @@ public class Song {
         this.name = name;
 
         //automatically sets spotify id for song
+        //todo: autowire this above, not in method (this is taking up time)
         SpotifyService spotifyService = new SpotifyService();
         String trackId = spotifyService.searchByTrackName(name, artist);
         this.spotifyId = trackId;

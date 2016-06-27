@@ -143,9 +143,18 @@ public class EatBeatsController {
         //gets previews for first three songs and adds to model
         ArrayList<Song> suggestedSongs = spotifyService.getListOfSuggestedSongsFromRecipeAndSaveToDatabase(recipe, user);
 
-        Song song1 = suggestedSongs.get(0);
-        Song song2 = suggestedSongs.get(1);
-        Song song3 = suggestedSongs.get(2);
+        Song song1 = new Song();
+        Song song2 = new Song();
+        Song song3 = new Song();
+
+        if (suggestedSongs != null) {
+            song1 = suggestedSongs.get(0);
+            song2 = suggestedSongs.get(1);
+            song3 = suggestedSongs.get(2);
+        } else {
+            //return same page with null values
+            return "song-suggest";
+        }
 
         List<Song> songs = Arrays.asList(song1, song2, song3);
         session.setAttribute("songs", songs);
@@ -212,6 +221,7 @@ public class EatBeatsController {
         model.addAttribute("songPreview2", songPreview2);
         model.addAttribute("songPreview3", songPreview3);
 
+        //todo: make sure this works!
         songService.tagAndSaveSongsFromRecipe(songs, recipe);
 
         redirectAttributes.addFlashAttribute("thanks", "");
@@ -248,6 +258,10 @@ public class EatBeatsController {
         model.addAttribute("songName2", song2.getName());
         model.addAttribute("songName3", song3.getName());
 
+        session.setAttribute("song1", song1);
+        session.setAttribute("song2", song2);
+        session.setAttribute("song3", song3);
+
         return "song-suggest";
     }
 
@@ -277,6 +291,7 @@ public class EatBeatsController {
 
         //user.getFavoritePlaylists().add()
 
+        return "redirect:/favorite-playlists";
     }
 
     //submit recipe and songs
