@@ -8,6 +8,7 @@ import com.wrapper.spotify.methods.TrackRequest;
 import com.wrapper.spotify.methods.TrackSearchRequest;
 import com.wrapper.spotify.methods.authentication.ClientCredentialsGrantRequest;
 import com.wrapper.spotify.models.ClientCredentials;
+import com.wrapper.spotify.models.SimpleArtist;
 import com.wrapper.spotify.models.Track;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -154,8 +155,18 @@ public class SpotifyService {
         //todo: fix this so if artist name isn't exact match it gets real artist name, not the one passed in by the user
         try {
             for (Track track : searchResultTracks) {
-                if ((track.getArtists().get(0).getName().contains(artist)
-                        && track.getName().equalsIgnoreCase(trackName))) {
+
+                //iterates over all artists in each track and checks to see if queried artist matches
+                boolean artistContainedInSearchResults = false;
+
+                for(SimpleArtist trackArtist : track.getArtists()){
+                    if (trackArtist.getName().contains(artist)){
+                        artistContainedInSearchResults = true;
+                    }
+                }
+
+                if (artistContainedInSearchResults &&
+                        track.getName().equalsIgnoreCase(trackName)) {
                     searchResultSpotifyId = track.getId();
                 }
             }
@@ -256,6 +267,7 @@ public class SpotifyService {
         }
 
         //todo: fix duplicates here!
+        //todo: clean this up so it's more efficient
         List<Track> recommendationTracks = getListOfRecommendationsFromSeedTracks(testSeeds);
         String joinedIds = getCommaJoinedTrackIds(recommendationTracks);
 
@@ -267,12 +279,17 @@ public class SpotifyService {
 
     public ArrayList<Song> getListOfSuggestedSongsFromRecipeAndSaveToDatabase(Recipe recipe, User user) throws IOException, WebApiException {
 
+        long now = System.currentTimeMillis();
+
         //gets recommendationUrl from recipe and user
         //todo: fix this so it doesn't rely on playlist service
+        //todo: refactor this to use Doug's improved method system (see Slack)
 
         //init
         Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
         String recommendationUrl;
+
+        System.out.println("****make playlist from recipe "+ (System.currentTimeMillis() - now));
 
         //if playlist isn't null do, otherwise return null
 
@@ -282,6 +299,8 @@ public class SpotifyService {
             return null;
         }
 
+        System.out.println("****make recommendations "+ (System.currentTimeMillis() - now));
+
 
         //splits url on "trackset:", then on comma to get array of songIds
         String recipeName = recipe.getName();
@@ -290,10 +309,14 @@ public class SpotifyService {
 
         ArrayList<Song> songs = new ArrayList<>();
 
+        System.out.println("****post-string splitting "+ (System.currentTimeMillis() - now));
+
         for (String id : suggestedSongIds){
             Song song = (getSongFromSpotifyId(id));
             songs.add(song);
         }
+
+        System.out.println("****gets song from spotify "+ (System.currentTimeMillis() - now));
 
         songService.tagAndSaveSongsFromRecipe(songs, recipe);
 

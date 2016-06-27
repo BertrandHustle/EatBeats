@@ -990,23 +990,27 @@ public class EatBeatsApplicationTests {
 	}
 
 	/**
-	 * Given a playlist with more than twenty songs
-	 * When playlists are created
-	 * Then playlist is truncated to contain only ten songs
+	 * Given a spotify playlist url
+	 * When url is passed into playlist service method
+	 * Then Playlist is constructed from url
 	 */
 
-	public void whenPlaylistHasMoreThanTwentySongsThenPlaylistIsTruncatedToTwentySongs(){
+	@Test
+	public void whenGivenPlaylistUrlThenPlaylistConstructed() throws IOException, WebApiException {
 
 		//arrange
-		Recipe testRecipe = recipeRepo.findFirstByName("name");
 		User testUser = userRepo.findFirstByUsername("name");
-		Song testSong1 = songRepo.findByNameIgnoreCase("yellow");
-		Song testSong2 = songRepo.findByNameIgnoreCase("gravel pit");
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		String testUrl = "https://embed.spotify.com/?uri=spotify:trackset:name:0Uk9bW60QCv6jed1ZZmMci,7vdk9Uneu2PHxurWSdyM1l,4RWptQk4Q2wIw1FqnvazPJ,0buHhiv1hy4rvey8dXySPb,6qNWmjlMAW503WLZLfjUba,2ca5QQcYbR3qvbcjyVonQL,2XkXuuH2oF1SIA4Z62f5QJ,57kW8lv4E2PwYot87eZ42h,3OOISpk4jowR2WEiA4il7b,7bW7G8UDLw8lyZRIlHnKS8,3m1OBsAL14iXPeGIvwe6Ly,4shwvoJGExMDnvwvWcCZDy,4nKj5XllRENTREzT7G6E6D,2EgJi1CKzLgsbSRH7A5lcA,1hrGazFzcxeYXkLAee9SE1,0oFb23xIwILgr9BOZFMYWA,5UeXJ3Gg50YmHxn838NiZp,5u37dzOTaofExiyOlYir65,6BMLponrLSBFBSqgM0012P,2tNRbOjxMj7FAdOBfKjmch";
 
+		//act
+		Playlist testPlaylist = playlistService.makePlaylistFromPlaylistUrl(testUrl, testRecipe, testUser);
 
-		//List<Song> testSongs = Arrays.asList()
+		//assert
+		assertThat(testPlaylist.getSpotifyLink().equals(testUrl), is(true));
+		assertThat(testPlaylist.getSongs().isEmpty(), is(false));
 
-		//Playlist testPlaylist = new Playlist(testRecipe, testUser)
 
 	}
+
 }

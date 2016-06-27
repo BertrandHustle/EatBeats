@@ -231,6 +231,7 @@ public class EatBeatsController {
     }
 
     //todo: add checkmarks for each song and default to checked
+    //todo: add ability to add one search item at a time and remove from search results (ala Doug's suggestion on 6/27/16)
 
     @RequestMapping(path = "/search-songs-again", method = RequestMethod.GET)
     public String searchSongsAgain(HttpSession session, Model model, String songTitle1,
@@ -265,9 +266,6 @@ public class EatBeatsController {
         return "song-suggest";
     }
 
-    //todo: add favorite playlists
-    //todo: make sure number of songs passed into recommendation request doesn't exceed 10 (and has at least 1)
-
     //favorite playlists route
     @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
     public String getFavoritePlaylists(HttpSession session, String id, Model model){
@@ -284,12 +282,17 @@ public class EatBeatsController {
 
     //saves favorite playlist to user list
     @RequestMapping(path = "/favorite-playlists", method = RequestMethod.POST)
-    public String postFavoritePlaylists(HttpSession session, String id, Model model){
+    public String postFavoritePlaylists(HttpSession session, Integer id, Model model){
 
+        //finds user from session
         String username = session.getAttribute("username").toString();
         User user = userRepo.findFirstByUsername(username);
+        String spotifyPlaylistUrl = (String) session.getAttribute("spotifyPlaylistUrl");
 
-        //user.getFavoritePlaylists().add()
+        //finds playlist from database by id and adds to user's favorite playlists
+        //user.getFavoritePlaylists().add(playlist);
+
+        //save playlist to repo
 
         return "redirect:/favorite-playlists";
     }
@@ -372,6 +375,7 @@ public class EatBeatsController {
 
 
     //creates random Spotify playlist based on seed tracks
+    //todo: change/refactor method name here
     @RequestMapping(path = "/make-playlist", method = RequestMethod.GET)
     public String createPlaylist(HttpSession session, String id, Model model) throws IOException, WebApiException {
 
@@ -389,6 +393,7 @@ public class EatBeatsController {
 
                 String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
                 model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
+                session.setAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
 
                 return "recipe-playlist";
             }

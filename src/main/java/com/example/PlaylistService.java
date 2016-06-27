@@ -1,8 +1,10 @@
 package com.example;
 
+import com.wrapper.spotify.exceptions.WebApiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -14,6 +16,9 @@ public class PlaylistService {
 
     @Autowired
     SongRepo songRepo;
+
+    @Autowired
+    SpotifyService spotifyService;
 
     public Playlist makePlaylistFromRecipe(Recipe recipe, User user){
 
@@ -53,6 +58,23 @@ public class PlaylistService {
 
     }
 
+    public Playlist makePlaylistFromPlaylistUrl(String url, Recipe recipe, User user) throws IOException, WebApiException {
 
+        String recipeName = recipe.getName();
+        String[] splitOnTrackset = url.split(recipeName+":");
+        String[] suggestedSongIds = splitOnTrackset[1].split(",");
+
+        ArrayList<Song> songs = new ArrayList<>();
+
+        for (String id : suggestedSongIds){
+            Song song = (spotifyService.getSongFromSpotifyId(id));
+            songs.add(song);
+        }
+
+        Playlist playlist = new Playlist(recipe, songs, user);
+
+        return playlist;
+
+    }
 
 }

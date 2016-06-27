@@ -80,7 +80,7 @@ public class SongService {
 
     public Song convertTrackToSong(Track track) throws IOException, WebApiException {
 
-        Song song = new Song(track.getArtists().get(0).getName(), track.getName());
+        Song song = new Song(track.getArtists().get(0).getName(), track.getName(), track.getId());
         return song;
 
     }

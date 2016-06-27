@@ -72,6 +72,13 @@ public class Song {
 
     }
 
+    //constructor which passes spotifyId in directly from returned Track object
+    public Song(String artist, String name, String spotifyId){
+        this.artist = artist;
+        this.name = name;
+        this.spotifyId = spotifyId;
+    }
+
     /*
     public SimpleAlbum getAlbum() {
         return album;
