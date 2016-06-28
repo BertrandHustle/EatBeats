@@ -282,19 +282,28 @@ public class EatBeatsController {
 
     //saves favorite playlist to user list
     @RequestMapping(path = "/favorite-playlists", method = RequestMethod.POST)
-    public String postFavoritePlaylists(HttpSession session, Integer id, Model model){
+    public String postFavoritePlaylists(HttpSession session, RedirectAttributes redirectAttributes) throws IOException, WebApiException {
 
         //finds user from session
         String username = session.getAttribute("username").toString();
-        User user = userRepo.findFirstByUsername(username);
-        String spotifyPlaylistUrl = (String) session.getAttribute("spotifyPlaylistUrl");
+        Recipe recipe = (Recipe) session.getAttribute("recipe");
 
-        //finds playlist from database by id and adds to user's favorite playlists
-        //user.getFavoritePlaylists().add(playlist);
+        User user = userRepo.findFirstByUsername(username);
+
+        String spotifyPlaylistUrl = (String) session.getAttribute("spotifyPlaylistUrl");
+        Playlist playlist = playlistService.makePlaylistFromPlaylistUrl(spotifyPlaylistUrl, recipe, user);
+        playlist.setUser(user);
+
+        //finds playlist from database by id and adds to user's favorite playlists, then updates user in database
+        user.getFavoritePlaylists().add(playlist);
+        userRepo.save(user);
 
         //save playlist to repo
+        playlistRepo.save(playlist);
 
-        return "redirect:/favorite-playlists";
+        //todo: redirect to home and add "playlist saved!" to flash attribute
+        redirectAttributes.addFlashAttribute("playlistSaved", "");
+        return "redirect:/";
     }
 
     //submit recipe and songs
@@ -384,6 +393,7 @@ public class EatBeatsController {
 
                 int ID = Integer.parseInt(id);
                 Recipe recipe = recipeRepo.findById(ID);
+                session.setAttribute("recipe", recipe);
 
                 //todo: don't generate playlist if no tracks found
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
