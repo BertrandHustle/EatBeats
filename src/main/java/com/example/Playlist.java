@@ -19,7 +19,7 @@ public class Playlist {
     private int id;
 
     //link to spotify playlist (is there a better way to do this?)
-    @Column(columnDefinition="text", length=600)
+    @Column(length=1500)
     private String spotifyLink;
 
     //this is the recipe which the playlist belongs to

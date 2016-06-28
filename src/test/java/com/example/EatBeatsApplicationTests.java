@@ -1013,4 +1013,32 @@ public class EatBeatsApplicationTests {
 
 	}
 
+	/**
+	 * Given a User and Playlist
+	 * When playlist is saved to User object, User saved to database and then retrieved
+	 * Then playlist is contained within retrieved User
+	 */
+
+	@Test
+	public void whenUserSavedWithPlaylistThenUserRetrievedFromDatabaseWithPlaylist() throws PasswordHasher.CannotPerformOperationException {
+
+		//arrange
+		User testUser = new User("test2", "pass");
+		Playlist testPlaylist = playlistRepo.findById(1);
+
+		//testUser.getFavoritePlaylists().add(testPlaylist);
+		testPlaylist.setUser(testUser);
+
+		int x = 0;
+
+		//act
+		userRepo.save(testUser);
+		playlistRepo.save(testPlaylist);
+		User retrievedUser = userRepo.findFirstByUsername("test2");
+
+		//assert
+		assertThat(retrievedUser.getFavoritePlaylists().get(0).getSpotifyLink().equals(testPlaylist.getSpotifyLink()), is(true));
+
+	}
+
 }

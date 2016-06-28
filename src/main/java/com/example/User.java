@@ -1,6 +1,7 @@
 package com.example;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ public class User {
 
     //may need to fix this from being Eager
     @OneToMany(targetEntity=Playlist.class, mappedBy="user", fetch=FetchType.EAGER)
-    private List<Playlist> favoritePlaylists;
+    private List<Playlist> favoritePlaylists = new ArrayList<>();
 
     public User(String username, String password) throws PasswordHasher.CannotPerformOperationException {
         this.username = username;
