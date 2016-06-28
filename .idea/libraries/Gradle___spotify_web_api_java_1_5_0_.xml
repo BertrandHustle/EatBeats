@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Gradle: :spotify-web-api-java-1.5.0:">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/spotify-web-api-java-1.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
