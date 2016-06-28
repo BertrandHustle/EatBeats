@@ -1026,10 +1026,7 @@ public class EatBeatsApplicationTests {
 		User testUser = new User("test2", "pass");
 		Playlist testPlaylist = playlistRepo.findById(1);
 
-		//testUser.getFavoritePlaylists().add(testPlaylist);
 		testPlaylist.setUser(testUser);
-
-		int x = 0;
 
 		//act
 		userRepo.save(testUser);

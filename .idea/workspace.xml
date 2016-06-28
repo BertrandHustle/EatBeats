@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.ids" afterPath="$PROJECT_DIR$/.idea/dataSources.ids" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/User.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/User.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" afterPath="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
     </list>
     <ignored path="EatBeats.iws" />
@@ -143,8 +141,8 @@
       <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="148">
-              <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
+            <state relative-caret-position="508">
+              <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -152,11 +150,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EatBeatsApplicationTests.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="511">
-              <caret line="1039" column="116" selection-start-line="1039" selection-start-column="116" selection-end-line="1039" selection-end-column="116" />
+            <state relative-caret-position="166">
+              <caret line="1029" column="0" selection-start-line="1029" selection-start-column="0" selection-end-line="1029" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -184,46 +182,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="favorite-playlists.mustache" pinned="false" current-in-tab="false">
+      <file leaf-file-name="favorite-playlists.mustache" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
+            <state relative-caret-position="135">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="recipe-playlist.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" column="23" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaylistService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpotifyService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="297" column="16" selection-start-line="297" selection-start-column="16" selection-end-line="297" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -231,7 +195,7 @@
       <file leaf-file-name="Playlist.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="90">
               <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
               <folding />
             </state>
@@ -658,7 +622,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongRepo.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-account.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/single-recipe-view.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/static/styles.css" />
         <option value="$PROJECT_DIR$/src/main/resources/static/create-recipe.css" />
@@ -676,11 +639,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.mustache" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/Playlist.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4c3e8b7e-c026-4ae5-9299-84d608f6c5fc/console.sql" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
       </list>
     </option>
   </component>
@@ -973,7 +937,7 @@
       <recent name="$PROJECT_DIR$/src/main/resources/static/css" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.EatBeatsApplicationTests.whenUserSavedWithPlaylistThenUserRetrievedFromDatabaseWithPlaylist">
+  <component name="RunManager" selected="Application.EatBeatsApplication">
     <configuration default="false" name="EatBeatsApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1526,8 +1490,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenUserSavedWithPlaylistThenUserRetrievedFromDatabaseWithPlaylist" />
-        <item index="1" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
+        <item index="0" class="java.lang.String" itemvalue="Application.EatBeatsApplication" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenUserSavedWithPlaylistThenUserRetrievedFromDatabaseWithPlaylist" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenGivenPlaylistUrlThenPlaylistConstructed" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDBAndAllSongsShareTagsWithRecipe" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.EatBeatsApplicationTests.whenRecipeUsedToGetSuggestedUrlThenListOfSongsReturnedAndAddedToDB" />
@@ -1552,7 +1516,7 @@
       <workItem from="1466343803827" duration="14911000" />
       <workItem from="1466429331425" duration="24429000" />
       <workItem from="1466516259657" duration="36797000" />
-      <workItem from="1466688720563" duration="75684000" />
+      <workItem from="1466688720563" duration="76233000" />
     </task>
     <servers />
   </component>
@@ -1589,7 +1553,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186227000" />
+    <option name="totallyTimeSpent" value="186776000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1612,7 +1576,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3409091" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3409091" sideWeight="0.49676898" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32954547" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -1754,21 +1718,9 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java</url>
-          <line>297</line>
+          <line>296</line>
           <properties />
           <option name="timeStamp" value="149" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>1039</line>
-          <properties />
-          <option name="timeStamp" value="150" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java</url>
-          <line>1031</line>
-          <properties />
-          <option name="timeStamp" value="153" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="155" />
@@ -2198,14 +2150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="279">
@@ -2229,26 +2173,6 @@
         <state relative-caret-position="253">
           <caret line="229" column="0" selection-start-line="229" selection-start-column="0" selection-end-line="229" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="297" column="0" selection-start-line="297" selection-start-column="0" selection-end-line="297" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="297" column="16" selection-start-line="297" selection-start-column="16" selection-end-line="297" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2286,14 +2210,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="271">
@@ -2302,13 +2218,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="511">
-          <caret line="1039" column="116" selection-start-line="1039" selection-start-column="116" selection-end-line="1039" selection-end-column="116" />
+        <state relative-caret-position="508">
+          <caret line="294" column="0" selection-start-line="294" selection-start-column="0" selection-end-line="294" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/example/EatBeatsApplicationTests.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="1029" column="0" selection-start-line="1029" selection-start-column="0" selection-end-line="1029" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="297" column="16" selection-start-line="297" selection-start-column="16" selection-end-line="297" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/Playlist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>

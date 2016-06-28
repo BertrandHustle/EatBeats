@@ -292,7 +292,6 @@ public class EatBeatsController {
 
         String spotifyPlaylistUrl = (String) session.getAttribute("spotifyPlaylistUrl");
         Playlist playlist = playlistService.makePlaylistFromPlaylistUrl(spotifyPlaylistUrl, recipe, user);
-        playlist.setUser(user);
 
         //finds playlist from database by id and adds to user's favorite playlists, then updates user in database
         user.getFavoritePlaylists().add(playlist);

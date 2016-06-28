@@ -4,10 +4,6 @@
 </head>
 
 
-
-
-
-
  <body>
 
  <h2>Get started with EatBeats</h2>
@@ -20,6 +16,10 @@
     {{#thanks}}
         <div> Thanks for suggesting some songs! </div>
     {{/thanks}}
+
+    {{#playlistSaved}}
+        <div> Playlist saved! </div>
+    {{/playlistSaved}}
 
     <div>
         <form action="/favorite-playlists" method="get">
