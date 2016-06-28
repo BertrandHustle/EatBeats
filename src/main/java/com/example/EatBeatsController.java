@@ -21,15 +21,11 @@ import java.util.List;
 //todo: implement search feature for recipes
 //todo: allow user to view other users' recipes (via search)
 //todo: implement @notNull tags on recipe fields?
-//todo: add spotify suggestions as songs in database
 //todo: switch edit endpoint to GET, not POST (can use image rather than button)
-//todo: make it so it doesn't add recipe if it hits an error
-//todo: change spotify song search function to return more results than 3?
 //todo: check if user exists at each page
-//todo: fix display on my-recipes so it isn't just a to-string method
 
+//todo: add delete route for favorite playlists
 
-//todo: handle cases where no songs are found for recipe suggestion songs
 
 
 /**
@@ -268,13 +264,17 @@ public class EatBeatsController {
 
     //favorite playlists route
     @RequestMapping(path = "/favorite-playlists", method = RequestMethod.GET)
-    public String getFavoritePlaylists(HttpSession session, String id, Model model){
+    public String getFavoritePlaylists(HttpSession session, Model model){
 
         String username = session.getAttribute("username").toString();
         User user = userRepo.findFirstByUsername(username);
 
         List<Playlist> favoritePlaylists = user.getFavoritePlaylists();
-        model.addAttribute("playlists", favoritePlaylists);
+
+        //adds user's favorite playlists to session if they have any playlists saved
+        if (favoritePlaylists.size() != 0){
+            model.addAttribute("playlists", favoritePlaylists);
+        }
 
         return "favorite-playlists";
 
@@ -294,7 +294,8 @@ public class EatBeatsController {
         Playlist playlist = playlistService.makePlaylistFromPlaylistUrl(spotifyPlaylistUrl, recipe, user);
 
         //finds playlist from database by id and adds to user's favorite playlists, then updates user in database
-        user.getFavoritePlaylists().add(playlist);
+        //user.getFavoritePlaylists().add(playlist);
+        playlist.setUser(user);
         userRepo.save(user);
 
         //save playlist to repo
@@ -424,8 +425,7 @@ public class EatBeatsController {
         //if user/pass incorrect, redirect to home page w/login failed message
         //todo: put login failed message in html
         } else if (!PasswordHasher.verifyPassword(password, user.getPassword())){
-            redirectAttributes.addFlashAttribute("loginFailed", " ");
-            model.addAttribute("loginFailed", "");
+            redirectAttributes.addFlashAttribute("loginFailed", "");
             return "redirect:/";
 
         //if user/pass correct, redirect to home page and add username to model

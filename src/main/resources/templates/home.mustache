@@ -46,6 +46,10 @@
     </div>
     {{/username}}
 
+    {{#loginFailed}}
+        Login Failed! Wrong password and username combination.
+    {{/loginFailed}}
+
     {{^username}}
     <div class="login-form">
         <form action="/login" method="post">

@@ -54,8 +54,8 @@ public class Song {
     private String season;
 
     //links to Playlist to which Song belongs
-    @ManyToOne
-    Playlist playlist;
+    @ManyToMany(mappedBy = "songs")
+    List<Playlist> playlists;
 
     public Song() {
     }
@@ -209,6 +209,7 @@ public class Song {
         this.spotifyId = spotifyId;
     }
 
+    /*
     public Playlist getPlaylist() {
         return playlist;
     }
@@ -216,7 +217,7 @@ public class Song {
     public void setPlaylist(Playlist playlist) {
         this.playlist = playlist;
     }
-
+*/
     public int getRank() {
         return rank;
     }

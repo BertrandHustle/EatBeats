@@ -20,6 +20,9 @@ public class PlaylistService {
     @Autowired
     SpotifyService spotifyService;
 
+    @Autowired
+    SongService songService;
+
     public Playlist makePlaylistFromRecipe(Recipe recipe, User user){
 
         Random random = new Random();
@@ -64,11 +67,12 @@ public class PlaylistService {
         String[] splitOnTrackset = url.split(recipeName+":");
         String[] suggestedSongIds = splitOnTrackset[1].split(",");
 
-        ArrayList<Song> songs = new ArrayList<>();
+        List<Song> songs = new ArrayList<>();
 
         for (String id : suggestedSongIds){
             Song song = (spotifyService.getSongFromSpotifyId(id));
             songs.add(song);
+            songRepo.save(song);
         }
 
         Playlist playlist = new Playlist(recipe, songs, user);

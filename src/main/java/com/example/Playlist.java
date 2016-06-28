@@ -29,7 +29,11 @@ public class Playlist {
     //this holds the Song objects which comprise the Playlist
     //private ArrayList<String> songSpotifyIds;
 
-    @ManyToMany (targetEntity=Song.class, mappedBy="playlist", fetch=FetchType.EAGER)
+    //@ManyToMany (targetEntity=Song.class, mappedBy="playlist", fetch=FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(name = "playlist_song",
+            joinColumns = @JoinColumn(name = "playlist_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "song_id", referencedColumnName = "id"))
     private List<Song> songs = new ArrayList<>();
 
     //cascading needed because of multiple @ManyToOne annotations to user?
@@ -43,7 +47,6 @@ public class Playlist {
 
     public Playlist(Recipe recipe, List<Song> songs, User user) {
         this.recipe = recipe;
-        this.songs.addAll(songs);
         this.user = user;
 
         //auto-sets spotify playlist link based on songs passed in
@@ -64,6 +67,7 @@ public class Playlist {
             song.setSeason(recipe.getSeason());
             song.setCategory(recipe.getCategory());
         }
+        this.songs.addAll(songs);
     }
 
 
@@ -80,6 +84,16 @@ public class Playlist {
         //joins song ids on comma
         String joinedIds = Joiner.on(",").join(songIds);
         return joinedIds;
+    }
+
+    public String getFeaturedArtist(){
+
+        //first song in list
+        Song firstSong = songs.get(0);
+        //gets artist name and returns
+        String firstArtistName = firstSong.getArtist();
+        return firstArtistName;
+
     }
 
 

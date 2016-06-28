@@ -409,9 +409,6 @@ public class EatBeatsApplicationTests {
 		Recipe testRecipe = recipeRepo.findFirstByName("name");
 		testRecipe.setName("Coq Au Vin");
 		User testUser = userRepo.findFirstByUsername("name");
-		//testRecipe.setUser(testUser);
-		//userRepo.save(testUser);
-		//recipeRepo.save(testRecipe);
 
 		List<Song> songs = Arrays.asList(testSong1, testSong2, testSong3);
 
@@ -422,15 +419,12 @@ public class EatBeatsApplicationTests {
 
 		Playlist playlist = new Playlist(testRecipe, songs, testUser);
 
-		//todo: clean this up (most of it is greyed out)
 		//joins ids together for assertion check
 		String joinedIdsToBeAdded = Joiner.on(",").join(songIdsToBeAdded);
 
 		//act
 		playlistRepo.save(playlist);
 		Playlist retrievedPlaylist = playlistRepo.findById(playlist.getId());
-
-		//String joinedRetrievedPlaylistIds = Joiner.on(",").join(retrievedPlaylist.getSongSpotifyIds());
 
 		//assert
 		assertThat(songs.equals(playlist.getSongs()), is(true));
@@ -1009,9 +1003,37 @@ public class EatBeatsApplicationTests {
 		//assert
 		assertThat(testPlaylist.getSpotifyLink().equals(testUrl), is(true));
 		assertThat(testPlaylist.getSongs().isEmpty(), is(false));
+		assertThat(testPlaylist.getFeaturedArtist().isEmpty(), is(false));
 
 
 	}
+
+	/**
+	 * Given a spotify playlist url
+	 * When playlist is constructed, saved to database and retrieved
+	 * Then playlist contains expected songs
+	 */
+
+	@Test
+	@Transactional
+	public void whenGivenPlaylistUrlThenPlaylistConstructedSavedAndRetrievedWithCorrectSongs() throws IOException, WebApiException {
+
+		//arrange
+		User testUser = userRepo.findFirstByUsername("name");
+		Recipe testRecipe = recipeRepo.findFirstByName("name");
+		String testUrl = "https://embed.spotify.com/?uri=spotify:trackset:name:0Uk9bW60QCv6jed1ZZmMci,7vdk9Uneu2PHxurWSdyM1l,4RWptQk4Q2wIw1FqnvazPJ,0buHhiv1hy4rvey8dXySPb,6qNWmjlMAW503WLZLfjUba,2ca5QQcYbR3qvbcjyVonQL,2XkXuuH2oF1SIA4Z62f5QJ,57kW8lv4E2PwYot87eZ42h,3OOISpk4jowR2WEiA4il7b,7bW7G8UDLw8lyZRIlHnKS8,3m1OBsAL14iXPeGIvwe6Ly,4shwvoJGExMDnvwvWcCZDy,4nKj5XllRENTREzT7G6E6D,2EgJi1CKzLgsbSRH7A5lcA,1hrGazFzcxeYXkLAee9SE1,0oFb23xIwILgr9BOZFMYWA,5UeXJ3Gg50YmHxn838NiZp,5u37dzOTaofExiyOlYir65,6BMLponrLSBFBSqgM0012P,2tNRbOjxMj7FAdOBfKjmch";
+
+		//act
+		Playlist testPlaylist = playlistService.makePlaylistFromPlaylistUrl(testUrl, testRecipe, testUser);
+		testPlaylist.setUser(testUser);
+		playlistRepo.save(testPlaylist);
+		Playlist retrievedPlaylist = playlistRepo.findById(3);
+
+		//assert
+		System.out.println(retrievedPlaylist.getSongs().size());
+		assertThat(retrievedPlaylist.getSongs().size() != 0, is(true));
+	}
+
 
 	/**
 	 * Given a User and Playlist
@@ -1035,6 +1057,29 @@ public class EatBeatsApplicationTests {
 
 		//assert
 		assertThat(retrievedUser.getFavoritePlaylists().get(0).getSpotifyLink().equals(testPlaylist.getSpotifyLink()), is(true));
+
+	}
+
+	/**
+	 * Given a playlist
+	 * When getFeaturedArtist method is given playlist as argument
+	 * Then first artist of first song in playlist is returned
+	 */
+
+	@Test
+	public void whenGetFeaturedArtistMethodIsGivenPlaylistThenFirstArtistOfFirstSongInPlaylistIsReturned(){
+
+		//arrange
+		Playlist testPlaylist = playlistRepo.findById(1);
+		Song testSong = songRepo.findByNameIgnoreCase("Space is the Place");
+		testPlaylist.getSongs().add(testSong);
+		String expectedArtistName = "Sun Ra";
+
+		//act
+		String featuredArtistName = testPlaylist.getFeaturedArtist();
+
+		//assert
+		assertThat(expectedArtistName.equals(featuredArtistName), is(true));
 
 	}
 
