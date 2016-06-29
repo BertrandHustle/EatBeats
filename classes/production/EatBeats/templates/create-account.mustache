@@ -1,18 +1,26 @@
-<!-- todo: make sure that an account can't be created if username already exists -->
-
-CREATE NEW ACCOUNT
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
-
-<form>
-    <a href="/">Home</a>
-</form>
+<body>
 
 <form action="/create-account" method="post">
-    <div>
-        <input type="text" name="username">Username</input>
-        <input type="password" name="password">Password</input>
-        <button type="submit">Create Account</button>
+    <div class="home-form">
+        <a href="/">Home</a>
+
+        <h2>Get cooking with EatBeats</h2>
+
+        <div class="login-form">
+            <form action="/login" method="post">
+                <div>
+                    <input type="text" placeholder="username" name="username" class="form-control short">
+                </div>
+                <div>
+                    <input type="password" placeholder="password" name="password" class="form-control short">
+                </div>
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </form>
+        </div>
     </div>
 </form>

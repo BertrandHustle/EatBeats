@@ -86,6 +86,8 @@ public class EatBeatsController {
     //routes to create-recipe page
     @RequestMapping(path = "/create-recipe", method = RequestMethod.GET)
     public String getCreateRecipe(HttpSession session, Model model){
+        String username = (String) session.getAttribute("username");
+        model.addAttribute("username", username);
         return "create-recipe";
     }
 
