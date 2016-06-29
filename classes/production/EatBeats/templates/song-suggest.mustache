@@ -31,7 +31,10 @@
             </div>
         </div>
     </nav>
-
+<div class="container">
+    <div class="row">
+    <div class="col-sm-6">
+        <h2>Song Previews</h2>
     <div>
         <form>
             {{#songPreview1}}
@@ -68,14 +71,18 @@
 <form action="/song-suggest" method="post">
     <button type="submit" class="btn btn-primary">Submit Songs</button>
 </form>
+    </div>
 
+<div class="col-sm-6">
+
+    <h2>Search Songs</h2>
 <form action="/search-songs-again" method="get">
 
 <div>
     <div>Don't like our suggestions? Suggest a few of your own!</div>
     <div class="artist-title-suggest">
         <input type="text" placeholder="Title" name="songTitle1" class="form-control short"/>
-        <input type="text" placeholder="Artist" name="songArtist1"/>
+        <input type="text" placeholder="Artist" name="songArtist1" class="form-control short"/>
     </div>
     <div class="artist-title-suggest">
         <input type="text" placeholder="Title" name="songTitle2" class="form-control short"/>
@@ -93,5 +100,7 @@
     </div>
 
 </form>
-
+    </div>
+</div>
+    </div>
 </div>

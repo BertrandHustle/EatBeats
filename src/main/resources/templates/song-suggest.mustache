@@ -1,7 +1,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css"/>
 </head>
 <body>
 <div class="home-form">
@@ -31,67 +31,79 @@
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Song Previews</h2>
+                <div>
+                    <form>
+                        {{#songPreview1}}
+                            <a class="song-preview" target="_blank" href={{songPreview1}}>{{songName1}}
+                                by {{songArtist1}}</a>
+                        {{/songPreview1}}
+                        {{^songPreview1}}
+                            No results found!
+                        {{/songPreview1}}
+                    </form>
+                </div>
 
-    <div>
-        <form>
-            {{#songPreview1}}
-                <a class="song-preview" target="_blank" href={{songPreview1}}>{{songName1}} by {{songArtist1}}</a>
-            {{/songPreview1}}
-            {{^songPreview1}}
-                No results found!
-            {{/songPreview1}}
-        </form>
+                <div>
+                    <form>
+                        {{#songPreview2}}
+                            <a class="song-preview" target="_blank" href={{songPreview2}}>{{songName2}}
+                                by {{songArtist2}}</a>
+                        {{/songPreview2}}
+                        {{^songPreview2}}
+                            No results found!
+                        {{/songPreview2}}
+                    </form>
+                </div>
+
+                <div>
+                    <form>
+                        {{#songPreview3}}
+                            <a class="song-preview" target="_blank" href={{songPreview3}}>{{songName3}}
+                                by {{songArtist3}}</a>
+                        {{/songPreview3}}
+                        {{^songPreview3}}
+                            No results found!
+                        {{/songPreview3}}
+                    </form>
+                </div>
+
+                <form action="/song-suggest" method="post">
+                    <button type="submit" class="btn btn-primary">Submit Songs</button>
+                </form>
+            </div>
+
+            <div class="col-sm-6">
+
+                <h2>Search Songs</h2>
+                <form action="/search-songs-again" method="get">
+
+                    <div>
+                        <div>Don't like our suggestions? Suggest a few of your own!</div>
+                        <div class="artist-title-suggest">
+                            <input type="text" placeholder="Title" name="songTitle1" class="form-control short"/>
+                            <input type="text" placeholder="Artist" name="songArtist1" class="form-control short"/>
+                        </div>
+                        <div class="artist-title-suggest">
+                            <input type="text" placeholder="Title" name="songTitle2" class="form-control short"/>
+                            <input type="text" placeholder="Artist" name="songArtist2" class="form-control short"/>
+                        </div>
+
+                        <div class="artist-title-suggest">
+                            <input type="text" placeholder="Title" name="songTitle3" class="form-control short"/>
+                            <input type="text" placeholder="Artist" name="songArtist3" class="form-control short"/>
+                        </div>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn btn-primary">Search Songs Again</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
     </div>
-
-    <div>
-        <form>
-            {{#songPreview2}}
-                <a class="song-preview"target="_blank" href={{songPreview2}}>{{songName2}} by {{songArtist2}}</a>
-            {{/songPreview2}}
-            {{^songPreview2}}
-                No results found!
-            {{/songPreview2}}
-        </form>
-    </div>
-
-    <div>
-        <form>
-            {{#songPreview3}}
-                <a class="song-preview" target="_blank" href={{songPreview3}}>{{songName3}} by {{songArtist3}}</a>
-            {{/songPreview3}}
-            {{^songPreview3}}
-                No results found!
-            {{/songPreview3}}
-        </form>
-    </div>
-
-<form action="/song-suggest" method="post">
-    <button type="submit" class="btn btn-primary">Submit Songs</button>
-</form>
-
-<form action="/search-songs-again" method="get">
-
-<div>
-    <div>Don't like our suggestions? Suggest a few of your own!</div>
-    <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle1" class="form-control short"/>
-        <input type="text" placeholder="Artist" name="songArtist1"/>
-    </div>
-    <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle2" class="form-control short"/>
-        <input type="text" placeholder="Artist" name="songArtist2" class="form-control short"/>
-    </div>
-
-    <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle3" class="form-control short"/>
-        <input type="text" placeholder="Artist" name="songArtist3" class="form-control short"/>
-    </div>
-</div>
-
-    <div>
-        <button type="submit" class="btn btn-primary">Search Songs Again</button>
-    </div>
-
-</form>
-
 </div>
