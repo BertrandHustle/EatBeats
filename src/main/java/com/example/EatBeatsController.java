@@ -276,6 +276,8 @@ public class EatBeatsController {
             model.addAttribute("playlists", favoritePlaylists);
         }
 
+        model.addAttribute("username", username);
+
         return "favorite-playlists";
 
     }

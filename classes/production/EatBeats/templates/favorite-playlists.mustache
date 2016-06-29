@@ -1,17 +1,67 @@
-<form>
-    <a href="/">Home</a>
-</form>
-
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
+<body>
 
-{{#playlists}}
-    <a href={{spotifyLink}}>Play</a>
-    {{recipe.name}}
-    featuring:{{getFeaturedArtist}}
-{{/playlists}}
+<div class="home-form">
+    <h2>Get cooking with EatBeats</h2>
+
+    <p>Hi, {{username}}</p>
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/favorite-playlists">Favorite Playlists</a>
+                    </li>
+                    <li>
+                        <a href="/my-recipes">My Recipes</a>
+                    </li>
+                    <li>
+                        <a href="/create-recipe">Make a New Recipe</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 {{^playlists}}
     You have no playlists saved!
 {{/playlists}}
+
+{{#playlists}}
+        <div class="container" >
+            <ul class="list-group">
+                <li>
+                    <div class="panel panel-default">
+                        <div class="panel-body recipe-head">
+                            <div class="panel-info">
+                                <h4><a href="/recipe?id={{id}}">{{recipe.name}}</a></h4>
+                                <p>Featuring: {{getFeaturedArtist}}</p>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-info">
+                                <ul class="panel-body">
+                                    <li>
+                                        <a href="{{spotifyLink}}" class="btn btn-success">Play</a>
+                                    </li>
+                                    <li>
+                                        <a href="/delete-recipe?id={{id}}" class="btn btn-danger">Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+{{/playlists}}
+    </div>
+</body>

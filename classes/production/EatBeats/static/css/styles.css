@@ -1,0 +1,58 @@
+body{
+    background-image: url("../images/food-kitchen-cutting-board-cooking.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: black;
+}
+
+.home-form{
+    background-color: rgba(255, 255, 255, 0.75);
+    padding: 2em;
+    margin: 6em;
+}
+
+h2{
+    color: #625450;
+}
+
+form div{
+    margin-bottom: 1em;
+}
+
+.short{
+    width: 20em;
+}
+
+nav li{
+    /*border-right: 1px solid lightgray;*/
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.list-group li {
+    list-style: none;
+    width: 30em;
+    float: left;
+    margin: 1em;
+}
+
+.panel-info, .panel-rating {
+    float: left;
+    margin: 0 10px;
+}
+
+.recipe-head{
+    background-color: #EEEEEE;
+}
+
+.panel-body{
+    padding: 0px;
+}
+
+.panel-body li{
+    display: inline-block;
+    width: auto;
+    margin: 0px;
+    padding: 0.5em;
+    float: left;
+}
