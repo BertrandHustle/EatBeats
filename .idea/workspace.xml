@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="309f31cc-8706-49af-ba62-7949e907a2eb" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" afterPath="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" afterPath="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
     </list>
     <ignored path="EatBeats.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -130,11 +130,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EatBeatsController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-14">
-              <caret line="383" column="49" selection-start-line="383" selection-start-column="49" selection-end-line="383" selection-end-column="49" />
+            <state relative-caret-position="84">
+              <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -145,40 +145,8 @@
       <file leaf-file-name="song-suggest.mustache" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="825">
-              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlaylistService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="create-account.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-account.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit-recipe.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/edit-recipe.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+            <state relative-caret-position="630">
+              <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -187,48 +155,8 @@
       <file leaf-file-name="create-recipe.mustache" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="foot.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/foot.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="my-recipes.mustache" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="58" column="93" selection-start-line="58" selection-start-column="93" selection-end-line="58" selection-end-column="93" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="favorite-playlists.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="40" selection-start-line="54" selection-start-column="40" selection-end-line="54" selection-end-column="40" />
+            <state relative-caret-position="-375">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -663,7 +591,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/static/css/my-recipes.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/song-search.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/song-suggest.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/recipe-playlist.mustache" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SongService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/SpotifyService.java" />
@@ -684,8 +611,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/favorite-playlists.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-account.mustache" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java" />
       </list>
     </option>
   </component>
@@ -1568,7 +1496,7 @@
       <workItem from="1466343803827" duration="14911000" />
       <workItem from="1466429331425" duration="24429000" />
       <workItem from="1466516259657" duration="36797000" />
-      <workItem from="1466688720563" duration="95027000" />
+      <workItem from="1466688720563" duration="95555000" />
     </task>
     <servers />
   </component>
@@ -1605,7 +1533,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="205570000" />
+    <option name="totallyTimeSpent" value="206098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -1716,13 +1644,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java</url>
-          <line>247</line>
+          <line>248</line>
           <properties />
           <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java</url>
-          <line>238</line>
+          <line>239</line>
           <properties />
           <option name="timeStamp" value="118" />
         </line-breakpoint>
@@ -2230,20 +2158,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="10" selection-start-line="0" selection-start-column="0" selection-end-line="32" selection-end-column="10" />
           <folding />
         </state>
       </provider>
@@ -2256,22 +2182,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-account.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -2280,21 +2190,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/PlaylistService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-14">
-          <caret line="383" column="49" selection-start-line="383" selection-start-column="49" selection-end-line="383" selection-end-column="49" />
+        <state relative-caret-position="279">
+          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/my-recipes.mustache">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/create-recipe.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="58" column="93" selection-start-line="58" selection-start-column="93" selection-end-line="58" selection-end-column="93" />
+        <state relative-caret-position="-375">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/song-suggest.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/EatBeatsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="134" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -135,6 +135,7 @@ public class EatBeatsController {
 
         //gets user out of session
         User user = (User) session.getAttribute("user");
+        model.addAttribute("username", user.getUsername());
         //gets recipe from last page out of session
         Recipe recipe = (Recipe) session.getAttribute("recipe");
 

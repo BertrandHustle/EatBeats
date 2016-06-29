@@ -1,63 +1,96 @@
-
+<html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/song-suggest.css"></link>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
+<body>
+<div class="home-form">
+    <a href="/">Home</a>
 
-    <form>
-        <a href="/">Home</a>
-    </form>
-<div class="content-wrapper">
-    <form>
-        {{#songPreview1}}
-            <a class="song-preview" target="_blank" href={{songPreview1}}>{{songName1}} by {{songArtist1}}</a>
-        {{/songPreview1}}
-        {{^songPreview1}}
-            No results found!
-        {{/songPreview1}}
-    </form>
+    <h2>Get cooking with EatBeats</h2>
 
-    <form>
-        {{#songPreview2}}
-            <a class="song-preview"target="_blank" href={{songPreview2}}>{{songName2}} by {{songArtist2}}</a>
-        {{/songPreview2}}
-        {{^songPreview2}}
-            No results found!
-        {{/songPreview2}}
-    </form>
+    <p>Hi, {{username}}</p>
 
-    <form>
-        {{#songPreview3}}
-            <a class="song-preview" target="_blank" href={{songPreview3}}>{{songName3}} by {{songArtist3}}</a>
-        {{/songPreview3}}
-        {{^songPreview3}}
-            No results found!
-        {{/songPreview3}}
-    </form>
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/favorite-playlists">Favorite Playlists</a>
+                    </li>
+                    <li>
+                        <a href="/my-recipes">My Recipes</a>
+                    </li>
+                    <li>
+                        <a href="/create-recipe">Make a New Recipe</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <form>
+            {{#songPreview1}}
+                <a class="song-preview" target="_blank" href={{songPreview1}}>{{songName1}} by {{songArtist1}}</a>
+            {{/songPreview1}}
+            {{^songPreview1}}
+                No results found!
+            {{/songPreview1}}
+        </form>
+    </div>
+
+    <div>
+        <form>
+            {{#songPreview2}}
+                <a class="song-preview"target="_blank" href={{songPreview2}}>{{songName2}} by {{songArtist2}}</a>
+            {{/songPreview2}}
+            {{^songPreview2}}
+                No results found!
+            {{/songPreview2}}
+        </form>
+    </div>
+
+    <div>
+        <form>
+            {{#songPreview3}}
+                <a class="song-preview" target="_blank" href={{songPreview3}}>{{songName3}} by {{songArtist3}}</a>
+            {{/songPreview3}}
+            {{^songPreview3}}
+                No results found!
+            {{/songPreview3}}
+        </form>
+    </div>
 
 <form action="/song-suggest" method="post">
     <button type="submit" class="btn btn-primary">Submit Songs</button>
 </form>
 
 <form action="/search-songs-again" method="get">
-    <button type="submit" class="btn btn-primary">Search Songs Again</button>
 
 <div>
     <div>Don't like our suggestions? Suggest a few of your own!</div>
     <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle1"/>
+        <input type="text" placeholder="Title" name="songTitle1" class="form-control short"/>
         <input type="text" placeholder="Artist" name="songArtist1"/>
     </div>
     <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle2"/>
-        <input type="text" placeholder="Artist" name="songArtist2"/>
+        <input type="text" placeholder="Title" name="songTitle2" class="form-control short"/>
+        <input type="text" placeholder="Artist" name="songArtist2" class="form-control short"/>
     </div>
 
     <div class="artist-title-suggest">
-        <input type="text" placeholder="Title" name="songTitle3"/>
-        <input type="text" placeholder="Artist" name="songArtist3"/>
+        <input type="text" placeholder="Title" name="songTitle3" class="form-control short"/>
+        <input type="text" placeholder="Artist" name="songArtist3" class="form-control short"/>
     </div>
 </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Search Songs Again</button>
+    </div>
 
 </form>
 
