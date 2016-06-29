@@ -1,60 +1,85 @@
-<!-- puts generate playlist button next to each recipe -->
-<!-- todo: have generate playlist redirect to Spotify playlist -->
-
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="css/my-recipes.css"></link>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
-
 <body>
-
-<div class="content-wrapper">
-
-
-{{#recipes}}
-<div class="recipe-card">
-    <div class="recipe-name">{{name}}</div>
-    <div>{{season}}</div>
-    <div>{{region}}</div>
-    <div>{{description}}</div>
-    <div>
-
-        <form action="/make-playlist" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="make-playlist" class="btn btn-info">Make Playlist</button>
-        </form>
-
-
-        <form action="/view-recipe" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="view-recipe" class="btn btn-default">View Recipe</button>
-        </form>
-
-        <form action="/edit-recipe" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="edit-recipe" class="btn btn-default">Edit Recipe</button>
-        </form>
-
-
-        <form action="/delete-recipe" method="get">
-            <input type="hidden" name="id" value="{{id}}">
-            <button type="submit" name="delete-recipe" class="btn btn-danger">Delete Recipe</button>
-        </form>
-
-
-
-    </div>
-    </div>
-{{/recipes}}
-
-{{^recipes}}
-    You have no recipes!
-{{/recipes}}
-
-<form>
+<div class="home-form">
     <a href="/">Home</a>
-</form>
 
-</div>
+    <h2>Get cooking with EatBeats</h2>
+
+    <p>Hi, {{username}}</p>
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/favorite-playlists">Favorite Playlists</a>
+                    </li>
+                    <li>
+                        <a href="/my-recipes">My Recipes</a>
+                    </li>
+                    <li>
+                        <a href="/create-recipe">Make a New Recipe</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{^recipes}}
+        You have no recipes!
+    {{/recipes}}
+
+    {{#recipes}}
+    <!-- form for recipe -->
+    <h3>My Recipes:</h3>
+
+    <div class="container" >
+        <ul class="list-group">
+            <li>
+                <div class="panel panel-default">
+                    <div class="panel-body recipe-head">
+                        <div class="panel-info">
+                            <h4>{{name}}</h4>
+                            <p>Season: {{season}}</p>
+                            <p>Category: {{category}}</p>
+                            <p>Region: {{region}}</p>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-info">
+                            <ul class="panel-body">
+                                <li>
+                                    <a href="/make-playlist?id={{id}}" class="btn btn-default">Make Playlist</a>
+                                </li>
+                                <li>
+                                    <a href="/view-recipe?id={{id}}" class="btn btn-default">View</a>
+                                </li>
+                                <li>
+                                    <a href="/edit-recipe?id={{id}}" class="btn btn-default">Edit</a>
+                                </li>
+                                <li>
+                                    <a href="/delete-recipe?id={{id}}" class="btn btn-default">Delete</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-info">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {{/recipes}}
 
 </body>
+</head>

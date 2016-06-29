@@ -381,6 +381,7 @@ public class EatBeatsController {
 
         //add recipes to model and return page
         model.addAttribute("recipes", recipes);
+        model.addAttribute("username", username);
 
         return "my-recipes";
 
