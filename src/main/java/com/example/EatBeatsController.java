@@ -237,6 +237,9 @@ public class EatBeatsController {
                                 String songTitle2, String songTitle3, String songArtist1,
                                 String songArtist2, String songArtist3) throws IOException, WebApiException {
 
+        String username = (String) session.getAttribute("username");
+        model.addAttribute("username", username);
+
         Song song1 = new Song(songArtist1, songTitle1);
         Song song2 = new Song(songArtist2, songTitle2);
         Song song3 = new Song(songArtist3, songTitle3);
