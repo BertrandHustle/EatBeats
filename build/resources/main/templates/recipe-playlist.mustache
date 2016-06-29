@@ -1,21 +1,41 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" href="css/styles.css"/>
+    </head>
     <body>
+    <div class="home-form">
 
-        <head>
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-        </head>
+        <h2>Get cooking with EatBeats</h2>
 
-        <form>
-            <a href="/">Home</a>
-        </form>
+        <p>Hi, {{username}}</p>
 
-        <form>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="/favorite-playlists">Favorite Playlists</a>
+                        </li>
+                        <li>
+                            <a href="/my-recipes">My Recipes</a>
+                        </li>
+                        <li>
+                            <a href="/create-recipe">Make a New Recipe</a>
+                        </li>
+                        <li>
+                            <a href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
             <iframe src={{spotifyPlaylistUrl}} width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
-        </form>
 
-
+        <br>
         <form action="/favorite-playlists" method="post">
-            <button type="submit" >Save as favorite</button>
+            <button type="submit" class="btn btn-default">Save as favorite</button>
         </form>
     </body>
 </html>

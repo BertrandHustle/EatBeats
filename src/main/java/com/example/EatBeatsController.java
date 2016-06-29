@@ -290,6 +290,7 @@ public class EatBeatsController {
     public String postFavoritePlaylists(HttpSession session, RedirectAttributes redirectAttributes) throws IOException, WebApiException {
 
         //finds user from session
+        //todo: change this so it uses recipe id rather than putting recipe into session
         String username = session.getAttribute("username").toString();
         Recipe recipe = (Recipe) session.getAttribute("recipe");
 
@@ -395,6 +396,7 @@ public class EatBeatsController {
     public String createPlaylist(HttpSession session, String id, Model model) throws IOException, WebApiException {
 
                 String username = session.getAttribute("username").toString();
+                model.addAttribute("username", username);
                 User user = userRepo.findFirstByUsername(username);
 
                 int ID = Integer.parseInt(id);
