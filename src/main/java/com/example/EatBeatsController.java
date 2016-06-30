@@ -184,6 +184,8 @@ public class EatBeatsController {
         model.addAttribute("songArtist2", songArtist2);
         model.addAttribute("songArtist3", songArtist3);
 
+        //todo: add way to handle if song isn't found!
+
         String songPreview1 = songService.getSongPreviewUrl(song1);
         String songPreview2 = songService.getSongPreviewUrl(song2);
         String songPreview3 = songService.getSongPreviewUrl(song3);
