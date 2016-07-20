@@ -337,8 +337,10 @@ public class EatBeatsController {
     @RequestMapping(path = "/edit-recipe", method = RequestMethod.GET)
     public String getEditRecipe(HttpSession session, String id, Model model){
 
+        String username = session.getAttribute("username").toString();
         Recipe recipe = recipeRepo.findById(Integer.parseInt(id));
         model.addAttribute("recipe", recipe);
+        model.addAttribute("username", username);
 
         return "edit-recipe";
     }
@@ -395,7 +397,8 @@ public class EatBeatsController {
     //creates random Spotify playlist based on seed tracks
     //todo: change/refactor method name here
     @RequestMapping(path = "/make-playlist", method = RequestMethod.GET)
-    public String createPlaylist(HttpSession session, String id, Model model) throws IOException, WebApiException {
+    public String createPlaylist(HttpSession session, String id,
+                                 Model model, RedirectAttributes redirectAttributes) throws IOException, WebApiException {
 
                 String username = session.getAttribute("username").toString();
                 model.addAttribute("username", username);
@@ -405,17 +408,18 @@ public class EatBeatsController {
                 Recipe recipe = recipeRepo.findById(ID);
                 session.setAttribute("recipe", recipe);
 
-                //todo: don't generate playlist if no tracks found
+                //todo: make this redirect to song suggestion page if playlist is null (and add recipe to flashsession first)
+
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
 
-                //todo: removes duplicates for test purposes, needs to be fixed
+                //if playlist isn't null, fetches recommendations from Spotify
+                if (playlist != null) {
 
-                //why was this previously a sublist?
-                playlist.setSongs(playlist.getSongs());
-
-                String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
-                model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
-                session.setAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
+                    //creates playlist and adds to model and session
+                    String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
+                    model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
+                    session.setAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);
+                }
 
                 return "recipe-playlist";
             }

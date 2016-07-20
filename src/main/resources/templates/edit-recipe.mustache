@@ -1,62 +1,91 @@
-{{recipe.name}}
-
+<html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
-
-<form>
+<body>
+<div class="home-form">
     <a href="/">Home</a>
-</form>
 
-<form action="/edit-recipe" method="post">
-    <div>
-        Name
-        <input type="text" placeholder="{{recipe.name}}" name="name"/>
-    </div>
+    <h2>Get cooking with EatBeats</h2>
 
-    <div>
-        Season
-        <select id="season" name="season">
-            <option selected>{{recipe.season}}</option>
+    <p>Hi, {{username}}</p>
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/favorite-playlists">Favorite Playlists</a>
+                    </li>
+                    <li>
+                        <a href="/my-recipes">My Recipes</a>
+                    </li>
+                    <li>
+                        <a href="/create-recipe">Make a New Recipe</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <h3>Create a recipe:</h3>
+
+    <form class="create-recipe" action="/edit-recipe" method="post">
+        <div>
+            Name
+            <input type="text" placeholder="{{recipe.name}}" name="name" class="form-control short" />
+        </div>
+
+        <div>
+            Season
+            <select id="season" name="season" class="form-control short" />
             <option value="Spring">Spring</option>
             <option value="Summer">Summer</option>
             <option value="Fall">Fall</option>
             <option value="Winter">Winter</option>
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div>
-        Category
-        <select id="category" name="category">
-            <option selected>{{recipe.category}}</option>
+        <div>
+            Category
+            <select id="category" name="category" class="form-control short" />
             <option value="Breakfast">Breakfast</option>
             <option value="Brunch">Brunch</option>
             <option value="Lunch">Lunch</option>
             <option value="Dinner">Dinner</option>
             <option value="Dessert">Dessert</option>
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div>
-        Region
-        <select id="region" name="region">
-            <option selected>{{recipe.region}}</option>
+        <div>
+            Region
+            <select id="region" name="region" class="form-control short" />
             <option value="French">French</option>
             <!-- placeholder: to be extended to multiple regions in Asia -->
             <option value="Asian">Asian</option>
             <option value="Contemporary">Contemporary</option>
             <option value="Southern">Southern</option>
             <option value="Italian">Italian</option>
-        </select>
-    </div>
+            </select>
+        </div>
 
-    <div>
-        Description
-        <textarea title="description" name="description" rows="5" cols="10">{{recipe.description}}</textarea>
-    </div>
+        <div>
+            <div>Description</div>
+            <textarea title="description" name="description" class="form-control" rows="5"></textarea>
+        </div>
 
-    <div>
-        <button type="submit" >Submit Recipe</button>
-        <input type="hidden" name="id" value="{{recipe.id}}">
-    </div>
-</form>
+        <div>
+            <button type="submit" >Submit Recipe</button>
+            <input type="hidden" name="id" value="{{recipe.id}}">
+        </div>
+    </form>
+
+</div>
+
+</body>
+</head>
