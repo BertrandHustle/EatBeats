@@ -23,10 +23,7 @@ import java.util.List;
 //todo: implement @notNull tags on recipe fields?
 //todo: switch edit endpoint to GET, not POST (can use image rather than button)
 //todo: check if user exists at each page
-
 //todo: add delete route for favorite playlists
-
-
 
 /**
  * Controller class for EatBeats
@@ -412,7 +409,9 @@ public class EatBeatsController {
                 Playlist playlist = playlistService.makePlaylistFromRecipe(recipe, user);
 
                 //todo: removes duplicates for test purposes, needs to be fixed
-                playlist.setSongs(playlist.getSongs().subList(0, 3));
+
+                //why was this previously a sublist?
+                playlist.setSongs(playlist.getSongs());
 
                 String spotifyPlaylistUrl = spotifyService.createRecommendationsPlaylistUrlFromPlaylist(playlist, recipe.getName());
                 model.addAttribute("spotifyPlaylistUrl", spotifyPlaylistUrl);

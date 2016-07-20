@@ -3,8 +3,8 @@
   <component name="dataSourceStorageLocal">
     <data-source name="PostgreSQL - eatbeats@localhost" uuid="4c3e8b7e-c026-4ae5-9299-84d608f6c5fc">
       <secret-storage>master_key</secret-storage>
-      <schema-pattern>eatbeats.*</schema-pattern>
-      <default-schemas>eatbeats.*</default-schemas>
+      <introspection-scope>eatbeats:*</introspection-scope>
+      <resolve-scope>eatbeats:*</resolve-scope>
     </data-source>
   </component>
 </project>
